@@ -28,13 +28,17 @@ jobs:
       - run: npm ci
 
       # Secrets phải là REPOSITORY secrets (Settings → Secrets and variables → Actions).
-      # Environment secrets chỉ đọc được từ job có khai báo `environment` tương ứng.
+      # Lưu ý: context `secrets` KHÔNG dùng được trong `if:` → phải đưa vào env rồi test bằng shell.
       - name: Kiểm tra secrets
-        if: ${{ secrets.VITE_SUPABASE_URL == '' || secrets.VITE_SUPABASE_ANON_KEY == '' }}
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: |
-          echo "::error::Thiếu VITE_SUPABASE_URL hoặc VITE_SUPABASE_ANON_KEY."
-          echo "Thêm 2 secret này ở Settings → Secrets and variables → Actions → Repository secrets, rồi chạy lại workflow."
-          exit 1
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "::error::Thiếu VITE_SUPABASE_URL hoặc VITE_SUPABASE_ANON_KEY."
+            echo "Thêm 2 secret này ở Settings → Secrets and variables → Actions → Repository secrets, rồi chạy lại workflow."
+            exit 1
+          fi
 
       # Pages phải được bật 1 lần: Settings → Pages → Source = GitHub Actions.
       # (Không dùng `enablement: true` vì GITHUB_TOKEN không có quyền admin để tạo Pages site.)
