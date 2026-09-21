@@ -30,6 +30,9 @@ jobs:
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # Tự bật GitHub Pages (source: GitHub Actions) nếu chưa bật — khỏi phải vào Settings.
+          enablement: true
 
       - name: Build
         env:
