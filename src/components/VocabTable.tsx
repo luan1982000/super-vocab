@@ -13,14 +13,14 @@ interface VocabTableProps {
 }
 
 const headClass = 'py-2 pr-4 text-[0.8125rem] font-medium text-ink-soft'
-const cellClass = 'mt-1 block sm:mt-0 sm:table-cell sm:py-3 sm:pr-4'
+const cellClass = 'mt-1 block md:mt-0 md:table-cell md:py-3 md:pr-4'
 
 export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTableProps) {
   const names = new Map(collections.map((collection) => [collection.id, collection.name]))
 
   return (
-    <table className="block w-full border-collapse text-left sm:table">
-      <thead className="hidden sm:table-header-group">
+    <table className="block w-full border-collapse text-left md:table">
+      <thead className="hidden md:table-header-group">
         <tr className="border-b border-rule">
           <th className={headClass}>Từ</th>
           <th className={headClass}>Nghĩa</th>
@@ -31,12 +31,12 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
         </tr>
       </thead>
 
-      <tbody className="block sm:table-row-group">
+      <tbody className="block md:table-row-group">
         {rows.map((row) => {
           const overdue = now > 0 && new Date(row.due).getTime() <= now
           return (
-            <tr key={row.id} className="block border-b border-rule py-3 align-top sm:table-row sm:py-0">
-              <td className={`${cellClass} pr-0 sm:pr-4`}>
+            <tr key={row.id} className="block border-b border-rule py-3 align-top md:table-row md:py-0">
+              <td className={`${cellClass} pr-0 md:pr-4`}>
                 <span className="flex items-baseline gap-2">
                   <span className="font-serif text-[1.0625rem] leading-[1.4] font-semibold text-ink">
                     {row.word}
@@ -55,7 +55,7 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
                 )}
               </td>
 
-              <td className={`${cellClass} max-w-[62ch] text-[0.9375rem] text-ink`}>
+              <td className={`${cellClass} max-w-[46ch] text-[0.9375rem] text-ink`}>
                 {row.meaning}
                 {row.example && (
                   <span className="mt-0.5 block font-serif text-[0.8125rem] leading-[1.6] text-ink-soft">
@@ -80,7 +80,7 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
                 </td>
               )}
 
-              <td className={cellClass}>
+              <td className={`${cellClass} whitespace-nowrap`}>
                 <span
                   className={`text-[0.9375rem] ${overdue ? 'rounded-sm bg-highlighter px-1.5 py-0.5 text-highlighter-ink' : 'text-ink'}`}
                 >
@@ -89,7 +89,7 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
                 {overdue && <span className="mt-0.5 block text-[0.8125rem] text-ink-soft">{formatDateTime(row.due)}</span>}
               </td>
 
-              <td className={cellClass}>
+              <td className={`${cellClass} whitespace-nowrap`}>
                 <span
                   className={`inline-block rounded-sm px-2 py-0.5 text-[0.8125rem] font-medium ${
                     STATE_TONES[row.state] ?? ''
@@ -99,7 +99,7 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
                 </span>
               </td>
 
-              <td className={`${cellClass} pr-0 sm:text-right`}>
+              <td className={`${cellClass} pr-0 whitespace-nowrap md:text-right`}>
                 <button
                   type="button"
                   onClick={() => onEdit(row)}
