@@ -1,0 +1,152 @@
+/* Font: Be Vietnam Pro (UI, dựng cho tiếng Việt) + Literata (headword) — nạp local, chỉ subset latin + vietnamese. */
+@import '@fontsource/be-vietnam-pro/latin-400.css';
+@import '@fontsource/be-vietnam-pro/latin-500.css';
+@import '@fontsource/be-vietnam-pro/latin-600.css';
+@import '@fontsource/be-vietnam-pro/vietnamese-400.css';
+@import '@fontsource/be-vietnam-pro/vietnamese-500.css';
+@import '@fontsource/be-vietnam-pro/vietnamese-600.css';
+@import '@fontsource-variable/literata/wght.css';
+
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Literata', ui-serif, Georgia, serif;
+}
+
+/* `inline` để utility trỏ thẳng vào biến bên dưới → đổi được theo prefers-color-scheme. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-line-strong: var(--line-strong);
+  --color-pen: var(--pen);
+  --color-highlighter: var(--highlighter);
+  --color-highlighter-ink: var(--highlighter-ink);
+  --color-red-pen: var(--red-pen);
+  --color-ochre: var(--ochre);
+  --color-green: var(--green);
+  --color-tab-ink: var(--tab-ink);
+  --color-tab-rose: var(--tab-rose);
+  --color-tab-ochre: var(--tab-ochre);
+  --color-tab-sage: var(--tab-sage);
+  --color-tab-periwinkle: var(--tab-periwinkle);
+  --color-tab-lilac: var(--tab-lilac);
+  --color-tab-clay: var(--tab-clay);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+
+    --paper: #f1f3f6;
+    --card: #ffffff;
+    --ink: #131a26;
+    --ink-soft: #5a6675;
+    --rule: #c9d2dc;
+    --line-strong: #7d8b9b;
+    --pen: #1e3a6b;
+    --highlighter: #e3ec63;
+    --highlighter-ink: #10161f;
+    --red-pen: #b4232b;
+    --ochre: #a9661c;
+    --green: #2f6b4f;
+    /* Tông tai ngăn giữ nguyên ở 2 chế độ + mực cố định trên tông giấy (6.7–8.8:1). */
+    --tab-ink: #131a26;
+    --tab-rose: #d98c8c;
+    --tab-ochre: #d9b36a;
+    --tab-sage: #9cc0a6;
+    --tab-periwinkle: #a3b4e0;
+    --tab-lilac: #c4a6d9;
+    --tab-clay: #d9a98c;
+    --stack-shadow: 0 8px 20px rgb(19 26 38 / 0.1);
+  }
+
+  /* "Mực xanh ban đêm": nền là mực bi xanh ngả đen, không dùng đen trung tính. */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+
+      --paper: #0e1622;
+      --card: #17212f;
+      --ink: #e7ebf1;
+      --ink-soft: #9aa7b6;
+      --rule: #2c3a4c;
+      --line-strong: #4a5b70;
+      --pen: #8ab0f0;
+      --highlighter: #e3ec63;
+      --highlighter-ink: #10161f;
+      --red-pen: #e8796f;
+      --ochre: #d9a45c;
+      --green: #7fbf9b;
+      --stack-shadow: 0 8px 20px rgb(0 0 0 / 0.45);
+    }
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Số liệu (khoảng cách ôn, tiến độ) canh cột đều nhau. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--pen);
+    outline-offset: 1px;
+  }
+}
+
+@layer components {
+  /* Lật thẻ: xoay 3D quanh trục dọc. */
+  .flip-inner {
+    transform-style: preserve-3d;
+    transition: transform 480ms cubic-bezier(0.2, 0.7, 0.25, 1);
+  }
+
+  .flip-inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flip-face {
+    backface-visibility: hidden;
+  }
+
+  .flip-face-back {
+    transform: rotateY(180deg);
+  }
+
+  /* Giảm chuyển động: bỏ xoay, đổi mặt bằng mờ 120ms. */
+  @media (prefers-reduced-motion: reduce) {
+    .flip-inner,
+    .flip-inner.is-flipped {
+      transform: none;
+      transition: none;
+    }
+
+    .flip-face {
+      backface-visibility: visible;
+      transform: none;
+      transition: opacity 120ms linear;
+      opacity: 0;
+    }
+
+    .flip-face-front {
+      opacity: 1;
+    }
+
+    .flip-inner.is-flipped .flip-face-front {
+      opacity: 0;
+    }
+
+    .flip-inner.is-flipped .flip-face-back {
+      opacity: 1;
+    }
+  }
+}
