@@ -50,10 +50,10 @@ export function schedule(row: CardRow, now = new Date()) {
 }
 
 export const GRADES: { rating: Grade; label: string; hotkey: string; edge: string }[] = [
-  { rating: Rating.Again, label: 'Lại', hotkey: '1', edge: 'border-t-red-pen' },
-  { rating: Rating.Hard, label: 'Khó', hotkey: '2', edge: 'border-t-ochre' },
-  { rating: Rating.Good, label: 'Được', hotkey: '3', edge: 'border-t-pen' },
-  { rating: Rating.Easy, label: 'Dễ', hotkey: '4', edge: 'border-t-green' },
+  { rating: Rating.Again, label: 'Lại', hotkey: '1', edge: 'border-t-danger' },
+  { rating: Rating.Hard, label: 'Khó', hotkey: '2', edge: 'border-t-warn' },
+  { rating: Rating.Good, label: 'Được', hotkey: '3', edge: 'border-t-accent' },
+  { rating: Rating.Easy, label: 'Dễ', hotkey: '4', edge: 'border-t-cool' },
 ]
 
 export type GradeOption = (typeof GRADES)[number]

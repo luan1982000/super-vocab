@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowClockwise, Eye, ListBullets } from '@phosphor-icons/react'
 import type { Grade } from 'ts-fsrs'
 import { CollectionBar } from '../components/CollectionBar'
 import { FlashCard } from '../components/FlashCard'
@@ -13,11 +14,6 @@ import type { CardRow } from '../lib/types'
 
 const SESSION_LIMIT = 30
 const SCOPE_KEY = 'super-vocab.scope'
-
-const primaryClass =
-  'rounded-md bg-pen px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90'
-const quietClass =
-  'rounded-md border border-line-strong px-4 py-2 text-sm font-medium text-ink transition hover:bg-paper'
 
 export function PracticePage() {
   const { collections, loading: collectionsLoading, reload: reloadCollections, error: collectionsError } = useCollections()
@@ -180,7 +176,7 @@ export function PracticePage() {
 
   if (loading) {
     return (
-      <div className="space-y-4">
+      <div className="space-y-10">
         {header}
         <FullPageSpinner label="Đang lấy thẻ đến hạn…" />
       </div>
@@ -189,11 +185,12 @@ export function PracticePage() {
 
   if (error && !current) {
     return (
-      <div className="space-y-4">
+      <div className="space-y-10">
         {header}
-        <div className="border-l-[3px] border-red-pen bg-red-pen/8 px-3 py-2 text-sm text-ink">
+        <div className="banner">
           <p>Không tải được dữ liệu: {error}</p>
-          <button type="button" onClick={restart} className="mt-2 font-semibold underline">
+          <button type="button" onClick={restart} className="btn-text mt-2 font-medium text-ink underline">
+            <ArrowClockwise aria-hidden size={16} />
             Thử lại
           </button>
         </div>
@@ -203,16 +200,16 @@ export function PracticePage() {
 
   if (queue.length === 0) {
     return (
-      <div className="space-y-4">
+      <div className="space-y-10">
         {header}
-        <div className="mx-auto max-w-[30rem] rounded-md border border-rule bg-card p-6 text-center shadow-[var(--stack-shadow)]">
-          <h1 className="font-serif text-[1.5rem] font-semibold text-ink">Hôm nay đã xong</h1>
+        <div className="panel mx-auto max-w-[30rem] px-7 py-9 text-center">
+          <h1 className="font-serif text-[1.375rem] tracking-[-0.01em] text-ink">Hôm nay đã xong</h1>
           <p className="mt-2 text-sm text-ink-soft">Bộ: {currentScope}</p>
           <p className="mt-3 text-sm text-ink">
             {nextUpcoming ? (
               <>
                 Còn <strong className="tnum">{nextUpcoming.count}</strong> từ đến hạn. Gần nhất{' '}
-                <span className="rounded-sm bg-highlighter px-1.5 py-0.5 font-medium text-highlighter-ink">
+                <span className="rounded-full bg-highlighter px-1.5 py-0.5 font-medium text-highlighter-ink">
                   {formatDateTime(nextUpcoming.due)}
                 </span>
                 .
@@ -222,10 +219,12 @@ export function PracticePage() {
             )}
           </p>
           <div className="mt-5 flex justify-center gap-2">
-            <Link to="/vocab" className={primaryClass}>
+            <Link to="/vocab" className="btn btn-primary">
+              <ListBullets aria-hidden size={16} />
               Quản lý từ vựng
             </Link>
-            <button type="button" onClick={restart} className={quietClass}>
+            <button type="button" onClick={restart} className="btn btn-quiet">
+              <ArrowClockwise aria-hidden size={16} />
               Tải lại
             </button>
           </div>
@@ -237,29 +236,29 @@ export function PracticePage() {
   if (finished) {
     const total = Object.values(grades).reduce((sum, value) => sum + value, 0)
     return (
-      <div className="space-y-4">
+      <div className="space-y-10">
         {header}
-        <div className="mx-auto max-w-[30rem] rounded-md border border-rule bg-card p-6 text-center shadow-[var(--stack-shadow)]">
-          <h1 className="font-serif text-[1.5rem] font-semibold text-ink">Hết thẻ trong bộ</h1>
+        <div className="panel mx-auto max-w-[30rem] px-7 py-9 text-center">
+          <h1 className="font-serif text-[1.375rem] tracking-[-0.01em] text-ink">Hết thẻ trong bộ</h1>
           <p className="mt-2 text-sm text-ink-soft">Bộ: {currentScope}</p>
           <p className="mt-1 text-sm text-ink">
             Đã chấm <strong className="tnum">{total}</strong> thẻ.
           </p>
-          <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {GRADES.map((option) => (
-              <div key={option.rating} className="rounded-md border border-rule px-3 py-2">
-                <p className="text-[0.8125rem] text-ink-soft">{option.label}</p>
-                <p className="tnum text-[1.5rem] leading-tight font-semibold text-ink">
-                  {grades[option.rating] ?? 0}
-                </p>
+              <div key={option.rating} className="rounded-ui border border-rule px-4 py-3">
+                <p className="micro">{option.label}</p>
+                <p className="tnum font-serif text-[1.75rem] leading-tight text-ink">{grades[option.rating] ?? 0}</p>
               </div>
             ))}
           </div>
           <div className="mt-5 flex justify-center gap-2">
-            <button type="button" onClick={restart} className={primaryClass}>
+            <button type="button" onClick={restart} className="btn btn-primary">
+              <ArrowClockwise aria-hidden size={16} />
               Ôn lại từ đầu
             </button>
-            <Link to="/vocab" className={quietClass}>
+            <Link to="/vocab" className="btn btn-quiet">
+              <ListBullets aria-hidden size={16} />
               Quản lý từ vựng
             </Link>
           </div>
@@ -271,16 +270,16 @@ export function PracticePage() {
   const progress = ((index + (flipped ? 0.5 : 0)) / queue.length) * 100
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-10">
       {header}
 
-      <div className="mx-auto w-full max-w-[30rem] space-y-5">
+      <div className="mx-auto w-full max-w-[30rem] space-y-8">
         <div className="flex items-center gap-3">
-          <span className="tnum text-sm font-medium text-ink-soft">
+          <span className="tnum text-[0.8125rem] text-ink-soft">
             {index + 1} / {queue.length}
           </span>
-          <div className="h-[3px] flex-1 rounded-full bg-rule">
-            <div className="h-full rounded-full bg-pen" style={{ width: `${progress}%` }} />
+          <div className="h-[2px] flex-1 bg-line-strong">
+            <div className="h-full bg-accent" style={{ width: `${progress}%` }} />
           </div>
         </div>
 
@@ -294,7 +293,7 @@ export function PracticePage() {
             />
 
             {error && (
-              <div className="border-l-[3px] border-red-pen bg-red-pen/8 px-3 py-2 text-sm text-ink">{error}</div>
+              <div className="banner">{error}</div>
             )}
 
             {flipped ? (
@@ -305,13 +304,13 @@ export function PracticePage() {
                     type="button"
                     disabled={saving}
                     onClick={() => void grade(option.rating)}
-                    className={`rounded-md border border-t-[3px] border-line-strong bg-card px-3 py-3 text-left transition hover:bg-paper disabled:cursor-not-allowed disabled:opacity-55 ${option.edge}`}
+                    className={`rounded-ui border border-line-strong border-t-2 bg-card px-4 py-3 text-left transition-colors hover:bg-hover disabled:cursor-not-allowed disabled:opacity-50 ${option.edge}`}
                   >
                     <span className="flex items-baseline justify-between gap-2">
-                      <span className="text-[0.9375rem] font-semibold text-ink">{option.label}</span>
+                      <span className="text-[0.9375rem] font-medium text-ink">{option.label}</span>
                       <span className="tnum text-[0.75rem] text-ink-soft">{option.hotkey}</span>
                     </span>
-                    <span className="mt-2 inline-block rounded-sm bg-highlighter px-1.5 py-0.5 text-[0.9375rem] font-semibold text-highlighter-ink">
+                    <span className="mt-2 inline-block tnum text-[0.9375rem] font-medium text-accent">
                       {formatInterval(preview.now, preview.options[option.rating].card.due)}
                     </span>
                   </button>
@@ -321,15 +320,14 @@ export function PracticePage() {
               <button
                 type="button"
                 onClick={() => setFlipped(true)}
-                className="w-full rounded-md bg-pen px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                className="btn btn-primary w-full py-3"
               >
+                <Eye aria-hidden size={16} />
                 Hiện nghĩa
               </button>
             )}
 
-            <p className="text-center text-[0.8125rem] text-ink-soft">
-              Space để lật thẻ. Phím 1–4 để chấm.
-            </p>
+            <p className="text-center text-[0.8125rem] text-ink-soft">Space để lật thẻ. Phím 1–4 để chấm.</p>
           </>
         )}
       </div>

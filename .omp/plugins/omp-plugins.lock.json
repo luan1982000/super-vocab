@@ -1,0 +1,10 @@
+{
+  "plugins": {
+    "ui-ux-pro-max": {
+      "version": "2.13.0",
+      "enabledFeatures": null,
+      "enabled": true
+    }
+  },
+  "settings": {}
+}

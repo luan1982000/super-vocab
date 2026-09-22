@@ -4,7 +4,8 @@ Web học từ vựng cá nhân: lưu từ và ôn bằng flashcard theo thuật
 
 - **3 trang:** Login (`#/login`) · Quản lý từ vựng (`#/vocab`) · Ôn tập (`#/practice`)
 - **Bộ từ (collection):** gom từ theo chủ đề; phiên ôn tập chỉ gồm từ trong bộ đang chọn
-- **Stack:** Vite + React + TypeScript · Tailwind CSS · react-router-dom (HashRouter) · Supabase (DB + Auth) · ts-fsrs
+- **Stack:** Vite + React + TypeScript · Tailwind CSS · react-router-dom (HashRouter) · Supabase (DB + Auth) · ts-fsrs · `@phosphor-icons/react` (icon)
+- **Giao diện:** xem [`design.md`](./design.md) — hệ token, bảng màu, thang chữ, thành phần dùng chung
 
 ## 1. Cài đặt
 

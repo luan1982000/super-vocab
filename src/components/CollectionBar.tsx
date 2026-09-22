@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { Check, PencilSimple, Plus, Trash, X } from '@phosphor-icons/react'
 import { Modal } from './Modal'
 import {
   collectionTone,
@@ -8,22 +9,17 @@ import {
   SCOPE_ALL,
   SCOPE_NONE,
   scopeLabel,
-  TONE_EDGE,
+  TONE_BG,
   type CollectionScope,
 } from '../lib/collections'
 import type { CollectionRow } from '../lib/types'
 
-const fieldClass =
-  'w-full rounded-sm border border-line-strong bg-card px-3 py-2 text-base text-ink outline-none transition focus:border-pen'
-const primaryClass =
-  'rounded-md bg-pen px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-55'
-const quietClass =
-  'rounded-md border border-line-strong px-3 py-2 text-sm font-medium text-ink transition hover:bg-paper disabled:opacity-55'
-
-/** Tai ngăn hộp: thân giấy, dải màu 3px ở cạnh trên, đứng trên một đường kẻ nền. */
-const tabClass = (active: boolean, toneEdge?: string) =>
-  `relative top-px shrink-0 rounded-t-md border border-b-0 border-t-[3px] px-3 pt-1.5 pb-1.5 text-sm font-medium whitespace-nowrap transition ${
-    active ? 'border-pen bg-pen text-white' : `border-line-strong bg-card text-ink hover:bg-paper ${toneEdge ?? ''}`
+/** Chip lọc: viền mảnh khi chưa chọn, nền mực xanh rêu khi đang chọn. */
+const chipClass = (active: boolean, dashed = false) =>
+  `tap-target inline-flex shrink-0 items-center gap-2 rounded-ui border px-2.5 py-1.5 text-sm whitespace-nowrap transition-colors ${
+    active
+      ? 'border-accent bg-accent font-medium text-on-accent'
+      : `border-line-strong text-ink-soft hover:border-ink-soft hover:text-ink ${dashed ? 'border-dashed' : ''}`
   }`
 
 interface CollectionBarProps {
@@ -48,7 +44,8 @@ export function CollectionBar({ collections, scope, counts, onScopeChange, manag
   const [draftName, setDraftName] = useState('')
   const [confirmingId, setConfirmingId] = useState<string | null>(null)
 
-  const count = (key: string) => (counts ? <span className="tnum ml-1.5 opacity-70">{counts[key] ?? 0}</span> : null)
+  const count = (key: string) =>
+    counts ? <span className="tnum text-[0.8125rem]">{counts[key] ?? 0}</span> : null
 
   const handleCreate = async (event: FormEvent) => {
     event.preventDefault()
@@ -104,15 +101,15 @@ export function CollectionBar({ collections, scope, counts, onScopeChange, manag
   }
 
   return (
-    <div className="space-y-2">
-      <div className="flex flex-nowrap items-end gap-1.5 overflow-x-auto border-b border-rule sm:flex-wrap sm:overflow-visible">
-        <span className="shrink-0 pr-1 pb-2 text-sm text-ink-soft">Bộ từ</span>
+    <div className="space-y-3">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="micro mr-1">Bộ từ</span>
 
         <button
           type="button"
           aria-pressed={scope === SCOPE_ALL}
           onClick={() => onScopeChange(SCOPE_ALL)}
-          className={tabClass(scope === SCOPE_ALL)}
+          className={chipClass(scope === SCOPE_ALL)}
         >
           Tất cả
           {count(SCOPE_ALL)}
@@ -122,7 +119,7 @@ export function CollectionBar({ collections, scope, counts, onScopeChange, manag
           type="button"
           aria-pressed={scope === SCOPE_NONE}
           onClick={() => onScopeChange(SCOPE_NONE)}
-          className={`${tabClass(scope === SCOPE_NONE)} ${scope === SCOPE_NONE ? '' : 'border-dashed border-line-strong'}`}
+          className={chipClass(scope === SCOPE_NONE, true)}
         >
           Chưa phân loại
           {count(SCOPE_NONE)}
@@ -134,8 +131,9 @@ export function CollectionBar({ collections, scope, counts, onScopeChange, manag
             type="button"
             aria-pressed={scope === collection.id}
             onClick={() => onScopeChange(collection.id)}
-            className={tabClass(scope === collection.id, TONE_EDGE[collectionTone(collection.id)])}
+            className={chipClass(scope === collection.id)}
           >
+            <span aria-hidden className={`size-2.5 shrink-0 rounded-full ${TONE_BG[collectionTone(collection.id)]}`} />
             {collection.name}
             {count(collection.id)}
           </button>
@@ -145,14 +143,15 @@ export function CollectionBar({ collections, scope, counts, onScopeChange, manag
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="mb-1 ml-1 rounded-md border border-dashed border-line-strong px-3 py-1.5 text-sm font-medium text-ink-soft transition hover:bg-card"
+            className="btn btn-quiet tap-target shrink-0 px-2.5 py-1.5"
           >
+            <Plus aria-hidden size={16} />
             Thêm bộ từ
           </button>
         )}
       </div>
 
-      {error && <p className="text-sm text-red-pen">Không tải được bộ từ: {error}</p>}
+      {error && <p className="text-sm text-danger">Không tải được bộ từ: {error}</p>}
 
       <Modal open={open} title="Bộ từ" onClose={closeManage}>
         <form onSubmit={(event) => void handleCreate(event)} className="flex gap-2">
@@ -160,16 +159,17 @@ export function CollectionBar({ collections, scope, counts, onScopeChange, manag
             value={newName}
             onChange={(event) => setNewName(event.target.value)}
             placeholder="Tên bộ mới, ví dụ: IELTS Reading"
-            className={fieldClass}
+            className="field"
           />
-          <button type="submit" disabled={busy || !newName.trim()} className={primaryClass}>
+          <button type="submit" disabled={busy || !newName.trim()} className="btn btn-primary shrink-0">
+            <Plus aria-hidden size={16} />
             Tạo
           </button>
         </form>
 
-        {formError && <p className="mt-3 border-l-[3px] border-red-pen bg-red-pen/8 px-3 py-2 text-sm text-ink">{formError}</p>}
+        {formError && <p className="banner mt-3">{formError}</p>}
 
-        <ul className="mt-4 divide-y divide-rule">
+        <ul className="mt-5 divide-y divide-rule border-t border-rule">
           {collections.map((collection) => (
             <li key={collection.id} className="py-3">
               {editingId === collection.id ? (
@@ -177,36 +177,49 @@ export function CollectionBar({ collections, scope, counts, onScopeChange, manag
                   <input
                     value={draftName}
                     onChange={(event) => setDraftName(event.target.value)}
-                    className={fieldClass}
+                    className="field"
                   />
-                  <button type="button" disabled={busy} onClick={() => void handleRename(collection.id)} className={primaryClass}>
+                  <button
+                    type="button"
+                    disabled={busy}
+                    onClick={() => void handleRename(collection.id)}
+                    className="btn btn-primary shrink-0"
+                  >
+                    <Check aria-hidden size={16} />
                     Lưu
                   </button>
-                  <button type="button" onClick={() => setEditingId(null)} className={quietClass}>
+                  <button type="button" onClick={() => setEditingId(null)} className="btn btn-quiet shrink-0">
+                    <X aria-hidden size={16} />
                     Hủy
                   </button>
                 </div>
               ) : confirmingId === collection.id ? (
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-sm text-ink">
-                    Xóa bộ <strong>{collection.name}</strong>? Các từ bên trong chuyển về “Chưa phân loại”.
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="flex-1 text-sm text-ink">
+                    Xóa bộ <strong className="font-medium">{collection.name}</strong>? Các từ bên trong chuyển về “Chưa
+                    phân loại”.
                   </span>
                   <button
                     type="button"
                     disabled={busy}
                     onClick={() => void handleDelete(collection.id)}
-                    className="rounded-md bg-red-pen px-3 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-55"
+                    className="btn btn-danger shrink-0"
                   >
+                    <Trash aria-hidden size={16} />
                     Xóa
                   </button>
-                  <button type="button" onClick={() => setConfirmingId(null)} className={quietClass}>
+                  <button type="button" onClick={() => setConfirmingId(null)} className="btn btn-quiet shrink-0">
+                    <X aria-hidden size={16} />
                     Hủy
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center gap-2">
-                  <span className="flex-1 text-sm font-medium text-ink">{collection.name}</span>
-                  {counts && <span className="tnum text-[0.8125rem] text-ink-soft">{counts[collection.id] ?? 0} từ</span>}
+                <div className="flex items-center gap-3">
+                  <span aria-hidden className={`size-2.5 shrink-0 rounded-full ${TONE_BG[collectionTone(collection.id)]}`} />
+                  <span className="flex-1 truncate text-sm text-ink">{collection.name}</span>
+                  {counts && (
+                    <span className="tnum text-[0.8125rem] text-ink-soft">{counts[collection.id] ?? 0} từ</span>
+                  )}
                   <button
                     type="button"
                     onClick={() => {
@@ -214,8 +227,9 @@ export function CollectionBar({ collections, scope, counts, onScopeChange, manag
                       setDraftName(collection.name)
                       setConfirmingId(null)
                     }}
-                    className="rounded-md px-2 py-1 text-sm font-medium text-pen transition hover:bg-paper"
+                    className="btn-text"
                   >
+                    <PencilSimple aria-hidden size={16} />
                     Đổi tên
                   </button>
                   <button
@@ -224,19 +238,22 @@ export function CollectionBar({ collections, scope, counts, onScopeChange, manag
                       setConfirmingId(collection.id)
                       setEditingId(null)
                     }}
-                    className="rounded-md px-2 py-1 text-sm font-medium text-red-pen transition hover:bg-paper"
+                    className="btn-text hover:text-danger"
                   >
+                    <Trash aria-hidden size={16} />
                     Xóa
                   </button>
                 </div>
               )}
             </li>
           ))}
-          {collections.length === 0 && <li className="py-3 text-sm text-ink-soft">Hộp chưa có ngăn nào. Tạo ngăn đầu tiên ở ô trên.</li>}
+          {collections.length === 0 && (
+            <li className="py-4 text-sm text-ink-soft">Chưa có bộ từ nào. Tạo bộ đầu tiên ở ô trên.</li>
+          )}
         </ul>
 
-        <p className="mt-4 text-[0.8125rem] text-ink-soft">
-          Đang xem: <strong className="text-ink">{scopeLabel(scope, collections)}</strong>
+        <p className="mt-5 text-[0.8125rem] text-ink-soft">
+          Đang xem: <strong className="font-medium text-ink">{scopeLabel(scope, collections)}</strong>
         </p>
       </Modal>
     </div>

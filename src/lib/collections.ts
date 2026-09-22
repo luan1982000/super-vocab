@@ -12,28 +12,18 @@ export function scopeLabel(scope: CollectionScope, collections: CollectionRow[])
   return collections.find((collection) => collection.id === scope)?.name ?? 'Không rõ'
 }
 
-/** 6 tông giấy ngăn hộp; gán theo id nên đổi tên bộ không đổi màu. */
-const TONES = ['rose', 'ochre', 'sage', 'periwinkle', 'lilac', 'clay'] as const
+/** 6 tông thuốc nhuộm nhận diện bộ từ; gán theo id nên đổi tên bộ không đổi màu. */
+const TONES = ['rose', 'ochre', 'sage', 'slate', 'mauve', 'clay'] as const
 export type CollectionTone = (typeof TONES)[number]
 
-/** Lớp Tailwind cho thân tai ngăn (cần literal tĩnh để Tailwind sinh utility). */
+/** Lớp Tailwind cho chấm màu nhận diện (cần literal tĩnh để Tailwind sinh utility). */
 export const TONE_BG: Record<CollectionTone, string> = {
   rose: 'bg-tab-rose',
   ochre: 'bg-tab-ochre',
   sage: 'bg-tab-sage',
-  periwinkle: 'bg-tab-periwinkle',
-  lilac: 'bg-tab-lilac',
+  slate: 'bg-tab-slate',
+  mauve: 'bg-tab-mauve',
   clay: 'bg-tab-clay',
-}
-
-/** Lớp Tailwind cho dải màu 3px ở cạnh trên. */
-export const TONE_EDGE: Record<CollectionTone, string> = {
-  rose: 'border-t-tab-rose',
-  ochre: 'border-t-tab-ochre',
-  sage: 'border-t-tab-sage',
-  periwinkle: 'border-t-tab-periwinkle',
-  lilac: 'border-t-tab-lilac',
-  clay: 'border-t-tab-clay',
 }
 
 export function collectionTone(id: string): CollectionTone {

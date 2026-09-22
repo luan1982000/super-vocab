@@ -1,8 +1,8 @@
 # Design — Super Vocab
 
-> File này là bản thiết kế để code theo. Viết trước khi sửa giao diện.
-> Thay thế cho các class Tailwind tuỳ hứng đang có trong `src/`.
-> Phần cuối có checklist chuyển hoá thành code và các điểm cần bạn xác nhận.
+> Bản thiết kế để code theo. Thay thế bản "hộp thẻ giấy" trước đó.
+> Mọi con số contrast trong file này đã được đo, không phải ước lượng.
+> Token nằm ở `src/index.css`; thành phần dùng chung ở `@layer components` cùng file.
 
 ---
 
@@ -18,338 +18,404 @@
 2. Ghi một từ mới vào đúng bộ trong vài giây.
 3. Nhìn ra ngay: từ này thuộc bộ nào, lần tới ôn khi nào.
 
-**Thế giới vật chất để lấy chất liệu:** hộp thẻ từ vựng (index card box), thẻ giấy, ngăn chia có tai (tab divider), mực bút bi xanh đen, bút đỏ của giáo viên, bút dạ quang, giấy kẻ dòng, phiếu trắng để viết từ mới. Đây là tổ tiên thật của spaced repetition (hộp Leitner) — và là thứ người học Việt Nam vẫn dùng.
-
-**Một câu định vị:** *web này trông và hành xử như một hộp thẻ từ vựng bằng giấy, làm bằng kỹ thuật số.*
+**Một câu định vị:** *web này đọc như một trang sách được sắp chữ tốt — một màu nhấn, đường kẻ tóc, và chữ làm hết việc.*
 
 ---
 
-## 2. Bảng màu
+## 2. Hướng thị giác
 
-Không dùng palette mặc định của Tailwind (`slate/indigo/rose/amber/emerald/sky` — đó là dấu hiệu của trang do máy sinh). Màu lấy từ vật liệu thật: giấy, mực xanh đen, bút đỏ, dạ quang.
+**Tối giản + thanh lịch, lấy ngữ pháp của sắp chữ editorial/Swiss.** Không dùng ẩn dụ vật liệu (không còn "tai ngăn", "thẻ chồng", "dạ quang").
 
-### 2.1. Nền & mực (chế độ sáng — mặc định)
+Nguồn: skill `ui-ux-pro-max` (đã cài ở `.omp/plugins/`).
 
-| Token | Hex | Dùng cho | Contrast đã đo |
+| Truy vấn | Cho ra |
+|---|---|
+| `--design-system "english learning platform minimalist elegant editorial" --variance 2 --motion 2 --density 3` | style `Minimalism & Swiss Style`, dials variance 2 / motion 2 / density 3, motion preset `Scroll Reveal (Subtle)` |
+| `--domain style "editorial magazine elegant typographic"` | `editorial-grid-magazine`, `exaggerated-minimalism` — lấy phần typography, bỏ phần asymmetric grid |
+| `--domain typography`, `--domain color` | xác nhận cặp serif+sans và palette trung tính; **palette mặc định của skill (tím `#7C3AED` / nền `#FAF5FF`) bị loại** — xem §10 |
+| `--domain ux "reading line length typography measure"` | `max-w-prose` 65–75ch cho dòng đọc, `leading 1.5–1.75`, `text-wrap: balance` cho heading ngắn, contrast chữ ≥4.5:1 |
+
+Năm quyết định lớn rút ra:
+
+1. **Không có bóng đổ.** Một ngoại lệ: modal (§6).
+2. **Đúng một màu nhấn** (`accent`), dùng cho hành động chính, focus, gạch chân mục đang xem, chấm nhận diện bộ từ, và con số quan trọng.
+3. **Hai bán kính theo vai trò**: `--radius-ui` 8px cho control (nút, ô nhập, chip), `--radius-card` 12px cho bề mặt (panel, modal, thẻ ôn); badge nhỏ dùng `rounded-full`.
+4. **Icon là bạn đồng hành của chữ, không bao giờ thay chữ** — mọi icon `aria-hidden`, nhãn vẫn là chữ tiếng Việt (§6.1).
+5. **Thứ bậc đến từ cỡ chữ, độ đậm, màu và đường kẻ** — không từ chữ in hoa (§10).
+
+---
+
+## 3. Bảng màu — "Giấy ngà & mực xanh rêu"
+
+Không dùng palette mặc định của Tailwind (`slate/indigo/rose/amber/emerald/sky`), cũng không dùng palette mặc định của skill (tím AI).
+
+### 3.1. Chế độ sáng
+
+| Token | Hex | Dùng cho | Contrast đo được |
 |---|---|---|---|
-| `paper` | `#F1F3F6` | nền trang (mặt bàn) — trắng ngả xanh lạnh, không phải kem ấm | ink/paper 15.7:1 |
-| `card` | `#FFFFFF` | thẻ, phiếu, mặt giấy | ink/card 17.45:1 |
-| `ink` | `#131A26` | chữ chính (mực bi xanh đen) | 17.45:1 trên card |
-| `ink-soft` | `#5A6675` | chữ phụ, nhãn, ngày giờ | 5.85:1 |
-| `rule` | `#C9D2DC` | đường kẻ, viền ngăn, cạnh chồng thẻ (trang trí) | 1.53:1 — không dùng cho chữ |
-| `line-strong` | `#7D8B9B` | viền ô nhập, viền nút phụ (cần ≥3:1) | 3.48:1 |
+| `paper` | `#FAF9F6` | nền trang — trắng ngả ấm, không phải kem vàng | ink/paper **16.69:1** |
+| `card` | `#FFFFFF` | mặt tấm, ô nhập | ink/card **17.57:1** |
+| `ink` | `#1A1917` | chữ chính, mực gần đen ngả ấm | — |
+| `ink-soft` | `#6B6760` | chữ phụ, nhãn, dòng meta | /paper **5.34:1** · /card **5.62:1** |
+| `rule` | `#E7E4DE` | đường kẻ tóc (thuần trang trí) | 1.27:1 — **không bao giờ** là ranh giới duy nhất của một control |
+| `line-strong` | `#969087` | viền ô nhập, viền nút phụ, track tiến độ | /card **3.16:1** · /paper **3.01:1** |
 
-### 2.2. Màu chức năng
+### 3.2. Màu chức năng
 
-| Token | Hex | Nghĩa | Contrast |
+| Token | Hex | Nghĩa | Contrast trên `card` |
 |---|---|---|---|
-| `pen` | `#1E3A6B` | hành động chính, tab đang chọn, chữ "Được" | 11.21:1 |
-| `highlighter` | `#E3EC63` | **chỉ** cho "đến hạn hôm nay" và preview khoảng cách ôn | ink/highlighter 13.66:1 |
-| `red-pen` | `#B4232B` | "Lại", quá hạn, lỗi, xoá | 6.53:1 |
-| `ochre` | `#A9661C` | "Khó" | 4.56:1 |
-| `green` | `#2F6B4F` | "Dễ" | 6.29:1 |
+| `accent` | `#1F4739` | hành động chính, focus, mục đang xem, số khoảng cách ôn | **10.40:1** |
+| `accent-hover` | `#163329` | nền nút chính khi hover | — |
+| `on-accent` | `#FFFFFF` | chữ trên nền `accent` | **10.40:1** |
+| `warn` | `#8A6A2F` | mức "Khó", trạng thái "Đang học" | **5.02:1** |
+| `cool` | `#2F5A6B` | mức "Dễ" | **7.51:1** |
+| `danger` | `#8F2F2A` | mức "Lại", lỗi, xoá | **8.05:1** |
+| `on-danger` | `#FFFFFF` | chữ trên nền `danger` | **8.05:1** |
+| `highlighter` | `#F0E4BE` | **chỉ** mốc "quá hạn" | highlighter-ink/highlighter **13.84:1** |
+| `hover` | `rgba(26,25,23,.05)` | nền khi hover của nút phụ / ô chấm | — |
+| `scrim` | `rgba(26,25,23,.40)` | lớp phủ sau modal | — |
+| `shadow-modal` | `0 24px 48px -12px rgba(26,25,23,.18)` | bóng duy nhất trong app | — |
 
-`highlighter` là chỗ duy nhất được phép "sáng": nền dạ quang với mực đen, dùng như một nét bút dạ quang thật — không dùng làm màu nút, không dùng làm gradient.
+`highlighter` là chỗ duy nhất được phép "sáng": một nét bút dạ quang thật sau mốc quá hạn. Không dùng cho nút, tiêu đề, hay nhấn mạnh chung.
 
-### 2.3. Màu tai hộp cho bộ từ
+### 3.3. Chấm nhận diện bộ từ
 
-6 tông giấy ngăn hộp, gán theo `hash(collection.id) % 6` → ổn định, không đổi khi đổi tên bộ, và các bộ cạnh nhau hiếm khi trùng màu.
+6 tông thuốc nhuộm tự nhiên, gán theo `hash(collection.id) % 6` → ổn định, đổi tên bộ không đổi màu, hai bộ cạnh nhau hiếm khi trùng.
 
-| Token | Hex | ink trên nền |
-|---|---|---|
-| `tab-rose` | `#D98C8C` | 6.71:1 |
-| `tab-ochre` | `#D9B36A` | 8.81:1 |
-| `tab-sage` | `#9CC0A6` | 8.73:1 |
-| `tab-periwinkle` | `#A3B4E0` | 8.44:1 |
-| `tab-lilac` | `#C4A6D9` | 8.15:1 |
-| `tab-clay` | `#D9A98C` | 8.31:1 |
+| Token | Hex | Token | Hex |
+|---|---|---|---|
+| `tab-rose` | `#C9A3A0` | `tab-slate` | `#9AA8BD` |
+| `tab-ochre` | `#C6A96B` | `tab-mauve` | `#B3A0C0` |
+| `tab-sage` | `#9DB3A0` | `tab-clay` | `#C7A18C` |
 
-Bộ "Chưa phân loại" không có màu: dùng `rule` (viền nét đứt) — nó là ngăn trống của hộp.
+**Chỉ dùng làm chấm tròn 10px** cạnh tên bộ. Không bao giờ đặt chữ lên trên, không dùng làm nền, không dùng làm viền. Vì vậy không cần đo contrast chữ trên tông.
 
-### 2.4. Chế độ tối — "mực xanh ban đêm"
+Bộ "Chưa phân loại" không có màu: chấm rỗng, viền nét đứt `line-strong`.
 
-Nền là mực bi xanh ngả đen (không dùng đen trung tính `#0B0B0B`, không dùng nền bảng xanh + accent xanh chua).
+### 3.4. Chế độ tối — "mực đêm"
+
+Nền là mực xanh ngả đen (không dùng đen trung tính `#0B0B0B`, không dùng accent xanh chua).
 
 | Token | Hex | Contrast đo được |
 |---|---|---|
-| `night` | `#0E1622` | ink/night 15.18:1 |
-| `night-card` | `#17212F` | — |
-| `ink` (dark) | `#E7EBF1` | 15.18:1 |
-| `ink-soft` (dark) | `#9AA7B6` | 6.62:1 |
-| `pen` (dark) `pen-lite` | `#8AB0F0` | 7.37:1 |
-| `pen-fill` (dark) | `#2C5AA8` (chữ trắng: 6.7:1) | 6.7:1 |
-| `highlighter` | giữ `#E3EC63`, chữ `#10161F`: 14.22:1 | 14.22:1 |
-| `red-pen` (dark) | `#E8796F` | 5.71:1 |
-| `ochre` (dark) | `#D9A45C` | 7.27:1 |
-| `green` (dark) | `#7FBF9B` | 7.59:1 |
+| `paper` | `#101210` | ink/paper **15.64:1** |
+| `card` | `#191C1A` | ink/card **14.28:1** |
+| `ink` | `#ECEAE4` | — |
+| `ink-soft` | `#9C9A93` | /paper **6.68:1** · /card **6.10:1** |
+| `rule` | `#2A2E2B` | 1.25:1 — trang trí |
+| `line-strong` | `#626864` | /card **3.01:1** · /paper **3.30:1** |
+| `accent` | `#86BFA6` | **8.19:1** |
+| `accent-hover` | `#9CCFB8` | — |
+| `on-accent` | `#0E1512` | 8.83:1 |
+| `warn` | `#D9B36A` | **8.68:1** |
+| `cool` | `#8FB8C9` | **8.07:1** |
+| `danger` | `#E39A93` | **7.62:1** |
+| `on-danger` | `#1A0F0E` | — |
+| `highlighter` | `#E8DBA0` | 13.18:1 với `highlighter-ink` `#14150F` |
+| `scrim` | `rgba(0,0,0,.60)` | — |
 
-Chế độ tối theo `prefers-color-scheme`, cùng ngôn ngữ cấu trúc, chỉ đổi vật liệu.
+Chế độ tối theo `prefers-color-scheme`, cùng cấu trúc, chỉ đổi vật liệu.
+
+**`scrim` phải là token riêng, không được dùng `--ink`/`.4`.** `--ink` đảo sang gần trắng ở chế độ tối, nên `bg-ink/40` làm nền *sáng lên* thay vì tối đi — lỗi có thật, đã sửa (§11).
 
 ---
 
-## 3. Chữ
+## 4. Chữ
 
-Hai family, phân vai rõ ràng — không dùng font hệ thống mặc định nữa (hiện tại là `system-ui`, trông giống mọi trang khác).
+Hai family, phân vai rõ, **đều đã có sẵn trong `package.json`** (không thêm phụ thuộc, không gọi CDN):
 
-| Vai | Family | Vì sao chọn |
+| Vai | Family | Vì sao |
 |---|---|---|
-| Từ vựng (headword), tiêu đề trang | **Literata** (serif đọc sách, có subset `vietnamese`, đã verify trên Google Fonts) | headword là *chữ được tra*, không phải nhãn giao diện; serif cho cảm giác từ điển/sách |
-| Toàn bộ còn lại (UI, nghĩa, ví dụ, form, bảng) | **Be Vietnam Pro** (sans do người Việt thiết kế, có subset `vietnamese`, đã verify) | dấu tiếng Việt được thiết kế riêng, không phải font Latin thêm dấu; hợp một web tiếng Việt |
+| Nội dung tiếng Anh (headword, câu ví dụ) + tiêu đề | **Literata** (`font-serif`) | serif đọc sách; headword là *chữ được tra*, không phải nhãn giao diện |
+| Toàn bộ phần còn lại (UI, nghĩa, form, bảng, nhãn) | **Be Vietnam Pro** (`font-sans`, mặc định) | sans do người Việt thiết kế, dấu tiếng Việt được vẽ riêng |
 
-Cả hai có subset `vietnamese` — nạp local qua `@fontsource` (chỉ `latin` + `vietnamese`), không gọi CDN.
-
-### 3.1. Thang chữ (tỉ lệ ~1.2, có bước nhảy ở đầu)
+### 4.1. Thang chữ
 
 | Vai | Size / line-height | Weight | Family |
 |---|---|---|---|
-| Headword trên thẻ ôn | `clamp(2.25rem, 8vw, 3.5rem)` / 1.15 | 600 | Literata |
-| Tiêu đề trang (h1) | `1.5rem` / 1.3 | 600 | Literata |
-| Headword trong danh sách | `1.0625rem` / 1.4 | 600 | Literata |
+| Headword trên thẻ ôn | `clamp(2.5rem, 9vw, 4rem)` / 1.1, `tracking -0.02em` | 500 | Literata |
+| Tiêu đề trang (h1) | `1.375rem` / 1.3, `tracking -0.01em` | 400 | Literata |
+| Wordmark màn đăng nhập | `1.75rem` / 1.1, `tracking -0.015em` | 400 | Literata |
+| Headword trong sổ từ | `1.0625rem` / 1.4 | 400 | Literata |
 | Nghĩa trên thẻ | `1.25rem` / 1.45 | 500 | Be Vietnam Pro |
-| Nội dung, form, bảng | `1rem` / 1.55 | 400 | Be Vietnam Pro |
-| Nghĩa trong danh sách | `0.9375rem` / 1.5 | 400 | Be Vietnam Pro |
-| Phụ (ngày giờ, gợi ý) | `0.8125rem` / 1.4 | 400 | Be Vietnam Pro |
-| Nhãn nút chấm, số khoảng cách | `0.9375rem` / 1.2 | 600 | Be Vietnam Pro, `tabular-nums` |
+| Câu ví dụ | `1.0625rem` / 1.7, tối đa `46ch` | 400 | Literata |
+| Nội dung, form, bảng | `1rem` / 1.5–1.6 | 400 | Be Vietnam Pro |
+| Nghĩa trong sổ từ | `0.9375rem` / 1.625 | 400 | Be Vietnam Pro |
+| Nhãn nhỏ (`.micro`) — tiêu đề cột, nhãn form, dòng meta | `0.8125rem` / 1.4 | 500 | Be Vietnam Pro, màu `ink-soft` |
+| Số liệu (khoảng cách ôn, tiến độ, bộ đếm) | theo ngữ cảnh | — | `tabular-nums` (`.tnum`) |
 
 Quy tắc:
 
-- Bề rộng dòng tối đa **62ch** cho nghĩa/ví dụ trong danh sách và form; thẻ ôn canh giữa nên ngắn hơn.
-- Dòng dài (ví dụ, ghi chú) ở Literata nếu là câu tiếng Anh: `line-height` 1.6.
-- Ô nhập và nút không nhỏ hơn `1rem` — tránh iOS tự zoom.
-- **Không** dùng: all-caps cho nhãn, nhãn eyebrow phía trên heading, monospace cho số liệu nhỏ, in nghiêng/in đậm một từ trong câu để "nhấn", `·` nối các mẩu meta.
+- Bề rộng dòng tối đa **46ch** cho câu tiếng Anh (ví dụ, ghi chú). Thẻ ôn và màn kết thúc canh giữa nên ngắn hơn.
+- Ô nhập và nút **không nhỏ hơn `1rem`** (ô nhập) — tránh iOS tự zoom khi focus.
+- Heading ngắn nhiều dòng: `max-inline-size` + `text-wrap: balance`, không chèn `<br>` cứng.
+- **Không** dùng: chữ in hoa cho nhãn, chữ mono, icon/emoji làm nhãn, `·` nối các mẩu meta.
 
 ---
 
-## 4. Bố cục
+## 5. Bố cục
 
-Canh trái cho mọi nội dung dạng văn bản và danh sách; **chỉ thẻ ôn và màn kết thúc mới canh giữa**, vì đó là một vật thể duy nhất trên bàn. Không canh đều hai bên. Khung nội dung tối đa `52rem`, lề dọc `1.25rem` (mobile) → `2rem` (desktop).
-
-### 4.1. Ôn tập — màn chính (thẻ là nhân vật chính)
-
-```
-  Bộ từ:  [ Tất cả ] [ Chưa phân loại ] [ IELTS Reading ]
-                                      ↑ tab đang chọn: nền pen, chữ trắng
-
-  3 / 12        ▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░        ← dãy thật, nên được đánh số
-
-              ┌─────────────────────────────┐
-              │ [ IELTS Reading ]           │  ← tai hộp nhô lên, màu tab của bộ
-              ├─────────────────────────────┤
-              │                             │
-              │        ephemeral            │  ← Literata, to, canh giữa
-              │                             │
-              │      (nhấn để xem nghĩa)     │
-              └─────────────────────────────┘
-                 ══════════════════           ← 2 cạnh thẻ chồng phía sau (rule)
-              ╞═══════════════════════════╡
-                ↑ sau khi lật: nghĩa + ví dụ + ghi chú
-
-  ┌ Lại ──────────┐┌ Khó ──────────┐┌ Được ─────────┐┌ Dễ ───────────┐
-  │ dạ quang: 1 phút││ 6 phút        ││ 10 phút       ││ 7 ngày        │
-  └───────────────┘└───────────────┘└───────────────┘└───────────────┘
-    chân tab màu red-pen / ochre / pen / green, thân là giấy trắng
-```
-
-- 4 nút chấm là **tai ngăn hộp**, không phải 4 viên kẹo màu: thân giấy trắng, viền `line-strong`, một dải màu 3px ở cạnh trên, chữ mực đen. Chỉ khi hover/đang nhấn mới đổ màu.
-- Khoảng cách ôn lại hiển thị bằng **nền dạ quang** sau con số (`1 phút`, `10 phút`, `7 ngày`), chữ đen, `tabular-nums`.
-- Tiến độ là dãy thật (`3 / 12`) nên được phép có số; không thêm "01 / 02 / 03" ở chỗ khác.
-
-### 4.2. Ôn tập — khi hết thẻ
+- Khung nội dung tối đa **`56rem`**, lề ngang `1.5rem` (mọi kích thước), lề dọc `2.5rem` → `3rem` (desktop).
+- Nhịp dọc giữa các khối lớn: **`2.5rem`** (`space-y-10`) — thoáng, không dồn cục.
+- Canh trái cho mọi nội dung dạng văn bản và danh sách. **Chỉ thẻ ôn và màn kết thúc canh giữa** — chúng là một vật thể duy nhất trên trang.
+- Cột hẹp: thẻ ôn và panel kết thúc `30rem`; màn đăng nhập `23rem`; modal tối đa `32rem`.
 
 ```
-        ┌───────────────────────────────┐
-        │        Hôm nay đã xong        │   ← Literata, không emoji
-        │  Bộ đang ôn: IELTS Reading    │
-        │  Còn 4 từ đến hạn, gần nhất   │
-        │  14:30 hôm nay                │   ← mốc đến hạn tô dạ quang
-        │   [ Quản lý từ vựng ]  [ Tải lại ] │
-        └───────────────────────────────┘
+Navbar:  Super Vocab   Từ vựng  Ôn tập              email   [ Đăng xuất ]
+         ↑ Literata                       ↑ gạch chân accent khi đang xem
+──────────────────────────────────────────────────────────────────────── (rule)
+
+Từ vựng
+  ┌ panel ──────────────────────────────────────────────────────┐
+  │  Thêm từ                                                    │  ← h1 Literata 1.375rem
+  │  Từ [______]        Nghĩa [______]                          │  ← nhãn .micro, ô .field
+  │  Phát âm [______]  [ Lấy phát âm ] [ Nghe ]                 │
+  │  Bộ từ [ ▾ ]                                                │
+  │  Ví dụ [______]   Ghi chú [______]                          │
+  │  [ Thêm từ ]                                                │
+  └─────────────────────────────────────────────────────────────┘
+
+  Bộ từ  [Tất cả 7] [Chưa phân loại 2] [● Giao tiếp hàng ngày 2] [ + Thêm bộ từ ]
+         ↑ chip đang chọn: nền accent, chữ on-accent
+
+  Danh sách từ vựng                    7/7 từ        [ Tìm theo từ hoặc nghĩa ]
+  ────────────────────────────────────────────────────────────────────────── (rule)
+  Từ                Nghĩa              Bộ từ          Ôn tiếp theo   Trạng thái  Thao tác
+  ══════════════════════════════════════════════════════════════════════════
+  eloquent          hùng hồn, lưu loát  Chưa phân loại quá hạn 1 ngày  Mới      Sửa  Xóa
+  Literata 1.0625   0.9375rem           ● + tên        nền highlighter
+                    ví dụ: Literata 0.9375rem/1.7 ink-soft
+  ────────────────────────────────────────────────────────────────────────── (rule)
 ```
 
-### 4.3. Từ vựng — phiếu trắng + sổ danh sách
+- Danh sách là **sổ kẻ dòng**: đường kẻ `rule` 1px giữa các mục, không viền quanh từng mục, không bóng, không bo góc.
+- Mobile (< 640px): mỗi mục thành khối nhiều dòng — headword + nút Nghe / nghĩa / ví dụ / (bộ từ · hạn · trạng thái) / hàng thao tác. Không cuộn ngang. Chip bộ từ **xuống dòng** thay vì cuộn ngang.
 
 ```
-  ┌ phiếu trắng ────────────────────────────────────────┐
-  │  Thêm từ                                            │
-  │  [ Từ ]              [ Nghĩa ]                      │
-  │  [ Bộ từ ▾ ]                                        │
-  │  [ Ví dụ ]        [ Ghi chú ]                        │
-  │  [ Thêm từ ]                                        │
-  └─────────────────────────────────────────────────────┘
+Ôn tập
+  Bộ từ  [Tất cả] [Chưa phân loại] [● ...]
 
-  Bộ từ: [ Tất cả ] [ Chưa phân loại ] [ IELTS Reading ] [ ＋ Quản lý bộ từ ]
-                 Tìm theo từ hoặc nghĩa: [ ........... ]
+  3 / 12   ─────────────────────────────────────   ← track 2px line-strong, fill accent
 
-  Danh sách từ vựng                                   4 từ
-  ─────────────────────────────────────────────────────────────
-  ephemeral        phù du                            │ 14:30 hôm nay
-  Literata 600     Be Vietnam Pro 400                │ dạ quang nếu quá hạn
-  ─────────────────────────────────────────────────────────────
-  candid           thẳng thắn, chân thật   ▌IELTS     │ 22/09 08:00
-                   Fame is ephemeral.                  │ Đang học
-  ─────────────────────────────────────────────────────────────
+           ● IELTS Reading                        ← .micro + chấm tông
+           ┌───────────────────────────────────┐
+           │                                   │
+           │            ephemeral              │  ← Literata clamp(2.5–4rem), canh giữa
+           │           /ɪˈfem.ə.ɹəl/  [ Nghe ] │
+           │     Bấm hoặc nhấn Space để xem nghĩa│
+           └───────────────────────────────────┘
+
+           [ Hiện nghĩa ]                          ← nút chính, full width
+
+  (sau khi lật)
+           ┌ Lại ────────┐┌ Khó ────────┐┌ Được ───────┐┌ Dễ ─────────┐
+           │ Lại      1  ││ Khó      2  ││ Được     3  ││ Dễ       4  │
+           │ 1 phút      ││ 6 phút      ││ 10 phút     ││ 9 ngày      │
+           └─────────────┘└─────────────┘└─────────────┘└─────────────┘
+             ↑ viền trên 2px: danger / warn / accent / cool; số khoảng cách màu accent
 ```
 
-- Danh sách là **sổ kẻ dòng**, không phải lưới thẻ bo góc: đường kẻ `rule` 1px giữa các mục, không viền quanh từng mục, không đổ bóng.
-- Cột "Bộ từ" là **một tai ngăn nhỏ** (10×18px, màu tab của bộ) + tên bộ, canh phải, nhỏ hơn phần nội dung.
-- Cột phải: mốc `due` (ngày giờ) và trạng thái ("Mới", "Đang học", "Ôn tập", "Học lại"). Quá hạn thì tô dạ quang mốc giờ.
-- Mobile (≤ 640px): mỗi mục thành 3 dòng — headword / nghĩa / (tai bộ + hạn), hàng thao tác xuống cuối mục, không cuộn ngang.
-
-### 4.4. Đăng nhập
-
-```
-        ┌───────────────────────────────┐
-        │  Super Vocab                  │   ← nameplate Literata
-        │  ─────────────────────────    │
-        │  Tài khoản do quản trị viên   │
-        │  cấp.                         │
-        │  Email     [ ............... ]│
-        │  Mật khẩu  [ ............... ]│
-        │  [ Đăng nhập ]                │
-        └───────────────────────────────┘
-                 (không có tab Đăng ký)
-```
-
-Nameplate = một tấm giấy có đường kẻ dưới; đây là "bìa hộp thẻ". Không minh hoạ, không logo, không ô gradient.
+- 4 nút chấm cao ≥44px (vùng chạm), thân `card`, viền `line-strong`, **dải màu 2px ở cạnh trên** mã hoá mức chấm. Chỉ hover mới đổi nền (`hover`).
+- Nhãn mức vẫn kèm chữ (`Lại/Khó/Được/Dễ`) — màu không bao giờ là kênh thông tin duy nhất.
 
 ---
 
-## 5. Nguyên tắc
+## 6. Thành phần
 
-1. **Chất liệu thật quyết định hình thức.** Mọi thành phần phải trả lời được: nó là giấy, là mực, là tai ngăn, hay là nét dạ quang?
-2. **Cấu trúc là thông tin.** Tai màu = bộ từ. Đường kẻ = hết một mục. Số chỉ xuất hiện khi thật là trình tự (tiến độ phiên).
-3. **Dồn độc đáo vào một chỗ.** Chỗ đó là **thẻ ôn**. Mọi màn khác im lặng, kỷ luật, không trang trí.
-4. **Dạ quang là tài nguyên khan hiếm.** Chỉ "đến hạn hôm nay / quá hạn" và khoảng cách ôn lại. Không dùng cho nút, tiêu đề, hay nhấn mạnh chung.
-5. **Bán kính và bóng là có ý.** Bán kính 6px cho giấy (thẻ, phiếu, nút), 6px trên-cùng cho tai ngăn, 2px cho ô nhập. Bóng chỉ để tạo chồng thẻ (`0 1px 0 rule`, `0 8px 20px rgba(19,26,38,.10)` cho thẻ trên cùng) — không bóng mờ dưới mọi khối.
-6. **Tĩnh là mặc định.** Không fade-and-slide cho từng khối khi tải trang, không transition trên mọi card. Chuyển động chỉ để trả lời hành động của người dùng.
-7. **Chữ làm một việc.** Mỗi nhãn/nút/lỗi nói đúng một điều, theo ngôn ngữ người dùng, không theo cách hệ thống được xây.
+Tất cả nằm ở `@layer components` trong `src/index.css`. **Trang không tự khai báo lại class string** — dùng đúng các class dưới đây.
 
----
+| Class | Đặc tả |
+|---|---|
+| `.panel` | `border: 1px solid var(--rule)`, `border-radius: var(--radius-card)` = **12px**, nền `card`. Không bóng. |
+| `.micro` | nhãn nhỏ: `0.8125rem`, weight 500, `color: ink-soft`, `display: block`. Chữ thường. |
+| `.field` | `input`/`textarea`/`select`: cao ≥44px, viền `line-strong`, radius **8px**, nền `card`, chữ `1rem`; `:focus` viền `accent`; `::placeholder` màu `ink-soft`. |
+| `.btn` | nền tảng: inline-flex, gap `.5rem`, padding `.5rem .875rem`, chữ `.875rem`/500, radius **8px**, transition 160ms, `:disabled` opacity .5 + `not-allowed`. |
+| `.btn-primary` | nền `accent`, chữ `on-accent`; hover `accent-hover`. |
+| `.btn-quiet` | nền trong suốt, viền `line-strong`, chữ `ink`; hover nền `hover` + viền `ink-soft`. |
+| `.btn-danger` | nền `danger`, chữ `on-danger`; hover `brightness(.9)`. Hành động xoá luôn xác nhận 2 bước. |
+| `.btn-text` | nút chỉ có chữ (trong bảng, trong danh sách): `inline-flex` + gap `.375rem`, chữ `ink-soft`, không viền; hover nền `hover` + chữ `ink`. Xoá thì thêm `hover:text-danger`. |
+| `.banner` | thông báo: vạch trái 2px `danger`, nền `danger` 7%, chữ `ink`. Biến thể `.banner-warn`. |
+| `.tnum` | `font-variant-numeric: tabular-nums` cho mọi cột số. |
+| `.tap-target` | `@media (pointer: coarse) { min-height: 44px }` — nâng vùng chạm trên thiết bị cảm ứng mà không đổi dáng hiển thị trên desktop. |
+| `.flip-inner` / `.flip-face` / `.flip-face-back` / `.is-flipped` | lật thẻ 3D; nhánh `prefers-reduced-motion` đổi mặt bằng opacity 120ms. |
 
-## 6. Chuyển động
-
-| Việc | Chuyển động | Thời lượng |
-|---|---|---|
-| Lật thẻ | xoay Y 3D quanh trục dọc, hai mặt thẻ thật | 480ms, easing `cubic-bezier(.2,.7,.25,1)` |
-| Chấm điểm | thẻ hiện tại trượt xuống dưới-trái vào chồng (mờ dần), thẻ kế trồi lên từ chồng | 240ms mỗi thẻ, lệch 40ms |
-| Đổi bộ từ | nội dung phiên tải lại, không hoạt ảnh trượt | — |
-| Mở/đóng modal | mờ nền 120ms, tấm phiếu nổi 160ms từ 96% → 100% | 160ms |
-| Lật lại thẻ mới | hiện tức thì, không hoạt ảnh | — |
-
-`prefers-reduced-motion: reduce` → bỏ xoay 3D (đổi mặt bằng mờ 120ms), bỏ trượt thẻ, giữ nguyên mọi thay đổi trạng thái.
-
----
-
-## 7. Lời thoại giao diện (copy)
-
-Nguyên tắc: câu, chữ thường, thể chủ động, động từ rõ, không xin lỗi, không chung chung. Nút và kết quả dùng cùng một từ.
-
-**Đổi so với hiện tại:**
-
-| Chỗ | Hiện tại | Thành |
-|---|---|---|
-| Nhãn mức chấm | `Again / Hard / Good / Easy` | `Lại / Khó / Được / Dễ` (người dùng hiểu ngay; giữ phím tắt 1–4) |
-| Mặt thẻ | `NGHĨA`, `VÍ DỤ`, `GHI CHÚ` (all-caps) | `Nghĩa`, `Ví dụ`, `Ghi chú` |
-| Tiêu đề bảng | all-caps `TỪ / NGHĨA / …` | `Từ / Nghĩa / Bộ từ / Ôn tiếp theo / Trạng thái` |
-| Màn kết thúc | `Xong phiên ôn tập` + `Bộ đang ôn: X · đã chấm N card` | `Hết thẻ trong bộ` + hai dòng riêng: `Bộ: IELTS Reading` / `Đã chấm 12 thẻ` |
-| Nút tải lại | `Tải lại` | `Ôn lại từ đầu` khi còn thẻ, `Tải lại` khi rỗng |
-| Trống danh sách | `Chưa có từ nào. Thêm từ đầu tiên ở form phía trên.` | `Hộp còn trống. Ghi từ đầu tiên ở phiếu phía trên.` |
-| Trống theo bộ | `Không có từ nào trong bộ này (hoặc không khớp từ khóa).` | tách 2 câu: `Bộ này chưa có từ nào.` / `Không có từ nào khớp “{từ khoá}”.` |
-| Lỗi ghi DB | `Không lưu được kết quả: {message}` | `Chưa lưu được. Thẻ vẫn ở đây, chấm lại giúp.` |
-| Lỗi đăng nhập | đã ổn | `Email hoặc mật khẩu không đúng.` (giữ) |
-| Hết thẻ + còn lịch | `Còn 4 từ sẽ đến hạn, gần nhất 14:30 hôm nay (3 giờ nữa).` | `Còn 4 từ đến hạn. Gần nhất 14:30 hôm nay.` (bỏ ngoặc, bỏ `·`) |
-| Nhãn tiến độ | `3/12` | `3 / 12` (có khoảng, `tabular-nums`) |
-| Emoji | `Hôm nay đã xong 🎉` | bỏ emoji |
-
-Ghi chú dùng tiếng Việt cho toàn bộ nhãn giao diện; tiếng Anh chỉ còn ở phần nội dung người dùng tự nhập.
-
----
-
-## 8. Thành phần
+Chip bộ từ, track tiến độ, ô chấm, thẻ ôn là các tổ hợp utility cục bộ, không phải class dùng chung.
 
 | Thành phần | Đặc tả |
 |---|---|
-| Tai ngăn (chip bộ từ) | cao 30px, lề ngang 12px, bán kính 6px 6px 0 0, viền `line-strong`, thân `card`; khi chọn: nền `pen`, chữ trắng, viền `pen`; bộ "Chưa phân loại": viền nét đứt, không màu |
-| Thẻ ôn | rộng tối đa 30rem, `min-height: 15rem`, thân `card`, viền `rule`, bán kính 6px; **tai hộp** ở cạnh trên rộng 132px cao 22px, màu tab của bộ, chữ `tab-ink` 12px; 2 cạnh thẻ chồng phía sau |
-| Nút chấm | như mô tả §4.1; cao 56px (vùng chạm ≥ 44px), chữ 15px/600, số khoảng cách trên nền dạ quang |
-| Ô nhập / chọn | cao 44px, viền `line-strong`, bán kính 2px, nền `card`; focus: viền `pen` 2px + ring `pen` 1px ngoài |
-| Nút chính | nền `pen`, chữ trắng, cao 44px, bán kính 6px; nhấn: dịch xuống 1px |
-| Nút phụ | viền `line-strong`, chữ `ink`, nền trong suốt |
-| Nút nguy hiểm | chữ `red-pen`, viền `red-pen`; hành động xoá luôn xác nhận 2 bước |
-| Bảng/sổ | đường kẻ `rule` 1px, không viền ngoài từng dòng, header không all-caps |
-| Modal | như tấm phiếu `card` trên nền `rgba(19,26,38,.45)`, bán kính 6px, tối đa 32rem, cuộn được trên mobile |
-| Thông báo lỗi | nền `red-pen` 8% + vạch trái `red-pen` 3px, chữ `ink`; nói đúng việc cần làm |
-| Focus | luôn thấy: ring 2px `pen` + offset 1px, áp dụng cả dark mode |
-| Trạng thái thẻ | "Mới" (viền), "Đang học" (`ochre` 15% nền), "Ôn tập" (`pen` 12% nền), "Học lại" (`red-pen` 12% nền) |
+| Chip bộ từ | `inline-flex`, gap `.5rem`, padding `.25rem .625rem`, radius **8px**, chữ .875rem; chưa chọn: viền `line-strong` + chữ `ink-soft`; đang chọn: nền + viền `accent`, chữ `on-accent`, weight 500. Cao **34px** trên desktop, **44px** khi `pointer: coarse` (class `.tap-target`, §9). Bộ đếm bên trong dùng `.tnum` và **giữ nguyên độ đậm màu** — phân cấp bằng cỡ chữ, không bằng opacity. |
+| Chấm bộ từ | tròn 10px, `TONE_BG[hash(id)%6]`; bộ trống: viền nét đứt `line-strong`, không nền. Trong sổ từ là marker `inline-block` + `align-middle` để **bám dòng đầu** khi tên bộ xuống dòng. |
+| Thẻ ôn | `panel`, `max-width: 30rem`, `min-height: 16rem`; hai mặt thật (front/back) chồng khít; nhãn bộ từ nằm **ngoài** thẻ, phía trên. |
+| Nút chấm | cao **80px** (vùng chạm ≥44px), radius **8px**, viền `line-strong` + `border-top: 2px` màu mức; nhãn 15px/500 `ink`, phím tắt 12px `ink-soft`, số khoảng cách 15px/500 `accent`. Cách nhau 8px. |
+| Track tiến độ | `2px`, nền `line-strong` (≥3:1 vì đây là graphic mang nghĩa), fill `accent`. |
+| Modal | `panel` trên nền `scrim` + `backdrop-blur-sm`, tối đa 32rem, bóng `--shadow-modal`, tiêu đề Literata 1.125rem, `role="dialog"` + `aria-modal`. |
+| Focus | `outline: 2px solid var(--accent)`, offset `2px` — áp dụng ở cả 2 chế độ, không bao giờ tắt. |
+| Trạng thái thẻ | "Mới" (viền `rule`), "Đang học" (`warn` 10% nền), "Ôn tập" (`accent` 10%), "Học lại" (`danger` 10%) — luôn kèm chữ. |
+
+### 6.1. Icon
+
+Thư viện: **`@phosphor-icons/react`** — đây là bộ mà skill `ui-ux-pro-max` curate (105 icon kèm ngữ cảnh dùng trong `icons.csv`), nên chọn nó thay vì tự vẽ path SVG.
+
+```tsx
+import { SpeakerHigh } from '@phosphor-icons/react'
+<SpeakerHigh aria-hidden size={16} />
+```
+
+Luật:
+
+- **Icon không bao giờ thay chữ.** Mọi icon đều nằm cạnh một nhãn tiếng Việt nhìn thấy được, nên **luôn** `aria-hidden`. Không thêm icon-only button, không đổi `aria-label`.
+- `size={16}` trong `.btn` / `.btn-text` (cả hai đã là flex container có gap). Tối đa `size={18}` trong control. Ngoại lệ: icon trang trí ở trạng thái rỗng là `size={28}`.
+- Không truyền `color` — icon thừa hưởng `currentColor` để tự đổi theo chế độ và theo trạng thái hover/disabled.
+- Không emoji làm icon, ở bất kỳ đâu.
+- **Nút chấm 4 mức không có icon.** Đó là một lựa chọn 4 nhánh đã có nhãn, phím tắt, khoảng cách và dải màu — thêm icon là nhiễu.
+
+| Chỗ | Icon |
+|---|---|
+| Wordmark (navbar, đăng nhập) | `BookOpen` |
+| Nav `Từ vựng` / `Ôn tập` | `ListBullets` / `Cards` |
+| `Đăng xuất` / `Đăng nhập` | `SignOut` / `SignIn` |
+| `Thêm từ`, `Tạo`, `Thêm bộ từ` | `Plus` |
+| `Lưu` (đổi tên bộ, sửa từ) | `Check` |
+| `Hủy`, đóng modal | `X` |
+| `Sửa`, `Đổi tên` | `PencilSimple` |
+| `Xóa` | `Trash` |
+| `Nghe` | `SpeakerHigh` |
+| `Lấy phát âm`, ô tìm kiếm | `MagnifyingGlass` |
+| `Hiện nghĩa` | `Eye` |
+| `Thử lại`, `Tải lại`, `Ôn lại từ đầu` | `ArrowClockwise` |
+| `Trước` / `Sau` | `ArrowLeft` / `ArrowRight` |
+| Danh sách trống | `Notebook` |
+| Banner chưa cấu hình | `WarningCircle` |
+
+### 6.2. App icon & favicon
+
+Dấu: **quyển sách mở `BookOpen` (variant `fill`) màu `paper` trên nền `accent` bo góc** — cùng dấu với icon trong navbar/wordmark, nên favicon và giao diện là một hệ.
+
+| File | Nội dung |
+|---|---|
+| `public/favicon.svg` | nguồn **vector** 256×256: `rect rx=56` (`accent`) + glyph `BookOpen` canh theo `getBBox()` với bề rộng glyph = **74%** cạnh tile (`translate(19.7486 6.2060) scale(0.845714)`). Nét ở mọi kích thước |
+| `public/favicon.ico` | **16 / 32 / 48 / 64 / 128 / 256** — mỗi entry một PNG 32-bit (ICO kiểu PNG; Vista+ đọc được) |
+| `public/apple-touch-icon.png` | 180×180, **nền tràn viền `rx=0`, đục** — iOS tự bo góc, và ảnh có alpha sẽ bị chèn nền đen sau góc bo |
+
+`index.html` khai báo **SVG trước** (browser hiện đại chọn nó, nét nhất) rồi `.ico` với `sizes="any"` làm fallback.
+
+Chọn tỉ lệ 74% bằng đo, không bằng mắt: đã render 16px của `BookOpen` / `Book` (sách đóng) / `BookBookmark` / `Notebook` ở các tỉ lệ 0.56 / 0.68 / 0.80 rồi so trên lưới pixel phóng 8× không nội suy. `BookOpen` đọc rõ nhất; sách đóng và Notebook nhoè thành khối trắng ở 16px.
+
+Vì `favicon.svg` là vector nên favicon **không phụ thuộc độ phân giải ảnh nguồn** — khác với phương án dùng ảnh raster trước đó (nguồn chỉ 64px, làm `apple-touch-icon` 180px bị mềm).
+
+---
+
+## 7. Chuyển động
+
+**Tĩnh là mặc định.** Chuyển động chỉ để trả lời một hành động của người dùng, không để trang trí lúc tải.
+
+| Việc | Chuyển động | Thời lượng |
+|---|---|---|
+| Lật thẻ | xoay Y 3D quanh trục dọc, hai mặt thẻ thật | 420ms, `cubic-bezier(.2,.7,.25,1)` |
+| Đổi màu/vừa chạm của nút, ô nhập, chip | chỉ `background-color` / `border-color` / `color` | 160ms `ease-out` |
+| Mở/đóng modal | hiện tức thì, nền `scrim` + blur | — |
+| Đổi bộ từ, sang thẻ kế | tức thì, không trượt, không fade | — |
+| Vào trang | không hoạt ảnh cho từng khối | — |
+
+`prefers-reduced-motion: reduce` → bỏ xoay 3D, đổi mặt bằng mờ 120ms; mọi thay đổi trạng thái giữ nguyên.
+
+---
+
+## 8. Lời thoại giao diện (copy)
+
+Nguyên tắc: câu, chữ thường, thể chủ động, động từ rõ, không xin lỗi, không chung chung. Nút và kết quả dùng cùng một từ. Nhãn giao diện tiếng Việt; tiếng Anh chỉ ở nội dung người dùng tự nhập.
+
+| Chỗ | Chữ |
+|---|---|
+| Mức chấm | `Lại / Khó / Được / Dễ` (phím tắt 1–4) |
+| Mặt thẻ | `Nghĩa / Ví dụ / Ghi chú` |
+| Tiêu đề cột | `Từ / Nghĩa / Bộ từ / Ôn tiếp theo / Trạng thái / Thao tác` |
+| Màn kết thúc | `Hết thẻ trong bộ` + `Bộ: {tên}` + `Đã chấm {n} thẻ.` |
+| Màn hết thẻ đến hạn | `Hôm nay đã xong` + `Bộ: {tên}` + `Còn {n} từ đến hạn. Gần nhất {giờ}.` |
+| Lỗi ghi DB | `Chưa lưu được. Thẻ vẫn ở đây, chấm lại giúp.` |
+| Lỗi đăng nhập | `Email hoặc mật khẩu không đúng.` |
+| Nhãn tiến độ | `3 / 12` (có khoảng, `tabular-nums`) |
+| Trống danh sách | `Hộp còn trống. Ghi từ đầu tiên ở phiếu phía trên.` |
+
+Không emoji trong nhãn. Không dấu `·` nối các mẩu meta.
 
 ---
 
 ## 9. Khả năng tiếp cận & responsive
 
-- Mọi cặp chữ/nền đạt ≥ 4.5:1 (đã đo ở §2), viền ô nhập đạt ≥ 3:1; dạ quang luôn đi với mực đen (13.7:1).
-- Vùng chạm ≥ 44×44px; khoảng cách giữa các nút chấm ≥ 8px.
-- Điều hướng bàn phím đầy đủ: `Space` lật, `1–4` chấm, `Esc` đóng modal, `Tab` thấy focus; thứ tự tab theo thứ tự đọc.
-- Không truyền đạt thông tin chỉ bằng màu: tai bộ từ luôn kèm tên bộ; trạng thái luôn kèm chữ.
-- Mobile-first: 1 cột dưới 640px; nút chấm 2×2; headword `clamp()` để không tràn; hàng tai ngăn cuộn ngang một hàng (không xuống dòng) để không chiếm chỗ của thẻ, từ 640px trở lên mới cho xuống dòng.
-- Không dùng ảnh/icon ngoài; không emoji trong nhãn.
+- Mọi cặp chữ/nền đạt **≥4.5:1**, mọi viền control đạt **≥3:1** (số đo ở §3). `rule` (1.3:1) chỉ dùng cho đường kẻ trang trí.
+- Vùng chạm **≥44×44px**: nút chấm cao 80px; chip lọc bộ từ cao 34px trên desktop nhưng được `.tap-target` nâng lên **44px khi `pointer: coarse`** — đây là điều hướng chính trên điện thoại nên không thể thấp hơn ngưỡng chạm. Khoảng cách giữa 4 nút chấm và giữa các chip đều ≥8px.
+- Bàn phím đầy đủ: `Space` lật thẻ, `1–4` chấm, `Esc` đóng modal, `Tab` thấy focus (outline accent 2px). Thứ tự tab theo thứ tự đọc.
+- Không truyền đạt thông tin chỉ bằng màu: chấm bộ từ luôn kèm tên bộ; trạng thái luôn kèm chữ; mức chấm luôn kèm nhãn.
+- Icon chỉ là bạn đồng hành của chữ: **mọi** icon đều `aria-hidden` vì luôn có nhãn chữ bên cạnh; không có icon-only button. Không emoji. Không ảnh ngoài.
+- Mobile-first: 1 cột dưới 640px; form 2 cột → 1 cột; bảng `block md:table` tự xếp lại theo tầng; chip bộ từ xuống dòng; headword `clamp()` để không tràn.
 
 ---
 
-## 10. Tự phê bình: những gì đã loại
-
-Đối chiếu với danh sách "dấu hiệu trang do máy sinh", đây là các phương án tôi đã cân nhắc rồi bỏ:
+## 10. Những gì đã loại
 
 | Đã cân nhắc | Vì sao bỏ |
 |---|---|
-| Nền kem ấm `#F4F1EA` + serif tương phản cao + accent đất nung `#D97757` | đúng cụm mặc định số 1. Đổi sang giấy **trắng ngả xanh lạnh** + **mực bi xanh đen**, vì vật liệu thật của người học Việt là mực xanh đen, không phải terracotta |
-| Nền đen gần + một accent xanh chua | cụm mặc định số 2. Chế độ tối dùng **mực bi xanh** `#0E1622`, không dùng đen trung tính, không dùng xanh chua làm accent |
-| Bố cục broadsheet: toàn đường kẻ mảnh, bán kính 0, nhiều cột chữ | cụm mặc định số 3. Giữ đường kẻ nhưng nó là **dòng kẻ của sổ**, và nội dung là danh sách một cột, không phải cột báo |
-| Bộ "card kit" SaaS: mọi khối bo tròn giống nhau + cùng một bóng mờ | cụm mặc định số 4. Bán kính theo vật liệu (6px giấy, 2px ô nhập, tai ngăn bo 2 góc), bóng chỉ để tạo chồng thẻ |
-| Nhãn ALL-CAPS + eyebrow phía trên heading + chuỗi meta nối bằng `·` + chữ mono cho số liệu | cụm mặc định số 5 → bỏ hết; số liệu dùng `tabular-nums`, meta tách thành câu riêng |
-| 4 nút chấm đổ màu đặc (rose/amber/emerald/sky) | đó là palette mặc định của Tailwind. Đổi thành **tai ngăn giấy trắng + dải màu 3px**, màu lấy từ bút đỏ/bút bi/dạ quang |
-| Chip bo tròn `rounded-full` với viền xám | vô nghĩa với chủ đề. Đổi thành **tai ngăn hộp** có bán kính trên, đứng trên một đường kẻ nền |
-| Gradient như trang trí, bóng mờ dưới mọi thẻ | bỏ hoàn toàn; chỉ còn dạ quang và cạnh chồng thẻ |
-| Hoạt ảnh fade-and-slide cho từng khối khi vào trang | bỏ; giữ 1 chuyển động ở thẻ ôn (lật + trồi lên) |
+| Palette mặc định của skill: tím `#7C3AED` + nền `#FAF5FF` | đúng "màu AI mặc định" — mọi trang do máy sinh đều ra màu này. Thay bằng giấy ngà + mực xanh rêu thẫm |
+| Nhãn ALL-CAPS + `letter-spacing .08em` | dấu hiệu dễ thấy nhất của giao diện do máy sinh, và chữ Việt có dấu đọc rõ hơn ở dạng chữ thường. Thứ bậc chuyển sang cỡ chữ + độ đậm + màu + đường kẻ |
+| Bóng mờ dưới mọi khối | bỏ hoàn toàn; chỉ modal có bóng |
+| Bo góc lớn (`rounded-md` 6px) cho mọi thứ, hoặc bo 2px gần vuông cho mọi thứ | một bán kính cho mọi vai trò là sai: **8px cho control, 12px cho bề mặt**, badge nhỏ dùng `rounded-full` |
+| Emoji làm icon, icon-only button, icon thay chữ | bỏ. Icon là **chữ viết kèm**, luôn `aria-hidden` — xem §6.1 |
+| Nền kem ấm `#F4F1EA` + accent đất nung `#D97757` | cụm mặc định số 1; giấy ở đây ngả trung tính ấm, không ngả vàng |
+| Nền đen gần + accent xanh chua | cụm mặc định số 2; chế độ tối dùng mực xanh ngả đen, accent là xanh rêu nhạt |
+| Ẩn dụ vật liệu: tai ngăn hộp, 2 cạnh thẻ chồng, nét dạ quang khắp nơi | đã bỏ ở bản này. Chỉ còn **một** nét dạ quang, dành riêng cho mốc "quá hạn" |
+| Icon dày đặc ở mọi chỗ, kể cả 4 nút chấm | icon chỉ đặt ở control có hành động rõ và ở trạng thái rỗng; nút chấm để nguyên (§6.1) |
+| 4 nút chấm đổ màu đặc | nền giấy + dải màu 2px ở cạnh trên; màu là phụ, nhãn chữ là chính |
+| Gradient, hoạt ảnh fade-and-slide khi vào trang | bỏ; chỉ còn chuyển động lật thẻ và đổi màu 160ms |
+| 6 tông pastel làm nền tai ngăn có chữ | thu về 6 tông thuốc nhuộm, chỉ làm **chấm 10px** — không đặt chữ lên màu |
 | Icon/emoji cho trạng thái, nút | bỏ; chữ làm việc đó |
 
-**Một chỗ duy nhất được phép gây ấn tượng:** thẻ ôn với tai hộp, cạnh chồng, và nét dạ quang. Mọi thứ khác giữ im lặng.
+---
+
+## 11. Kiểm chứng
+
+Đã chạy: `npx tsc -b --noEmit` (sạch) · `npx oxlint` (sạch) · `npx vite build` (sạch) · ảnh chụp bằng browser thật ở **1440px và 375px, cả 2 chế độ**, cho: Đăng nhập, Từ vựng, Ôn tập (mặt trước, mặt sau, màn kết thúc), modal Sửa từ, modal Bộ từ + dòng xác nhận xoá.
+
+Luồng bàn phím kiểm bằng cách chấm hết 6 thẻ (`Space` → `3`), có intercept request để **không ghi vào DB thật**.
+
+Lần sau (icon + bo góc) kiểm thêm: ảnh chụp từng control có icon ở 1440/390 và cả 2 chế độ; đo computed style của viền trên 4 nút chấm (đúng `danger`/`warn`/`accent`/`cool`, 2px); đo chiều cao chip (34px desktop, **44px** khi `pointer: coarse`); render favicon ở 16/32/48/256 trên lưới pixel không nội suy; kiểm cấu trúc `favicon.ico` bằng cách parse lại 6 entry.
+
+Lỗi thật tìm được khi kiểm và đã sửa:
+
+1. **Backdrop modal sáng lên ở chế độ tối** — dùng `bg-ink/40` mà `--ink` đảo sang gần trắng. Sửa: thêm token `--scrim` (luôn tối ở cả 2 chế độ).
+2. **`.micro { display:block }` phá `<th>`** — 6 tiêu đề cột xếp dọc ở desktop. Sửa: `md:table-cell` trên `th` (mobile không bị vì `thead` là `hidden`).
+
+Điều chỉnh nhỏ sau khi nhìn ảnh thật:
+
+3. **Chấm bộ từ trong sổ từ** canh giữa theo chiều dọc ở ô 2 dòng → đổi sang marker `inline-block` + `align-middle` để bám dòng đầu.
+4. **Track tiến độ** dùng `rule` (1.25:1) quá mờ ở chế độ tối, mà đây là graphic mang nghĩa → đổi sang `line-strong` (≥3:1).
+5. **Chip bộ từ chỉ cao 30px** — dưới ngưỡng chạm 44px trong khi đây là điều hướng chính trên điện thoại. Sửa: thêm `.tap-target` nâng lên 44px khi `pointer: coarse`, desktop giữ 34px.
+
+Vòng sau (icon + bo góc + favicon):
+
+6. **`public/favicon.svg` cũ là logo tia sét tím `#863bff`** — di sản template Vite, đúng cái "màu AI" đã loại ở §3. Thay bằng dấu sách trên nền `accent`.
+7. **16px của favicon không đọc được** ở tỉ lệ glyph ban đầu. Kiểm bằng cách render 4 ứng viên × 3 tỉ lệ ở đúng 16px rồi so trên lưới pixel (phóng 8×, không nội suy): `BookOpen` thắng; `Book` (sách đóng) và `Notebook` nhoè thành khối trắng. Chốt bề rộng glyph = **74%** cạnh tile.
+8. **Badge "quá hạn" và chip trạng thái** còn ở `rounded-ui` sau khi có luật bán kính theo vai trò → chuyển sang `rounded-full` (badge nhỏ không phải control).
+9. **Form "Thêm từ" giữ nguyên dữ liệu sau khi thêm thành công**, nên không nhập được từ kế tiếp. Sửa theo đúng cơ chế sẵn có của `VocabForm` (remount qua `key`): thêm `formReset` tăng sau mỗi lần insert thành công.
+10. **Mọi icon phải `aria-hidden`** — đã rà từng chỗ; không có icon-only button nào được thêm vào.
+11. **Apple-touch-icon phải đục và tràn viền** — iOS tự bo góc, còn giữ alpha thì nó chèn nền đen sau góc bo. Render `rx=0`, không alpha, 180×180.
+12. **Đã thử một phương án favicon bằng ảnh raster 64×64 rồi bỏ.** Nguồn quá nhỏ nên `apple-touch-icon` 180px bị mềm, và buộc phải chấp nhận không khai báo `<link>` SVG (một SVG khai báo trước sẽ bị browser ưu tiên và đè lên `.ico`). Quay lại dấu vector — nét ở mọi kích thước và khớp với icon trong giao diện.
+
+Kiểm chứng riêng cho lần sửa form (dùng request interception, **không ghi vào DB thật**):
+
+| Ca | Kỳ vọng | Kết quả đo |
+|---|---|---|
+| Thêm thành công | 5 ô trống, từ mới hiện trong bảng | Từ/Nghĩa/Phát âm/Ví dụ/Ghi chú đều `""`, bảng có từ mới, bộ đếm 7/7 → 8/8 |
+| Thêm trùng từ (chặn ở client) | giữ nguyên dữ liệu, hiện lỗi | giữ nguyên, banner "Từ … đã có trong danh sách." |
+| Insert lỗi 400 từ server | giữ nguyên dữ liệu, hiện lỗi | giữ nguyên, banner hiện thông báo của server |
 
 ---
 
-## 11. Checklist chuyển thành code
-
-Trạng thái: mục 1–9 **đã làm**, 10 đã kiểm bằng ảnh 1280/390 ở cả 2 chế độ, 11 thêm sau (phát âm).
-
-1. ✅ `src/index.css`: token `@theme inline` — `paper/card/ink/ink-soft/rule/line-strong/pen/highlighter/red-pen/ochre/green/tab-*`, dark mode theo `prefers-color-scheme`; class `.tnum` cho số liệu.
-2. ✅ Font `@fontsource/be-vietnam-pro` (400/500/600, subset latin + vietnamese) + `@fontsource-variable/literata`.
-3. ✅ `components/CollectionBar.tsx`: chip → tai ngăn, giữ `aria-pressed`, màu tab theo `hash(id) % 6`.
-4. ✅ `components/FlashCard.tsx`: tai hộp theo bộ, 2 cạnh chồng, headword Literata `clamp()`, nhãn chữ thường, nhánh reduced-motion (đổi mặt bằng opacity), nút `Nghe` + IPA.
-5. ✅ `pages/PracticePage.tsx`: nút chấm = tai ngăn giấy trắng + dải màu 3px, nhãn `Lại / Khó / Được / Dễ`, khoảng cách trên nền dạ quang, bỏ emoji, cột phiên ôn 30rem.
-6. ✅ `components/VocabTable.tsx` → sổ kẻ dòng, cột bộ từ = tai nhỏ + tên, mobile tự xếp lại theo tầng (không cuộn ngang).
-7. ✅ `components/VocabForm.tsx`: ô nhập viền `line-strong` bán kính 2px, focus `pen`, thêm trường Phát âm + nút `Lấy phát âm`/`Nghe`.
-8. ✅ `pages/LoginPage.tsx`: nameplate Literata + một câu, không minh hoạ.
-9. ✅ `index.html`: `theme-color` sáng/tối; `lang="vi"` đã có sẵn.
-10. ✅ Ảnh kiểm: Practice + Từ vựng, sáng/tối, 1280px + 390px; lật thẻ thường và reduced-motion (đọc computed style).
-11. ✅ Phát âm — xem §13.
-
-
----
-
-## 12. Cần bạn xác nhận trước khi code
-
-1. **Hướng tổng thể** — đồng ý "hộp thẻ giấy + mực xanh đen" không, hay bạn muốn một hướng khác (ví dụ: bảng phấn xanh kiểu lớp học, hoặc tối giản hiện đại không dùng ẩn dụ vật liệu)?
-2. **Nhãn mức chấm** — đổi `Again / Hard / Good / Easy` sang `Lại / Khó / Được / Dễ`? (Tôi nghiêng về tiếng Việt; nếu bạn quen thuật ngữ Anki/FSRS thì giữ tiếng Anh cũng hợp lý.)
-3. **Phạm vi một lần** — làm hết §11 trong một lần, hay chỉ làm thẻ ôn (màn bạn nhìn nhiều nhất) trước rồi xem lại rồi mới làm phần còn lại?
-
-> Đã chốt: (1) hộp thẻ giấy, (2) `Lại / Khó / Được / Dễ`, (3) làm thẻ ôn trước rồi làm tiếp — và phần "làm tiếp" đã gộp luôn trang Từ vựng + Đăng nhập.
-
----
-
-## 13. Phát âm (IPA + audio) — thêm sau, không phá §1–§12
+## 12. Phát âm (IPA + audio)
 
 **Mục tiêu:** mỗi từ có phiên âm để đọc, và nghe được ngay trên thẻ ôn lẫn trong sổ từ.
 
-### 13.1. Dữ liệu
+### 12.1. Dữ liệu
 
 | Cột | Kiểu | Ý nghĩa |
 |---|---|---|
@@ -358,7 +424,7 @@ Trạng thái: mục 1–9 **đã làm**, 10 đã kiểm bằng ảnh 1280/390 �
 
 Không lưu audio vào Storage của Supabase: file là tài sản công khai của Wikimedia, lưu URL để khỏi nhân bản dữ liệu và khỏi tốn quota.
 
-### 13.2. Nguồn — số đo thật, không phải giả định
+### 12.2. Nguồn — số đo thật, không phải giả định
 
 | Nguồn | Đo được | Dùng? |
 |---|---|---|
@@ -370,7 +436,7 @@ Không lưu audio vào Storage của Supabase: file là tài sản công khai c�
 
 Cả 3 endpoint Wikimedia đều trả `access-control-allow-origin: *` khi thêm `origin=*` → gọi được từ browser, không cần proxy, không cần key.
 
-### 13.3. Luồng
+### 12.3. Luồng
 
 ```
 Lấy phát âm  →  Wiktionary (IPA)  ║  Commons (file ogg → URL mp3)     [song song, timeout 8s]
@@ -383,17 +449,16 @@ Nghe  →  có audio_url ⇒ <audio>.play()   (mp3 trên Wikimedia)
 
 Người dùng sửa được cả IPA và nghe lại trước khi lưu.
 
-### 13.4. Hình thức
+### 12.4. Hình thức
 
 - IPA nằm **ngay dưới headword**, màu `ink-soft`: trên thẻ ôn 15px, trong sổ từ 13px.
 - Nút `Nghe` là ô nhỏ viền `line-strong`, chữ `ink-soft`, đặt cạnh headword — **không dùng icon loa** (giữ luật "chữ làm việc đó"), `aria-label="Nghe <từ>"`.
 - Trong sổ từ, IPA là dòng phụ của cột "Từ" nên **không thêm cột mới**; cột "Phát âm" trong form là nơi nhập/sửa.
 - Từ chưa có IPA thì không hiện dòng đó — không hiện "—".
 
-### 13.5. Giới hạn đã biết
+### 12.5. Giới hạn đã biết
 
 - Từ không có file trên Commons (ví dụ `eloquent`) ⇒ chỉ có TTS, `audio_url` null. Đúng thiết kế, không phải lỗi.
 - IPA lấy bản phonemic **đầu tiên** trong template Wiktionary (có thể là giọng RP hoặc GA tuỳ từ) — người dùng sửa tay nếu muốn giọng khác.
 - Cần mạng cho lần tra và cho mp3; TTS thì không.
 - Giọng TTS phụ thuộc máy (macOS/iOS đọc khá tốt, Android tuỳ máy).
-

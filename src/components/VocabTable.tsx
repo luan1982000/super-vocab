@@ -1,3 +1,4 @@
+import { PencilSimple, SpeakerHigh, Trash } from '@phosphor-icons/react'
 import { collectionTone, TONE_BG } from '../lib/collections'
 import { formatDateTime, formatDueRelative, STATE_LABELS, STATE_TONES } from '../lib/format'
 import { playPronunciation } from '../lib/pronounce'
@@ -12,8 +13,8 @@ interface VocabTableProps {
   onDelete: (row: CardRow) => void
 }
 
-const headClass = 'py-2 pr-4 text-[0.8125rem] font-medium text-ink-soft'
-const cellClass = 'mt-1 block md:mt-0 md:table-cell md:py-3 md:pr-4'
+const headClass = 'py-3 pr-4 micro md:table-cell'
+const cellClass = 'mt-1.5 block md:mt-0 md:table-cell md:py-4 md:pr-4'
 
 export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTableProps) {
   const names = new Map(collections.map((collection) => [collection.id, collection.name]))
@@ -38,27 +39,28 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
             <tr key={row.id} className="block border-b border-rule py-3 align-top md:table-row md:py-0">
               <td className={`${cellClass} pr-0 md:pr-4`}>
                 <span className="flex items-baseline gap-2">
-                  <span className="font-serif text-[1.0625rem] leading-[1.4] font-semibold text-ink">
+                  <span className="font-serif text-[1.0625rem] leading-[1.4] text-ink">
                     {row.word}
                   </span>
                   <button
                     type="button"
                     onClick={() => void playPronunciation(row.word, row.audio_url)}
                     aria-label={`Nghe ${row.word}`}
-                    className="shrink-0 rounded-sm border border-line-strong px-2 py-1 text-[0.75rem] text-ink-soft transition hover:bg-paper hover:text-ink"
+                    className="btn-text shrink-0 border border-line-strong px-2 py-0.5 text-[0.75rem]"
                   >
+                    <SpeakerHigh aria-hidden size={16} />
                     Nghe
                   </button>
                 </span>
                 {row.phonetic && (
-                  <span className="mt-0.5 block text-[0.8125rem] text-ink-soft">{row.phonetic}</span>
+                  <span className="mt-1 block text-[0.8125rem] text-ink-soft">{row.phonetic}</span>
                 )}
               </td>
 
-              <td className={`${cellClass} max-w-[46ch] text-[0.9375rem] text-ink`}>
+              <td className={`${cellClass} max-w-[46ch] text-[0.9375rem] leading-relaxed text-ink`}>
                 {row.meaning}
                 {row.example && (
-                  <span className="mt-0.5 block font-serif text-[0.8125rem] leading-[1.6] text-ink-soft">
+                  <span className="mt-1 block font-serif text-[0.9375rem] leading-[1.7] text-ink-soft">
                     {row.example}
                   </span>
                 )}
@@ -67,10 +69,10 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
               {collections.length > 0 && (
                 <td className={`${cellClass} text-[0.9375rem] text-ink`}>
                   {row.collection_id ? (
-                    <span className="inline-flex items-center gap-2">
+                    <span>
                       <span
                         aria-hidden
-                        className={`inline-block h-[18px] w-[10px] rounded-sm ${TONE_BG[collectionTone(row.collection_id)]}`}
+                        className={`mr-2 inline-block size-2.5 rounded-full align-middle ${TONE_BG[collectionTone(row.collection_id)]}`}
                       />
                       {names.get(row.collection_id) ?? '—'}
                     </span>
@@ -82,7 +84,7 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
 
               <td className={`${cellClass} whitespace-nowrap`}>
                 <span
-                  className={`text-[0.9375rem] ${overdue ? 'rounded-sm bg-highlighter px-1.5 py-0.5 text-highlighter-ink' : 'text-ink'}`}
+                  className={`text-[0.9375rem] ${overdue ? 'rounded-full bg-highlighter px-1.5 py-0.5 text-highlighter-ink' : 'text-ink'}`}
                 >
                   {overdue ? formatDueRelative(row.due) : formatDateTime(row.due)}
                 </span>
@@ -91,7 +93,7 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
 
               <td className={`${cellClass} whitespace-nowrap`}>
                 <span
-                  className={`inline-block rounded-sm px-2 py-0.5 text-[0.8125rem] font-medium ${
+                  className={`inline-block rounded-full px-2 py-0.5 text-[0.8125rem] font-medium ${
                     STATE_TONES[row.state] ?? ''
                   }`}
                 >
@@ -103,15 +105,17 @@ export function VocabTable({ rows, collections, now, onEdit, onDelete }: VocabTa
                 <button
                   type="button"
                   onClick={() => onEdit(row)}
-                  className="rounded-md px-2 py-1 text-sm font-medium text-pen transition hover:bg-paper"
+                  className="btn-text"
                 >
+                  <PencilSimple aria-hidden size={16} />
                   Sửa
                 </button>
                 <button
                   type="button"
                   onClick={() => onDelete(row)}
-                  className="rounded-md px-2 py-1 text-sm font-medium text-red-pen transition hover:bg-paper"
+                  className="btn-text hover:text-danger"
                 >
+                  <Trash aria-hidden size={16} />
                   Xóa
                 </button>
               </td>

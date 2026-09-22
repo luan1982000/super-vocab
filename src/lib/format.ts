@@ -7,9 +7,9 @@ export const STATE_LABELS: Record<number, string> = {
 
 export const STATE_TONES: Record<number, string> = {
   0: 'border border-rule text-ink-soft',
-  1: 'bg-ochre/15 text-ochre',
-  2: 'bg-pen/12 text-pen',
-  3: 'bg-red-pen/12 text-red-pen',
+  1: 'bg-warn/10 text-warn',
+  2: 'bg-accent/10 text-accent',
+  3: 'bg-danger/10 text-danger',
 }
 
 const MINUTE = 60_000

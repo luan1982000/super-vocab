@@ -1,4 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import {
+  ArrowClockwise,
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  MagnifyingGlass,
+  Notebook,
+  Plus,
+} from '@phosphor-icons/react'
 import { CollectionBar } from '../components/CollectionBar'
 import { Modal } from '../components/Modal'
 import { FullPageSpinner } from '../components/FullPageSpinner'
@@ -10,8 +19,6 @@ import type { CardInput, CardRow } from '../lib/types'
 import { useCollections } from '../hooks/useCollections'
 
 const PAGE_SIZE = 50
-const quietClass =
-  'rounded-md border border-line-strong px-3 py-1.5 text-sm font-medium text-ink transition hover:bg-paper disabled:opacity-55'
 
 export function VocabPage() {
   const { collections, error: collectionsError, reload: reloadCollections } = useCollections()
@@ -25,6 +32,8 @@ export function VocabPage() {
   const [scope, setScope] = useState<CollectionScope>(SCOPE_ALL)
   const [page, setPage] = useState(0)
   const [saving, setSaving] = useState(false)
+  // Tăng sau mỗi lần thêm thành công: đổi `key` để phiếu "Thêm từ" remount về trạng thái trống.
+  const [formReset, setFormReset] = useState(0)
   const [editing, setEditing] = useState<CardRow | null>(null)
   const [deleting, setDeleting] = useState<CardRow | null>(null)
   // Mốc so sánh "quá hạn": lấy lúc nạp dữ liệu để render không gọi Date.now().
@@ -107,7 +116,10 @@ export function VocabPage() {
     const { data, error } = await supabase.from('cards').insert(values).select().single()
     setSaving(false)
     if (error) setCreateError(error.message)
-    else setRows((prev) => [data, ...prev])
+    else {
+      setRows((prev) => [data, ...prev])
+      setFormReset((prev) => prev + 1)
+    }
   }
 
   const handleUpdate = async (values: CardInput) => {
@@ -148,27 +160,26 @@ export function VocabPage() {
     setDeleteError(null)
   }
 
-  const bannerClass = 'border-l-[3px] border-red-pen bg-red-pen/8 px-3 py-2 text-sm text-ink'
-
   return (
-    <div className="space-y-6">
-      <section className="rounded-md border border-rule bg-card p-4 shadow-[var(--stack-shadow)]">
-        <h1 className="font-serif text-[1.5rem] font-semibold text-ink">Thêm từ</h1>
+    <div className="space-y-10">
+      <section className="panel p-6">
+        <h1 className="font-serif text-[1.375rem] tracking-[-0.01em] text-ink">Thêm từ</h1>
         <div className="mt-3">
           <VocabForm
-            key={`create-${defaultCollectionId ?? 'none'}`}
+            key={`create-${defaultCollectionId ?? 'none'}-${formReset}`}
             idPrefix="create"
             collections={collections}
             defaultCollectionId={defaultCollectionId}
             submitLabel="Thêm từ"
+            submitIcon={<Plus aria-hidden size={16} />}
             busy={saving}
             onSubmit={(values) => void handleCreate(values)}
           />
         </div>
-        {createError && <p className={`mt-3 ${bannerClass}`}>{createError}</p>}
+        {createError && <p className="banner mt-3">{createError}</p>}
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-5">
         <CollectionBar
           collections={collections}
           scope={scope}
@@ -180,28 +191,36 @@ export function VocabPage() {
         />
 
         <div className="flex flex-wrap items-center gap-3">
-          <h2 className="text-[1.0625rem] font-semibold text-ink">
+          <h2 className="font-serif text-[1.25rem] tracking-[-0.01em] text-ink">
             Danh sách từ vựng
             <span className="tnum ml-2 text-[0.8125rem] font-normal text-ink-soft">
               {filtered.length}/{rows.length} từ
             </span>
           </h2>
-          <input
-            type="search"
-            value={search}
-            onChange={(event) => {
-              setSearch(event.target.value)
-              setPage(0)
-            }}
-            placeholder="Tìm theo từ hoặc nghĩa"
-            className="ml-auto w-full rounded-sm border border-line-strong bg-card px-3 py-2 text-base text-ink outline-none transition focus:border-pen sm:w-72"
-          />
+          <div className="relative ml-auto w-full sm:w-72">
+            <MagnifyingGlass
+              aria-hidden
+              size={16}
+              className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-ink-soft"
+            />
+            <input
+              type="search"
+              value={search}
+              onChange={(event) => {
+                setSearch(event.target.value)
+                setPage(0)
+              }}
+              placeholder="Tìm theo từ hoặc nghĩa"
+              className="field pl-9"
+            />
+          </div>
         </div>
 
         {loadError && (
-          <div className={`flex items-center gap-3 ${bannerClass}`}>
+          <div className="banner flex items-center gap-3">
             <span>Không tải được dữ liệu: {loadError}</span>
-            <button type="button" onClick={reload} className="font-semibold underline">
+            <button type="button" onClick={reload} className="btn-text font-medium text-ink underline">
+              <ArrowClockwise aria-hidden size={16} />
               Thử lại
             </button>
           </div>
@@ -210,13 +229,16 @@ export function VocabPage() {
         {loading ? (
           <FullPageSpinner label="Đang tải danh sách…" />
         ) : visible.length === 0 ? (
-          <p className="rounded-md border border-dashed border-line-strong px-4 py-10 text-center text-sm text-ink-soft">
-            {rows.length === 0
-              ? 'Hộp còn trống. Ghi từ đầu tiên ở phiếu phía trên.'
-              : search.trim()
-                ? `Không có từ nào khớp “${search.trim()}”.`
-                : 'Bộ này chưa có từ nào.'}
-          </p>
+          <div className="flex flex-col items-center gap-3 rounded-ui border border-dashed border-line-strong px-6 py-16 text-center">
+            <Notebook aria-hidden size={28} className="text-ink-soft" />
+            <p className="text-sm leading-relaxed text-ink-soft">
+              {rows.length === 0
+                ? 'Hộp còn trống. Ghi từ đầu tiên ở phiếu phía trên.'
+                : search.trim()
+                  ? `Không có từ nào khớp “${search.trim()}”.`
+                  : 'Bộ này chưa có từ nào.'}
+            </p>
+          </div>
         ) : (
           <>
             <VocabTable rows={visible} collections={collections} now={now} onEdit={setEditing} onDelete={setDeleting} />
@@ -226,16 +248,23 @@ export function VocabPage() {
                   Trang {safePage + 1}/{pageCount}
                 </span>
                 <div className="flex gap-2">
-                  <button type="button" disabled={safePage === 0} onClick={() => setPage(safePage - 1)} className={quietClass}>
+                  <button
+                    type="button"
+                    disabled={safePage === 0}
+                    onClick={() => setPage(safePage - 1)}
+                    className="btn btn-quiet px-3 py-1.5"
+                  >
+                    <ArrowLeft aria-hidden size={16} />
                     Trước
                   </button>
                   <button
                     type="button"
                     disabled={safePage >= pageCount - 1}
                     onClick={() => setPage(safePage + 1)}
-                    className={quietClass}
+                    className="btn btn-quiet px-3 py-1.5"
                   >
                     Sau
+                    <ArrowRight aria-hidden size={16} />
                   </button>
                 </div>
               </div>
@@ -263,28 +292,24 @@ export function VocabPage() {
               : null
           }
           submitLabel="Lưu"
+          submitIcon={<Check aria-hidden size={16} />}
           busy={saving}
           onSubmit={(values) => void handleUpdate(values)}
           onCancel={closeEdit}
         />
-        {editError && editing && <p className={`mt-3 ${bannerClass}`}>{editError}</p>}
+        {editError && editing && <p className="banner mt-3">{editError}</p>}
       </Modal>
 
       <Modal open={deleting !== null} title="Xóa từ" onClose={closeDelete}>
-        <p className="text-sm text-ink">
+        <p className="text-sm leading-relaxed text-ink">
           Xóa <strong>{deleting?.word}</strong>? Hành động này không thể hoàn tác.
         </p>
-        {deleteError && deleting && <p className={`mt-3 ${bannerClass}`}>{deleteError}</p>}
+        {deleteError && deleting && <p className="banner mt-3">{deleteError}</p>}
         <div className="mt-4 flex gap-2">
-          <button
-            type="button"
-            onClick={() => void handleDelete()}
-            disabled={saving}
-            className="rounded-md bg-red-pen px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-55"
-          >
+          <button type="button" onClick={() => void handleDelete()} disabled={saving} className="btn btn-danger">
             {saving ? 'Đang xóa…' : 'Xóa'}
           </button>
-          <button type="button" onClick={closeDelete} disabled={saving} className={quietClass}>
+          <button type="button" onClick={closeDelete} disabled={saving} className="btn btn-quiet">
             Hủy
           </button>
         </div>

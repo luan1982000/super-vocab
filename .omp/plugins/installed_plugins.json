@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "plugins": {
+    "ui-ux-pro-max@ui-ux-pro-max-skill": [
+      {
+        "scope": "project",
+        "installPath": "/Users/luannv31.te/.omp/plugins/cache/plugins/ui-ux-pro-max-skill___ui-ux-pro-max___2.13.0",
+        "version": "2.13.0",
+        "installedAt": "2026-09-22T08:59:10.913Z",
+        "lastUpdated": "2026-09-22T08:59:10.913Z"
+      }
+    ]
+  }
+}

@@ -16,7 +16,7 @@ export default function App() {
       <AuthProvider>
         <div className="min-h-screen bg-paper text-ink">
           <Navbar />
-          <main className="mx-auto max-w-[52rem] px-5 py-6">
+          <main className="mx-auto w-full max-w-[56rem] px-6 py-10 sm:py-12">
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route

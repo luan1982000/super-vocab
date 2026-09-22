@@ -1,14 +1,7 @@
-import { useState, type FormEvent } from 'react'
+import { useState, type FormEvent, type ReactNode } from 'react'
+import { MagnifyingGlass, SpeakerHigh, X } from '@phosphor-icons/react'
 import { lookupPronunciation, playPronunciation } from '../lib/pronounce'
 import type { CardInput, CollectionRow } from '../lib/types'
-
-const fieldClass =
-  'w-full rounded-sm border border-line-strong bg-card px-3 py-2 text-base text-ink outline-none transition focus:border-pen'
-const labelClass = 'mb-1 block text-sm text-ink-soft'
-const quietClass =
-  'shrink-0 rounded-md border border-line-strong px-3 py-2 text-sm font-medium text-ink transition hover:bg-paper disabled:opacity-55'
-const primaryClass =
-  'rounded-md bg-pen px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-55'
 
 interface VocabFormProps {
   /** Tiền tố id để form thêm mới và form trong modal không trùng id DOM. */
@@ -18,6 +11,8 @@ interface VocabFormProps {
   /** Bộ từ mặc định khi thêm mới (theo bộ đang xem). */
   defaultCollectionId?: string | null
   submitLabel: string
+  /** Icon đặt trước nhãn nút gửi; do nơi gọi quyết định. */
+  submitIcon?: ReactNode
   busy: boolean
   onSubmit: (values: CardInput) => void
   onCancel?: () => void
@@ -39,6 +34,7 @@ export function VocabForm({
   initial,
   defaultCollectionId = null,
   submitLabel,
+  submitIcon,
   busy,
   onSubmit,
   onCancel,
@@ -96,27 +92,27 @@ export function VocabForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
-      <div className="grid gap-3 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className={labelClass} htmlFor={`${idPrefix}-word`}>
+          <label className="micro mb-1.5" htmlFor={`${idPrefix}-word`}>
             Từ
           </label>
           <input
             id={`${idPrefix}-word`}
-            className={fieldClass}
+            className="field"
             value={values.word}
             onChange={update('word')}
             autoComplete="off"
           />
         </div>
         <div>
-          <label className={labelClass} htmlFor={`${idPrefix}-meaning`}>
+          <label className="micro mb-1.5" htmlFor={`${idPrefix}-meaning`}>
             Nghĩa
           </label>
           <input
             id={`${idPrefix}-meaning`}
-            className={fieldClass}
+            className="field"
             value={values.meaning}
             onChange={update('meaning')}
             autoComplete="off"
@@ -124,14 +120,14 @@ export function VocabForm({
         </div>
       </div>
 
-      <div className="flex items-end gap-2">
-        <div className="flex-1">
-          <label className={labelClass} htmlFor={`${idPrefix}-phonetic`}>
+      <div className="flex flex-wrap items-end gap-2">
+        <div className="min-w-[12rem] flex-1">
+          <label className="micro mb-1.5" htmlFor={`${idPrefix}-phonetic`}>
             Phát âm
           </label>
           <input
             id={`${idPrefix}-phonetic`}
-            className={fieldClass}
+            className="field"
             placeholder="/əˈfɛ.mə.ɹəl/"
             value={values.phonetic ?? ''}
             onChange={update('phonetic')}
@@ -142,8 +138,9 @@ export function VocabForm({
           type="button"
           onClick={() => void handleLookup()}
           disabled={looking || !values.word.trim()}
-          className={quietClass}
+          className="btn btn-quiet shrink-0"
         >
+          <MagnifyingGlass aria-hidden size={16} />
           {looking ? 'Đang tra…' : 'Lấy phát âm'}
         </button>
         <button
@@ -151,19 +148,20 @@ export function VocabForm({
           onClick={() => void playPronunciation(values.word, values.audio_url)}
           disabled={!values.word.trim()}
           aria-label={`Nghe ${values.word || 'từ'}`}
-          className={quietClass}
+          className="btn btn-quiet shrink-0"
         >
+          <SpeakerHigh aria-hidden size={16} />
           Nghe
         </button>
       </div>
 
       <div>
-        <label className={labelClass} htmlFor={`${idPrefix}-collection`}>
+        <label className="micro mb-1.5" htmlFor={`${idPrefix}-collection`}>
           Bộ từ
         </label>
         <select
           id={`${idPrefix}-collection`}
-          className={fieldClass}
+          className="field"
           value={values.collection_id ?? ''}
           onChange={(event) => setValues((prev) => ({ ...prev, collection_id: event.target.value || null }))}
         >
@@ -177,39 +175,41 @@ export function VocabForm({
       </div>
 
       <div>
-        <label className={labelClass} htmlFor={`${idPrefix}-example`}>
+        <label className="micro mb-1.5" htmlFor={`${idPrefix}-example`}>
           Ví dụ
         </label>
         <textarea
           id={`${idPrefix}-example`}
           rows={2}
-          className={fieldClass}
+          className="field"
           value={values.example ?? ''}
           onChange={update('example')}
         />
       </div>
 
       <div>
-        <label className={labelClass} htmlFor={`${idPrefix}-note`}>
+        <label className="micro mb-1.5" htmlFor={`${idPrefix}-note`}>
           Ghi chú
         </label>
         <textarea
           id={`${idPrefix}-note`}
           rows={2}
-          className={fieldClass}
+          className="field"
           value={values.note ?? ''}
           onChange={update('note')}
         />
       </div>
 
-      {error && <p className="border-l-[3px] border-red-pen bg-red-pen/8 px-3 py-2 text-sm text-ink">{error}</p>}
+      {error && <p className="banner">{error}</p>}
 
       <div className="flex gap-2">
-        <button type="submit" disabled={busy} className={primaryClass}>
+        <button type="submit" disabled={busy} className="btn btn-primary">
+          {submitIcon}
           {busy ? 'Đang lưu…' : submitLabel}
         </button>
         {onCancel && (
-          <button type="button" onClick={onCancel} disabled={busy} className={quietClass}>
+          <button type="button" onClick={onCancel} disabled={busy} className="btn btn-quiet">
+            <X aria-hidden size={16} />
             Hủy
           </button>
         )}
