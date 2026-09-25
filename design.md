@@ -159,13 +159,20 @@ Quy tắc:
 - Nhịp dọc giữa các khối lớn: **`2.5rem`** (`space-y-10`) — thoáng, không dồn cục.
 - Canh trái cho mọi nội dung dạng văn bản và danh sách. **Chỉ thẻ ôn và màn kết thúc canh giữa** — chúng là một vật thể duy nhất trên trang.
 - Cột hẹp: thẻ ôn và panel kết thúc `30rem`; màn đăng nhập `23rem`; modal tối đa `32rem`.
+- **Khung trang** (`AppShell`): menu dọc bên trái `15rem` (240px), `sticky top-0 h-screen`, viền phải `rule`, nền `paper`. Mục đang xem: nền `accent/10` + chữ `accent` + weight 500 (đúng vai "dấu mục đang xem" của accent ở §2). Nút `Ẩn menu` nằm cuối menu, trạng thái nhớ trong `localStorage` (`super-vocab.nav-collapsed`).
+- Dưới `md` (768px): menu thành **drawer** trượt từ trái trên nền `scrim`, có nút `Đóng`, đóng bằng `Esc` hoặc khi bấm vào scrim hoặc khi chuyển trang. Thanh trên `sticky` giữ wordmark và nút `Menu`.
+- Khi thu gọn trên desktop, thanh trên hiện nút `Hiện menu` ở góc trái nội dung. Bàn phím/AT vẫn tới được mọi mục.
+- Linh vật ở góc dưới phải, kích thước `112px`, `z-20` (dưới modal `z-30` và drawer `z-40`).
 
 ```
-Navbar:  Super Vocab   Từ vựng  Ôn tập              email   [ Đăng xuất ]
-         ↑ Literata                       ↑ gạch chân accent khi đang xem
-──────────────────────────────────────────────────────────────────────── (rule)
+Menu dọc 240px (aside, sticky, `border-r` rule)   │  phần còn lại
+  Super Vocab        ↑ Literata                  │
+  ▸ Từ vựng   ▪ Ôn tập  ← mục đang xem: nền accent/10, chữ accent
+  …                                             │
+  owner@…  [ Đăng xuất ]  [ Ẩn menu ]            │        linh vật ở góc (≥1400px)
+```
 
-Từ vựng
+Thêm từ (`#/vocab`)
   ┌ panel ──────────────────────────────────────────────────────┐
   │  Thêm từ                                                    │  ← h1 Literata 1.375rem
   │  Từ [______]        Nghĩa [______]                          │  ← nhãn .micro, ô .field
@@ -173,12 +180,17 @@ Từ vựng
   │  Bộ từ [ ▾ ]                                                │
   │  Ví dụ [______]   Ghi chú [______]                          │
   │  [ Thêm từ ]                                                │
+  │  Đã thêm {từ}. Xem trong danh sách                          │  ← dòng xác nhận, chỉ hiện sau khi thêm
   └─────────────────────────────────────────────────────────────┘
 
   Bộ từ  [Tất cả 7] [Chưa phân loại 2] [● Giao tiếp hàng ngày 2] [ + Thêm bộ từ ]
-         ↑ chip đang chọn: nền accent, chữ on-accent
+         ↑ chip đang chọn: nền accent, chữ on-accent — cũng là bộ mặc định cho từ mới
+  [ ≡ Danh sách từ vựng  7 ]
 
-  Danh sách từ vựng                    7/7 từ        [ Tìm theo từ hoặc nghĩa ]
+Danh sách từ vựng (`#/vocab/list`)
+  ← Từ vựng / Danh sách từ vựng                              ← breadcrumb
+  Danh sách từ vựng  7/7 từ      [ + Thêm từ ]  [ Tìm theo từ hoặc nghĩa ]
+  Bộ từ  [Tất cả 7] [Chưa phân loại 2] [● Giao tiếp hàng ngày 2] [ + Thêm bộ từ ]
   ────────────────────────────────────────────────────────────────────────── (rule)
   Từ                Nghĩa              Bộ từ          Ôn tiếp theo   Trạng thái  Thao tác
   ══════════════════════════════════════════════════════════════════════════
@@ -186,9 +198,13 @@ Từ vựng
   Literata 1.0625   0.9375rem           ● + tên        nền highlighter
                     ví dụ: Literata 0.9375rem/1.7 ink-soft
   ────────────────────────────────────────────────────────────────────────── (rule)
+  1–50 trong 320 từ                    [ ← Trước ] 1 … 4 [5] 6 … 12 [ Sau → ]
 ```
 
+- **Thêm từ** và **Danh sách từ vựng** là **hai trang riêng** (`#/vocab` và `#/vocab/list`): gộp một trang thì quá dài. Trang danh sách có breadcrumb quay lại; cả hai chiều đều có lối đi (link `Danh sách từ vựng` ở trang thêm, nút `+ Thêm từ` ở trang danh sách).
+- Chọn bộ ở trang **Thêm từ** vừa lọc vừa đặt bộ mặc định cho từ mới; form remount sau mỗi lần thêm nên bộ đang chọn được giữ làm mặc định.
 - Danh sách là **sổ kẻ dòng**: đường kẻ `rule` 1px giữa các mục, không viền quanh từng mục, không bóng, không bo góc.
+- **Phân trang**: 50 mục/trang, lọc + tìm kiếm **client-side** nên đổi bộ hay gõ tìm đều nhảy về trang 1. Nút số trang dùng cùng dáng chip (`rounded-ui`, viền `line-strong`); trang hiện tại nền `accent` + chữ `on-accent`, đánh dấu thêm bằng `aria-current="page"`. Chỗ bị nhảy chèn `…`. Hai đầu có `Trước` / `Sau` (`.btn-quiet`), kèm dòng `{đầu}–{cuối} trong {tổng} từ` bên trái. Đổi trang thì cuộn lên đầu trang.
 - Mobile (< 640px): mỗi mục thành khối nhiều dòng — headword + nút Nghe / nghĩa / ví dụ / (bộ từ · hạn · trạng thái) / hàng thao tác. Không cuộn ngang. Chip bộ từ **xuống dòng** thay vì cuộn ngang.
 
 ```
@@ -335,7 +351,10 @@ Nguyên tắc: câu, chữ thường, thể chủ động, động từ rõ, kh�
 | Lỗi ghi DB | `Chưa lưu được. Thẻ vẫn ở đây, chấm lại giúp.` |
 | Lỗi đăng nhập | `Email hoặc mật khẩu không đúng.` |
 | Nhãn tiến độ | `3 / 12` (có khoảng, `tabular-nums`) |
-| Trống danh sách | `Hộp còn trống. Ghi từ đầu tiên ở phiếu phía trên.` |
+| Trống danh sách | `Hộp còn trống.` + nút `Thêm từ đầu tiên` (dẫn sang `#/vocab`) |
+| Trang thêm từ | `Thêm từ` · `Đã thêm {từ}. Xem trong danh sách` · `Danh sách từ vựng {n}` |
+| Trang danh sách | `Danh sách từ vựng` · `{đã lọc}/{tổng} từ` · `Thêm từ` · `Tìm theo từ hoặc nghĩa` |
+| Phân trang | `{đầu}–{cuối} trong {tổng} từ` · `Trước` / `Sau` |
 
 Không emoji trong nhãn. Không dấu `·` nối các mẩu meta.
 
@@ -462,3 +481,75 @@ Người dùng sửa được cả IPA và nghe lại trước khi lưu.
 - IPA lấy bản phonemic **đầu tiên** trong template Wiktionary (có thể là giọng RP hoặc GA tuỳ từ) — người dùng sửa tay nếu muốn giọng khác.
 - Cần mạng cho lần tra và cho mp3; TTS thì không.
 - Giọng TTS phụ thuộc máy (macOS/iOS đọc khá tốt, Android tuỳ máy).
+
+---
+
+## 13. Hai chế độ ôn (flashcard & viết câu)
+
+`#/practice` giờ là màn **chọn chế độ**, không còn là màn flashcard. Hai route con giữ nguyên phạm vi bộ từ đã chọn.
+
+| Route | Việc | Đổi lịch FSRS? |
+|---|---|---|
+| `#/practice` | chọn bộ từ + chọn chế độ | — |
+| `#/practice/flashcard` | lật thẻ, chấm 4 mức (nguyên bản) | ✅ |
+| `#/practice/writing` | viết câu, AI chấm điểm + chỉ lỗi | ❌ |
+
+**Breadcrumb** (`src/components/Breadcrumb.tsx`) ở đầu cả hai trang con: `← Ôn tập / {Flashcard|Viết câu}` — mục đầu là link quay lại màn chọn chế độ (kèm `ArrowLeft`, đây là nút back), mục cuối là trang hiện tại với `aria-current="page"`. Bọc trong `nav[aria-label="Đường dẫn trang"]`, ngăn cách bằng `/` (không dùng `·`), hiện ở **mọi** trạng thái kể cả lúc đang tải. Đặt trên CollectionBar, trong cùng một khối `space-y-3` để nhịp dọc không bị phá.
+
+### 13.1. Màn chọn chế độ
+
+- `h1` **`Ôn tập`** + một dòng phụ: `Chọn cách ôn. Cả hai dùng chung bộ từ bên dưới. Hôm nay còn {n} thẻ đến hạn.`
+- Dưới đó là **CollectionBar** (chọn bộ) — bộ này áp cho cả hai chế độ, nhớ trong `localStorage`.
+- Hai **thẻ chế độ** (`.panel`, lưới 2 cột ≥640px, `min-height 9.5rem`): icon + tên (Literata 1.125rem) + mô tả 1 câu + `Bắt đầu →` màu `accent`. Hover đổi nền `hover`. Không bóng, không bo lớn — cùng ngôn ngữ với panel hiện có.
+- Bộ đếm đến hạn lấy bằng `head: true, count: exact` (không tải thẻ), nên đúng cả khi quá 30 thẻ.
+
+### 13.2. Màn viết câu
+
+Cột hẹp `30rem` (như thẻ ôn). Khối trên là **thẻ từ**: chấm tông + tên bộ (ngoài panel, như flashcard), headword Literata `clamp(1.75rem, 6vw, 2.5rem)`, phiên âm + nút `Nghe`, rồi `Nghĩa` và `Khái niệm` (`note`) canh trái.
+
+> Cố ý **không** hiện `example` sẵn có: hiện thì người học chỉ việc chép lại. Ví dụ chỉ dùng làm ngữ cảnh cho AI.
+
+Dưới thẻ là vùng viết: nhãn `Viết một câu tiếng Anh có dùng từ “{từ}”`, `<textarea>` (`.field`, `rows=4`, tối đa 1000 ký tự), dòng phụ `⌘/Ctrl + Enter để chấm`, nút **`Chấm điểm`**. Textarea **khoá** sau khi có kết quả; mở lại bằng `Viết lại`.
+
+Cạnh `Chấm điểm` có nút phụ **`Từ tiếp theo`** (`.btn-quiet`) để bỏ qua từ đang viết mà không cần chấm — cùng nhãn với nút trong panel kết quả, theo luật "nút và kết quả dùng cùng một từ" (§8). Nút này **ẩn khi đã có kết quả**, vì lúc đó bản sao trong panel kết quả đã thay nó, tránh hai nút trùng chức năng trên cùng màn.
+
+**Kết quả chấm** nằm trong một `.panel`, theo thứ tự: điểm + `level` (số Literata 2rem, màu theo mức: ≥80 `accent`, ≥60 `warn`, còn lại `danger` — luôn kèm chữ `level` nên màu không phải kênh duy nhất) → `verdict` → `usedWord === false` thì `.banner-warn` → danh sách lỗi (mỗi lỗi: vạch trái 2px `danger`, `type`, đoạn sai (serif), giải thích, `Sửa: …` màu `accent`) → **`Câu đúng`** (serif 1.0625rem) → `Có thể viết` (danh sách serif `ink-soft`) → `tip` sau đường kẻ `rule`. Hai hành động: **`Từ tiếp theo`** (chính) và **`Viết lại`** (phụ).
+
+**Màn kết thúc phiên:** `Hết câu trong phiên` + `Đã viết {n} câu · điểm trung bình {x}/100.`
+
+### 13.3. Quyết định
+
+- **Không** cập nhật FSRS ở chế độ viết. Đây là bài tập sản xuất, không phải lượt tự đánh giá; trộn điểm AI vào lịch ôn sẽ làm lịch ôn mất nghĩa. Muốn tách hẳn thì cần một lịch riêng cho kỹ năng viết.
+- **Không** lưu lịch sử chấm (không thêm bảng): giữ đúng phạm vi, tránh một nửa tính năng lịch sử.
+- Lỗi do AI trả về có thể rỗng (câu đã đúng) — panel không hiện mục `Lỗi cần sửa` khi rỗng, và luôn hiện `Câu đúng`.
+- Nhãn/màu/kiểu chữ dùng lại đúng token và thành phần §3–§6; không thêm class mới.
+
+### 13.4. Lời thoại
+
+| Chỗ | Chữ |
+|---|---|
+| Thẻ chế độ | `Flashcard` / `Viết câu` + mô tả 1 câu + `Bắt đầu` |
+| Nhãn vùng viết | `Viết một câu tiếng Anh có dùng từ “{từ}”` |
+| Nút chấm | `Chấm điểm` → `Đang chấm…` |
+| Kết quả | `Kết quả` · `{điểm}/100` · `Câu đúng` · `Có thể viết` · `Lỗi cần sửa` |
+| Thiếu từ mục tiêu | `Câu chưa dùng từ “{từ}”. Thử lại với từ mục tiêu nhé.` |
+| Lỗi gọi máy chấm | hiện nguyên văn thông báo của function (ví dụ `Máy chấm chưa được cấu hình: thiếu secret AI_API_KEY của project.`) |
+| Hết phiên | `Hết câu trong phiên` + `Đã viết {n} câu · điểm trung bình {x}/100.` |
+
+---
+
+## 14. Linh vật ở góc
+
+Dùng thư viện `page-mascot` (MIT) — nhân vật nhìn theo con trỏ, nháy mắt khi bấm. Nhân vật đang dùng: **`knight`**.
+
+| Việc | Chi tiết |
+|---|---|
+| Sprite | `src/assets/mascot/knight-{directions,reactions}.webp` — 2 sheet 3×3 (9 hướng đầu, 9 biểu cảm), chuyển từ PNG gốc (1024², ~1.9MB/sheet) sang WebP q82 để còn ~170KB/sheet |
+| Vì sao import module | ảnh nằm trong `src/assets` và **import trong TSX** để Vite băm tên + viết lại theo `base` — đường dẫn `/public` sẽ hỏng khi deploy dưới `/<repo>/` |
+| Vị trí | `fixed right-4 bottom-3`, `z-20` — dưới modal (`z-30`) và drawer (`z-40`) |
+| Kích thước | `112px` |
+| Ngưỡng hiện | trang thường: `min-[1400px]`; trang đăng nhập: `min-[680px]` |
+
+**Vì sao có ngưỡng:** cột nội dung canh giữa nên linh vật chỉ không đè lên nội dung khi lề phải đủ rộng. Với sidebar 240px + cột 56rem, cần viewport ≥ 1400px; trang đăng nhập chỉ có cột 23rem nên 680px là đủ. Dưới ngưỡng, linh vật **ẩn** thay vì đè lên form — đây là đánh đổi có ý thức.
+
+Linh vật là **trang trí**: theo dõi con trỏ tự tắt khi không có `pointer: fine`, hiệu ứng nhún khi bấm tôn trọng `prefers-reduced-motion` (cả hai do thư viện lo). Nó vẫn là một `button` có `aria-label` (`Boop the linh vật`) nên bàn phím tới được.

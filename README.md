@@ -2,9 +2,10 @@
 
 Web học từ vựng cá nhân: lưu từ và ôn bằng flashcard theo thuật toán spaced repetition (FSRS).
 
-- **3 trang:** Login (`#/login`) · Quản lý từ vựng (`#/vocab`) · Ôn tập (`#/practice`)
+- **Trang:** Login (`#/login`) · Thêm từ (`#/vocab`) · Danh sách từ vựng (`#/vocab/list`) · Ôn tập (`#/practice` → chọn chế độ)
+- **2 chế độ ôn:** Flashcard (`#/practice/flashcard`) · Viết câu (`#/practice/writing`, chấm bằng AI)
 - **Bộ từ (collection):** gom từ theo chủ đề; phiên ôn tập chỉ gồm từ trong bộ đang chọn
-- **Stack:** Vite + React + TypeScript · Tailwind CSS · react-router-dom (HashRouter) · Supabase (DB + Auth) · ts-fsrs · `@phosphor-icons/react` (icon)
+- **Stack:** Vite + React + TypeScript · Tailwind CSS · react-router-dom (HashRouter) · Supabase (DB + Auth) · ts-fsrs · `@phosphor-icons/react` (icon) · `page-mascot` (linh vật ở góc)
 - **Giao diện:** xem [`design.md`](./design.md) — hệ token, bảng màu, thang chữ, thành phần dùng chung
 
 ## 1. Cài đặt
@@ -28,6 +29,30 @@ Nếu dựng project khác:
 5. Chỉ dùng public key ở frontend. Không bao giờ đưa `service_role key` vào code hay biến `VITE_*`.
 
 Nếu build thiếu biến môi trường, app hiện màn hình hướng dẫn thay vì trắng trang.
+
+### Máy chấm AI (chế độ Viết câu)
+
+Chế độ **Viết câu** gọi Edge Function `grade-writing` (`supabase/functions/grade-writing/index.ts`), function này gọi một endpoint chat completions **tương thích OpenAI** (OpenAI, OpenRouter, Groq, DeepSeek, Together…). Khóa API nằm ở server, **không** đưa vào bundle frontend.
+
+Đặt secret trong **Project Settings → Edge Functions → Secrets** (hoặc `supabase secrets set`):
+
+| Secret | Bắt buộc | Mặc định | Ý nghĩa |
+|---|---|---|---|
+| `AI_API_KEY` | ✅ | — | khóa API của nhà cung cấp |
+| `AI_BASE_URL` | — | `https://api.deepseek.com` | đổi sang nhà cung cấp khác |
+| `AI_MODEL` | — | `deepseek-chat` | model dùng để chấm |
+
+Project này dùng **DeepSeek** nên chỉ cần thêm `AI_API_KEY` là chạy. Muốn đổi nhà cung cấp khác (OpenAI, OpenRouter, Groq, Together… đều tương thích OpenAI) thì set thêm `AI_BASE_URL` + `AI_MODEL`, ví dụ OpenAI: `AI_BASE_URL=https://api.openai.com/v1`, `AI_MODEL=gpt-4o-mini`.
+
+Deploy function (chọn một cách):
+
+```bash
+supabase functions deploy grade-writing            # cần Supabase CLI
+```
+
+hoặc dùng Supabase MCP `deploy_edge_function` (file `supabase/functions/grade-writing/index.ts`, `verify_jwt: true`).
+
+Function **tự chặn** request không có phiên đăng nhập (401), vì khóa publishable nằm công khai trong bundle — nếu không chặn thì bất kỳ ai cũng gọi được và đốt credit AI. Thiếu `AI_API_KEY`, function trả lỗi rõ ràng và màn Viết câu hiện banner tương ứng (không có chấm giả).
 
 > Supabase MCP đã khai báo trong `.omp/mcp.json` (project-scoped). Auth lần đầu: `/mcp reload` → `/mcp list` →
 > omp tự mở browser để OAuth → `/mcp reauth supabase` khi cần đổi account. Credential nằm trong profile
@@ -79,9 +104,13 @@ Bảng `collections` cũng có policy riêng (`own collections`). Kiểm tra th�
 
 ## 5. Cách dùng
 
-- **Bộ từ (collection):** mỗi bộ chứa nhiều từ. Chip “Bộ từ:” ở cả 2 trang để lọc; nút **＋ Quản lý bộ từ** (trang Từ vựng) để tạo / đổi tên / xóa. Tên bộ không được trùng nhau (không phân biệt hoa/thường). Xóa bộ **không xóa từ** — các từ rơi về “Chưa phân loại” (`on delete set null`).
-- **Từ vựng:** form thêm từ (từ, nghĩa, ví dụ, ghi chú, bộ từ), tìm kiếm client-side theo từ/nghĩa, sửa qua modal (đổi được cả bộ từ), xóa có xác nhận. Từ mới mặc định vào bộ đang xem và đến hạn ngay (`due = now()`). Chặn thêm trùng từ (không phân biệt hoa/thường).
-- **Ôn tập:** chọn bộ ở chip trên cùng — phiên ôn **chỉ gồm các từ trong bộ đó** (“Tất cả”, “Chưa phân loại”, hoặc từng bộ). Bộ đang chọn được nhớ trong `localStorage`, reload vẫn giữ. Lấy tối đa 30 card có `due <= now()`, sắp theo `due` tăng dần. Lật thẻ để xem nghĩa, chấm **Again / Hard / Good / Easy** (phím `1`–`4`, `Space` để lật). Mỗi nút hiện khoảng thời gian ôn lại thật, lấy từ chính kết quả FSRS dùng để ghi DB.
+- **Menu & khung trang:** menu dọc bên trái (Từ vựng · Ôn tập · tài khoản), bấm **Ẩn menu** để thu gọn — trạng thái được nhớ. Dưới 768px menu thành drawer mở bằng nút **Menu** (đóng bằng `Esc`, bấm nền, hoặc khi chuyển trang). Có **linh vật** ở góc dưới phải (nhìn theo con trỏ, bấm để nó phản ứng) — chỉ hiện khi màn đủ rộng để không đè lên nội dung.
+- **Bộ từ (collection):** mỗi bộ chứa nhiều từ. Chip “Bộ từ:” có ở cả trang thêm từ, trang danh sách và các chế độ ôn; nút **＋ Quản lý bộ từ** (trang thêm từ và trang danh sách) để tạo / đổi tên / xóa. Tên bộ không được trùng nhau (không phân biệt hoa/thường). Xóa bộ **không xóa từ** — các từ rơi về “Chưa phân loại” (`on delete set null`).
+- **Thêm từ (`#/vocab`):** form thêm từ (từ, nghĩa, phát âm, ví dụ, ghi chú, bộ từ). Chọn bộ ở dải chip vừa để lọc vừa **đặt bộ mặc định cho từ mới** (form tự xoá sau mỗi lần thêm, giữ nguyên bộ đang chọn). Từ mới mặc định đến hạn ngay (`due = now()`). Chặn thêm trùng từ (không phân biệt hoa/thường). Sau khi thêm có dòng `Đã thêm {từ}. Xem trong danh sách`.
+- **Danh sách từ vựng (`#/vocab/list`):** lọc theo bộ + tìm kiếm client-side theo từ/nghĩa, **phân trang 50 mục/trang** (số trang + `Trước`/`Sau`, chỗ nhảy có `…`, hiện `1–50 trong N từ`), sửa qua modal (đổi được cả bộ từ), xóa có xác nhận.
+- **Ôn tập (`#/practice`):** chọn bộ ở chip trên cùng, rồi chọn chế độ. Bộ đang chọn được nhớ trong `localStorage`, **dùng chung cho cả hai chế độ**. Phiên ôn chỉ gồm từ trong bộ đó, lấy tối đa 30 card có `due <= now()` sắp theo `due` tăng dần.
+- **Chế độ Flashcard (`#/practice/flashcard`):** lật thẻ để xem nghĩa, chấm **Again / Hard / Good / Easy** (phím `1`–`4`, `Space` để lật). Mỗi nút hiện khoảng thời gian ôn lại thật, lấy từ chính kết quả FSRS dùng để ghi DB. Đây là chế độ cập nhật lịch FSRS.
+- **Chế độ Viết câu (`#/practice/writing`):** hiện từ, phiên âm, nghĩa, khái niệm; bạn viết một câu tiếng Anh có dùng từ đó rồi bấm **Chấm điểm** (`⌘/Ctrl + Enter`). AI trả về điểm 0–100, nhận xét, danh sách lỗi (loại lỗi · đoạn sai · giải thích · cách sửa), **câu đúng** đã sửa, vài câu mẫu khác và một mẹo. Có thể **Viết lại** hoặc sang **Từ tiếp theo**. Chế độ này **không** đổi lịch FSRS (là bài tập viết, không phải lượt ôn).
 - Nếu ghi DB lỗi, card không bị chuyển và bạn chấm lại được.
 - Khi hết card đến hạn: hiện "Hôm nay đã xong" kèm bộ đang ôn, số từ và thời điểm đến hạn gần nhất **trong bộ đó**.
 
@@ -103,16 +132,22 @@ src/
 ├── lib/
 │   ├── supabase.ts             # client (đọc env, cảnh báo khi thiếu config)
 │   ├── collections.ts          # scope chip + CRUD bộ từ
+│   ├── practice.ts             # nạp phiên ôn (thẻ đến hạn) + đếm thẻ đến hạn
+│   ├── writing.ts              # gọi edge function grade-writing, chuẩn hoá kết quả chấm
 │   ├── fsrs.ts                 # map row ⇄ Card của ts-fsrs, lịch 4 mức chấm
 │   ├── format.ts               # format ngày giờ, khoảng thời gian, nhãn trạng thái
 │   └── types.ts                # kiểu CardRow / CollectionRow / CardInput / CardUpdate
 ├── hooks/
 │   ├── AuthProvider.tsx        # subscribe session Supabase, expose signIn/signOut
 │   ├── useAuth.ts              # context + hook useAuth()
-│   └── useCollections.ts       # nạp danh sách bộ từ
-├── components/                 # Navbar, Modal, CollectionBar, VocabForm, VocabTable, FlashCard, …
-└── pages/                      # LoginPage, VocabPage, PracticePage
+│   ├── useCollections.ts       # nạp danh sách bộ từ
+│   ├── useCards.ts             # nạp toàn bộ từ (dùng chung 2 trang từ vựng)
+│   └── useCollectionScope.ts   # scope bộ từ dùng chung giữa các chế độ ôn
+├── components/                 # AppShell (menu dọc + drawer + linh vật), Breadcrumb, Pagination, Modal, CollectionBar, VocabForm, VocabTable, FlashCard, MascotCorner, …
+├── assets/mascot/              # knight-directions.webp + knight-reactions.webp (2 sheet 3×3 của page-mascot)
+└── pages/                      # LoginPage, VocabPage, VocabListPage, PracticePage, FlashcardPage, WritingPage
 supabase/schema.sql             # collections + cards + index + RLS
+supabase/functions/grade-writing/index.ts  # edge function chấm câu bằng AI
 .github/workflows/deploy.yml    # build → GitHub Pages
 ```
 
@@ -123,3 +158,5 @@ supabase/schema.sql             # collections + cards + index + RLS
 - Cột `state`: 0 New, 1 Learning, 2 Review, 3 Relearning (khớp enum `State` của ts-fsrs).
 - `cards.collection_id` là FK tổ hợp `(collection_id, user_id) → collections (id, user_id)` với `on delete set null (collection_id)`: RLS không bảo vệ được FK, nên ràng buộc này chặn việc gắn từ vào bộ của user khác.
 - Supabase free tier tự pause sau ~1 tuần không hoạt động; vào dashboard bấm *Resume*.
+- Chế độ Viết câu **không ghi gì vào DB**: điểm và lỗi chỉ hiện trong phiên rồi mất. Lưu lịch sử chấm cần thêm bảng (ngoài phạm vi hiện tại).
+- `grade-writing` yêu cầu JWT hợp lệ (kiểm tra cả ở gateway và trong function): chỉ người đã đăng nhập gọi được, tránh lộ endpoint công khai và đốt credit AI.
