@@ -96,18 +96,23 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="min-h-screen bg-paper text-ink md:flex">
         {!collapsed && (
           <aside className="sticky top-0 hidden h-screen w-[15rem] shrink-0 flex-col border-r border-rule px-3 py-5 md:flex">
-            <div className="px-3">
+            <div className="flex items-center justify-between gap-2 pl-3">
               <Wordmark />
+              <button
+                type="button"
+                onClick={toggleCollapsed}
+                aria-label="Ẩn menu"
+                title="Ẩn menu"
+                className="btn-text -mr-2"
+              >
+                <SidebarSimple aria-hidden size={18} />
+              </button>
             </div>
             <nav aria-label="Điều hướng chính" className="mt-6 flex flex-col gap-1">
               <NavItems />
             </nav>
-            <div className="mt-auto space-y-3">
+            <div className="mt-auto">
               <Account email={session.user.email ?? ''} onSignOut={onSignOut} />
-              <button type="button" onClick={toggleCollapsed} className="btn-text w-full justify-start">
-                <SidebarSimple aria-hidden size={16} />
-                Ẩn menu
-              </button>
             </div>
           </aside>
         )}

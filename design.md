@@ -159,17 +159,17 @@ Quy tắc:
 - Nhịp dọc giữa các khối lớn: **`2.5rem`** (`space-y-10`) — thoáng, không dồn cục.
 - Canh trái cho mọi nội dung dạng văn bản và danh sách. **Chỉ thẻ ôn và màn kết thúc canh giữa** — chúng là một vật thể duy nhất trên trang.
 - Cột hẹp: thẻ ôn và panel kết thúc `30rem`; màn đăng nhập `23rem`; modal tối đa `32rem`.
-- **Khung trang** (`AppShell`): menu dọc bên trái `15rem` (240px), `sticky top-0 h-screen`, viền phải `rule`, nền `paper`. Mục đang xem: nền `accent/10` + chữ `accent` + weight 500 (đúng vai "dấu mục đang xem" của accent ở §2). Nút `Ẩn menu` nằm cuối menu, trạng thái nhớ trong `localStorage` (`super-vocab.nav-collapsed`).
+- **Khung trang** (`AppShell`): menu dọc bên trái `15rem` (240px), `sticky top-0 h-screen`, viền phải `rule`, nền `paper`. Mục đang xem: nền `accent/10` + chữ `accent` + weight 500 (đúng vai "dấu mục đang xem" của accent ở §2). Nút `Ẩn menu` là nút icon nằm cạnh wordmark ở đầu menu (đối xứng với nút `Đóng` của drawer), có `aria-label`/`title`; trạng thái nhớ trong `localStorage` (`super-vocab.nav-collapsed`).
 - Dưới `md` (768px): menu thành **drawer** trượt từ trái trên nền `scrim`, có nút `Đóng`, đóng bằng `Esc` hoặc khi bấm vào scrim hoặc khi chuyển trang. Thanh trên `sticky` giữ wordmark và nút `Menu`.
 - Khi thu gọn trên desktop, thanh trên hiện nút `Hiện menu` ở góc trái nội dung. Bàn phím/AT vẫn tới được mọi mục.
 - Linh vật ở góc dưới phải, kích thước `112px`, `z-20` (dưới modal `z-30` và drawer `z-40`).
 
 ```
 Menu dọc 240px (aside, sticky, `border-r` rule)   │  phần còn lại
-  Super Vocab        ↑ Literata                  │
+  Super Vocab   [ ⊟ ]  ↑ Literata, nút Ẩn menu cạnh wordmark
   ▸ Từ vựng   ▪ Ôn tập  ← mục đang xem: nền accent/10, chữ accent
   …                                             │
-  owner@…  [ Đăng xuất ]  [ Ẩn menu ]            │        linh vật ở góc (≥1400px)
+  owner@…  [ Đăng xuất ]                         │        linh vật ở góc (≥1400px)
 ```
 
 Thêm từ (`#/vocab`)
