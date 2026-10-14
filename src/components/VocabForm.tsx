@@ -1,32 +1,32 @@
-import { useState, type FormEvent, type ReactNode } from 'react'
-import { MagnifyingGlass, SpeakerHigh, X } from '@phosphor-icons/react'
-import { lookupPronunciation, playPronunciation } from '../lib/pronounce'
-import type { CardInput, CollectionRow } from '../lib/types'
+import { useState, type FormEvent, type ReactNode } from "react";
+import { MagnifyingGlass, SpeakerHigh, X } from "@phosphor-icons/react";
+import { lookupPronunciation, playPronunciation } from "../lib/pronounce";
+import type { CardInput, CollectionRow } from "../lib/types";
 
 interface VocabFormProps {
   /** Tiền tố id để form thêm mới và form trong modal không trùng id DOM. */
-  idPrefix: string
-  collections: CollectionRow[]
-  initial?: CardInput | null
+  idPrefix: string;
+  collections: CollectionRow[];
+  initial?: CardInput | null;
   /** Bộ từ mặc định khi thêm mới (theo bộ đang xem). */
-  defaultCollectionId?: string | null
-  submitLabel: string
+  defaultCollectionId?: string | null;
+  submitLabel: string;
   /** Icon đặt trước nhãn nút gửi; do nơi gọi quyết định. */
-  submitIcon?: ReactNode
-  busy: boolean
-  onSubmit: (values: CardInput) => void
-  onCancel?: () => void
+  submitIcon?: ReactNode;
+  busy: boolean;
+  onSubmit: (values: CardInput) => void;
+  onCancel?: () => void;
 }
 
 const EMPTY: CardInput = {
-  word: '',
-  meaning: '',
-  example: '',
-  note: '',
+  word: "",
+  meaning: "",
+  example: "",
+  note: "",
   collection_id: null,
-  phonetic: '',
+  phonetic: "",
   audio_url: null,
-}
+};
 
 export function VocabForm({
   idPrefix,
@@ -42,44 +42,48 @@ export function VocabForm({
   // `initial`/`defaultCollectionId` chỉ đổi khi cha remount form qua prop `key`.
   const [values, setValues] = useState<CardInput>(
     initial ?? { ...EMPTY, collection_id: defaultCollectionId },
-  )
-  const [error, setError] = useState<string | null>(null)
-  const [looking, setLooking] = useState(false)
+  );
+  const [error, setError] = useState<string | null>(null);
+  const [looking, setLooking] = useState(false);
 
-  const update = (key: keyof CardInput) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setValues((prev) => ({ ...prev, [key]: event.target.value }))
+  const update =
+    (key: keyof CardInput) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+      setValues((prev) => ({ ...prev, [key]: event.target.value }));
 
   const handleLookup = async () => {
-    const word = values.word.trim()
-    if (!word) return
-    setLooking(true)
-    setError(null)
-    const { phonetic, audioUrl, failed } = await lookupPronunciation(word)
-    setLooking(false)
+    const word = values.word.trim();
+    if (!word) return;
+    setLooking(true);
+    setError(null);
+    const { phonetic, audioUrl, failed } = await lookupPronunciation(word);
+    setLooking(false);
     if (failed && !phonetic) {
-      setError('Không tra được phát âm (mạng hoặc Wiktionary đang giới hạn). Thử lại sau hoặc nhập tay.')
-      return
+      setError(
+        "Không tra được phát âm (mạng hoặc Wiktionary đang giới hạn). Thử lại sau hoặc nhập tay.",
+      );
+      return;
     }
     if (!phonetic && !audioUrl) {
-      setError('Từ này chưa có dữ liệu phát âm. Nhập tay giúp.')
-      return
+      setError("Từ này chưa có dữ liệu phát âm. Nhập tay giúp.");
+      return;
     }
     setValues((prev) => ({
       ...prev,
       phonetic: phonetic ?? prev.phonetic,
       audio_url: audioUrl ?? prev.audio_url,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-    const word = values.word.trim()
-    const meaning = values.meaning.trim()
+    event.preventDefault();
+    const word = values.word.trim();
+    const meaning = values.meaning.trim();
     if (!word || !meaning) {
-      setError('Từ và nghĩa không được để trống.')
-      return
+      setError("Từ và nghĩa không được để trống.");
+      return;
     }
-    setError(null)
+    setError(null);
     onSubmit({
       word,
       meaning,
@@ -88,71 +92,77 @@ export function VocabForm({
       collection_id: values.collection_id || null,
       phonetic: values.phonetic?.trim() || null,
       audio_url: values.audio_url || null,
-    })
-  }
+    });
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Từ + nghĩa: hai ô bắt buộc, "Từ" đặt serif lớn như mặt trước tấm thẻ. */}
+      <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label className="micro mb-1.5" htmlFor={`${idPrefix}-word`}>
-            Từ
+            Từ <span className="micro-hint">(bắt buộc)</span>
           </label>
           <input
             id={`${idPrefix}-word`}
-            className="field"
+            className="field field-word"
             value={values.word}
-            onChange={update('word')}
+            onChange={update("word")}
             autoComplete="off"
+            aria-required="true"
           />
         </div>
         <div>
           <label className="micro mb-1.5" htmlFor={`${idPrefix}-meaning`}>
-            Nghĩa
+            Nghĩa <span className="micro-hint">(bắt buộc)</span>
           </label>
           <input
             id={`${idPrefix}-meaning`}
-            className="field"
+            className="field field-word !font-sans !text-base sm:!min-h-[3.25rem]"
             value={values.meaning}
-            onChange={update('meaning')}
+            onChange={update("meaning")}
             autoComplete="off"
+            aria-required="true"
           />
         </div>
       </div>
 
-      <div className="flex flex-wrap items-end gap-2">
-        <div className="min-w-[12rem] flex-1">
-          <label className="micro mb-1.5" htmlFor={`${idPrefix}-phonetic`}>
-            Phát âm
-          </label>
+      {/* Phát âm: gom ô nhập và hai nút tra/nghe vào một khung chìm. */}
+      <div className="well">
+        <label className="micro mb-1.5" htmlFor={`${idPrefix}-phonetic`}>
+          Phát âm
+        </label>
+        <div className="flex flex-wrap items-center gap-2">
           <input
             id={`${idPrefix}-phonetic`}
-            className="field"
+            className="field field-phonetic min-w-[12rem] flex-1"
             placeholder="/əˈfɛ.mə.ɹəl/"
-            value={values.phonetic ?? ''}
-            onChange={update('phonetic')}
+            value={values.phonetic ?? ""}
+            onChange={update("phonetic")}
             autoComplete="off"
           />
+          <button
+            type="button"
+            onClick={() => void handleLookup()}
+            disabled={looking || !values.word.trim()}
+            className="btn btn-quiet shrink-0 !min-h-11"
+          >
+            <MagnifyingGlass aria-hidden size={16} />
+            {looking ? "Đang tra…" : "Lấy phát âm"}
+          </button>
+          <button
+            type="button"
+            onClick={() =>
+              void playPronunciation(values.word, values.audio_url)
+            }
+            disabled={!values.word.trim()}
+            aria-label={`Nghe ${values.word || "từ"}`}
+            className="btn btn-quiet shrink-0 !min-h-11"
+          >
+            <SpeakerHigh aria-hidden size={16} />
+            Nghe
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={() => void handleLookup()}
-          disabled={looking || !values.word.trim()}
-          className="btn btn-quiet shrink-0"
-        >
-          <MagnifyingGlass aria-hidden size={16} />
-          {looking ? 'Đang tra…' : 'Lấy phát âm'}
-        </button>
-        <button
-          type="button"
-          onClick={() => void playPronunciation(values.word, values.audio_url)}
-          disabled={!values.word.trim()}
-          aria-label={`Nghe ${values.word || 'từ'}`}
-          className="btn btn-quiet shrink-0"
-        >
-          <SpeakerHigh aria-hidden size={16} />
-          Nghe
-        </button>
       </div>
 
       <div>
@@ -162,8 +172,13 @@ export function VocabForm({
         <select
           id={`${idPrefix}-collection`}
           className="field"
-          value={values.collection_id ?? ''}
-          onChange={(event) => setValues((prev) => ({ ...prev, collection_id: event.target.value || null }))}
+          value={values.collection_id ?? ""}
+          onChange={(event) =>
+            setValues((prev) => ({
+              ...prev,
+              collection_id: event.target.value || null,
+            }))
+          }
         >
           <option value="">Chưa phân loại</option>
           {collections.map((collection) => (
@@ -174,46 +189,61 @@ export function VocabForm({
         </select>
       </div>
 
-      <div>
-        <label className="micro mb-1.5" htmlFor={`${idPrefix}-example`}>
-          Ví dụ
-        </label>
-        <textarea
-          id={`${idPrefix}-example`}
-          rows={2}
-          className="field"
-          value={values.example ?? ''}
-          onChange={update('example')}
-        />
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label className="micro mb-1.5" htmlFor={`${idPrefix}-example`}>
+            Ví dụ
+          </label>
+          <textarea
+            id={`${idPrefix}-example`}
+            rows={2}
+            className="field font-serif"
+            value={values.example ?? ""}
+            onChange={update("example")}
+          />
+        </div>
+
+        <div>
+          <label className="micro mb-1.5" htmlFor={`${idPrefix}-note`}>
+            Ghi chú
+          </label>
+          <textarea
+            id={`${idPrefix}-note`}
+            rows={2}
+            className="field"
+            value={values.note ?? ""}
+            onChange={update("note")}
+          />
+        </div>
       </div>
 
-      <div>
-        <label className="micro mb-1.5" htmlFor={`${idPrefix}-note`}>
-          Ghi chú
-        </label>
-        <textarea
-          id={`${idPrefix}-note`}
-          rows={2}
-          className="field"
-          value={values.note ?? ''}
-          onChange={update('note')}
-        />
-      </div>
+      {error && (
+        <p className="banner" role="alert">
+          {error}
+        </p>
+      )}
 
-      {error && <p className="banner">{error}</p>}
-
-      <div className="flex gap-2">
-        <button type="submit" disabled={busy} className="btn btn-primary">
+      <div className="flex flex-wrap gap-2 border-t border-rule pt-5">
+        <button
+          type="submit"
+          disabled={busy}
+          className="btn btn-primary btn-lg w-full sm:w-auto"
+        >
           {submitIcon}
-          {busy ? 'Đang lưu…' : submitLabel}
+          {busy ? "Đang lưu…" : submitLabel}
         </button>
         {onCancel && (
-          <button type="button" onClick={onCancel} disabled={busy} className="btn btn-quiet">
+          <button
+            type="button"
+            onClick={onCancel}
+            disabled={busy}
+            className="btn btn-quiet btn-lg"
+          >
             <X aria-hidden size={16} />
             Hủy
           </button>
         )}
       </div>
     </form>
-  )
+  );
 }

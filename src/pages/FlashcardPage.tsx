@@ -270,7 +270,7 @@ export function FlashcardPage() {
                     type="button"
                     disabled={saving}
                     onClick={() => void grade(option.rating)}
-                    className={`rounded-ui border border-line-strong border-t-2 bg-card px-4 py-3 text-left transition-colors hover:bg-hover disabled:cursor-not-allowed disabled:opacity-50 ${option.edge}`}
+                    className={`min-h-[5rem] rounded-ui border border-line-strong border-t-2 bg-card px-4 py-3 text-left transition-colors hover:bg-hover disabled:cursor-not-allowed disabled:opacity-50 ${option.edge}`}
                   >
                     <span className="flex items-baseline justify-between gap-2">
                       <span className="text-[0.9375rem] font-medium text-ink">{option.label}</span>
