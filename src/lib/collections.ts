@@ -32,13 +32,6 @@ export function collectionTone(id: string): CollectionTone {
   return TONES[hash % TONES.length]
 }
 
-/** Bộ lọc PostgREST cho scope, hoặc null khi xem tất cả. */
-export function scopeFilter(scope: CollectionScope): string | null {
-  if (scope === SCOPE_ALL) return null
-  if (scope === SCOPE_NONE) return 'collection_id.is.null'
-  return `collection_id.eq.${scope}`
-}
-
 /** Lỗi trùng tên (unique index trên lower(name)). */
 function messageFor(error: { code?: string; message: string }): string {
   if (error.code === '23505') return 'Bộ từ này đã tồn tại.'
