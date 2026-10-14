@@ -1,14 +1,17 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowClockwise, ArrowRight, ListBullets, PaperPlaneTilt, SpeakerHigh, Sparkle } from '@phosphor-icons/react'
+import type { Grade } from 'ts-fsrs'
 import { Breadcrumb } from '../components/Breadcrumb'
 import { CollectionBar } from '../components/CollectionBar'
 import { FullPageSpinner } from '../components/FullPageSpinner'
 import { useCollectionScope } from '../hooks/useCollectionScope'
 import { collectionTone, scopeLabel, TONE_BG, type CollectionScope } from '../lib/collections'
-import { formatDateTime } from '../lib/format'
+import { formatDateTime, formatInterval } from '../lib/format'
+import { GRADES, schedule, toCardUpdate } from '../lib/fsrs'
 import { loadPracticeSession } from '../lib/practice'
 import { playPronunciation } from '../lib/pronounce'
+import { supabase } from '../lib/supabase'
 import { gradeWriting, type WritingGrade } from '../lib/writing'
 import type { CardRow } from '../lib/types'
 
@@ -25,6 +28,8 @@ export function WritingPage() {
   const [grading, setGrading] = useState(false)
   const [grade, setGrade] = useState<WritingGrade | null>(null)
   const [scores, setScores] = useState<number[]>([])
+  const [saving, setSaving] = useState(false)
+  const [ratings, setRatings] = useState<Record<number, number>>({})
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const load = useCallback(async () => {
@@ -43,6 +48,8 @@ export function WritingPage() {
     setSentence('')
     setGrade(null)
     setScores([])
+    setSaving(false)
+    setRatings({})
     setNextUpcoming(null)
   }
 
@@ -83,12 +90,64 @@ export function WritingPage() {
     setScores((prev) => [...prev, result.score])
   }, [current, sentence, grading])
 
+  // Tính trước lịch của cả 4 mức chấm cho từ hiện tại: dùng chính kết quả này để ghi DB.
+  const preview = useMemo(() => {
+    if (!current) return null
+    const now = new Date()
+    return { now, options: schedule(current, now) }
+  }, [current])
+
+  const rate = useCallback(
+    async (rating: Grade) => {
+      const item = preview?.options[rating]
+      if (!current || !item || saving) return
+
+      setSaving(true)
+      setError(null)
+      const { error: updateError } = await supabase
+        .from('cards')
+        .update(toCardUpdate(item.card))
+        .eq('id', current.id)
+      setSaving(false)
+
+      if (updateError) {
+        // Không chuyển thẻ khi update thất bại — người dùng chấm lại.
+        setError('Chưa lưu được. Thẻ vẫn ở đây, chấm lại giúp.')
+        return
+      }
+
+      setRatings((prev) => ({ ...prev, [rating]: (prev[rating] ?? 0) + 1 }))
+      setGrade(null)
+      setError(null)
+      setSentence('')
+      setIndex((prev) => prev + 1)
+    },
+    [current, preview, saving],
+  )
+
   const nextCard = () => {
     setGrade(null)
     setError(null)
     setSentence('')
     setIndex((prev) => prev + 1)
   }
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT')) return
+      if (!grade || !current || saving) return
+
+      const option = GRADES[Number(event.key) - 1]
+      if (option) {
+        event.preventDefault()
+        void rate(option.rating)
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [grade, current, saving, rate])
 
   const collectionNameOf = (row: CardRow | undefined) =>
     row?.collection_id ? (collections.find((item) => item.id === row.collection_id)?.name ?? null) : null
@@ -176,6 +235,14 @@ export function WritingPage() {
             Đã viết <strong className="tnum">{scores.length}</strong> câu · điểm trung bình{' '}
             <strong className="tnum">{average}</strong>/100.
           </p>
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {GRADES.map((option) => (
+              <div key={option.rating} className="rounded-ui border border-rule px-4 py-3">
+                <p className="micro">{option.label}</p>
+                <p className="tnum font-serif text-[1.75rem] leading-tight text-ink">{ratings[option.rating] ?? 0}</p>
+              </div>
+            ))}
+          </div>
           <div className="mt-5 flex justify-center gap-2">
             <button type="button" onClick={restart} className="btn btn-primary">
               <ArrowClockwise aria-hidden size={16} />
@@ -191,7 +258,7 @@ export function WritingPage() {
     )
   }
 
-  const progress = (index / queue.length) * 100
+  const progress = ((index + (grade ? 0.5 : 0)) / queue.length) * 100
   const scoreClass = grade ? (grade.score >= 80 ? 'text-accent' : grade.score >= 60 ? 'text-warn' : 'text-danger') : ''
 
   return (
@@ -368,14 +435,39 @@ export function WritingPage() {
                   </p>
                 )}
 
-                <div className="flex flex-wrap gap-2">
-                  <button type="button" onClick={nextCard} className="btn btn-primary">
-                    <ArrowRight aria-hidden size={16} />
-                    Từ tiếp theo
-                  </button>
-                  <button type="button" onClick={() => setGrade(null)} className="btn btn-quiet">
-                    Viết lại
-                  </button>
+                <div className="space-y-2 border-t border-rule pt-4">
+                  <p className="micro">Chấm mức độ nhớ của từ này</p>
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                    {GRADES.map((option) => (
+                      <button
+                        key={option.rating}
+                        type="button"
+                        disabled={saving}
+                        onClick={() => void rate(option.rating)}
+                        className={`min-h-[5rem] rounded-ui border border-line-strong border-t-2 bg-card px-4 py-3 text-left transition-colors hover:bg-hover disabled:cursor-not-allowed disabled:opacity-50 ${option.edge}`}
+                      >
+                        <span className="flex items-baseline justify-between gap-2">
+                          <span className="text-[0.9375rem] font-medium text-ink">{option.label}</span>
+                          <span className="tnum text-[0.75rem] text-ink-soft">{option.hotkey}</span>
+                        </span>
+                        <span className="mt-2 inline-block tnum text-[0.9375rem] font-medium text-accent">
+                          {preview && formatInterval(preview.now, preview.options[option.rating].card.due)}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                  <p className="text-[0.8125rem] text-ink-soft">
+                    Thẻ “Dễ” sẽ lâu gặp lại. Phím 1–4 để chấm.
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    <button type="button" onClick={nextCard} className="btn btn-quiet">
+                      <ArrowRight aria-hidden size={16} />
+                      Từ tiếp theo
+                    </button>
+                    <button type="button" onClick={() => setGrade(null)} className="btn btn-quiet">
+                      Viết lại
+                    </button>
+                  </div>
                 </div>
               </div>
             )}

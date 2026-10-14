@@ -109,8 +109,8 @@ Bảng `collections` cũng có policy riêng (`own collections`). Kiểm tra th�
 - **Thêm từ (`#/vocab`):** form thêm từ (từ, nghĩa, phát âm, ví dụ, ghi chú, bộ từ). Chọn bộ ở dải chip vừa để lọc vừa **đặt bộ mặc định cho từ mới** (form tự xoá sau mỗi lần thêm, giữ nguyên bộ đang chọn). Từ mới mặc định đến hạn ngay (`due = now()`). Chặn thêm trùng từ (không phân biệt hoa/thường). Sau khi thêm có dòng `Đã thêm {từ}. Xem trong danh sách`.
 - **Danh sách từ vựng (`#/vocab/list`):** lọc theo bộ + tìm kiếm client-side theo từ/nghĩa, **phân trang 50 mục/trang** (số trang + `Trước`/`Sau`, chỗ nhảy có `…`, hiện `1–50 trong N từ`), sửa qua modal (đổi được cả bộ từ), xóa có xác nhận.
 - **Ôn tập (`#/practice`):** chọn bộ ở chip trên cùng, rồi chọn chế độ. Bộ đang chọn được nhớ trong `localStorage`, **dùng chung cho cả hai chế độ**. Phiên ôn chỉ gồm từ trong bộ đó, lấy tối đa 30 card có `due <= now()` sắp theo `due` tăng dần.
-- **Chế độ Flashcard (`#/practice/flashcard`):** lật thẻ để xem nghĩa, chấm **Again / Hard / Good / Easy** (phím `1`–`4`, `Space` để lật). Mỗi nút hiện khoảng thời gian ôn lại thật, lấy từ chính kết quả FSRS dùng để ghi DB. Đây là chế độ cập nhật lịch FSRS.
-- **Chế độ Viết câu (`#/practice/writing`):** hiện từ, phiên âm, nghĩa, khái niệm; bạn viết một câu tiếng Anh có dùng từ đó rồi bấm **Chấm điểm** (`⌘/Ctrl + Enter`). AI trả về điểm 0–100, nhận xét, danh sách lỗi (loại lỗi · đoạn sai · giải thích · cách sửa), **câu đúng** đã sửa, vài câu mẫu khác và một mẹo. Có thể **Viết lại** hoặc sang **Từ tiếp theo**. Chế độ này **không** đổi lịch FSRS (là bài tập viết, không phải lượt ôn).
+- **Chế độ Flashcard (`#/practice/flashcard`):** lật thẻ để xem nghĩa, chấm **Again / Hard / Good / Easy** (phím `1`–`4`, `Space` để lật). Mỗi nút hiện khoảng thời gian ôn lại thật, lấy từ chính kết quả FSRS dùng để ghi DB.
+- **Chế độ Viết câu (`#/practice/writing`):** hiện từ, phiên âm, nghĩa, khái niệm; bạn viết một câu tiếng Anh có dùng từ đó rồi bấm **Chấm điểm** (`⌘/Ctrl + Enter`). AI trả về điểm 0–100, nhận xét, danh sách lỗi (loại lỗi · đoạn sai · giải thích · cách sửa), **câu đúng** đã sửa, vài câu mẫu khác và một mẹo. Sau khi chấm, bạn chấm mức độ nhớ **Again / Hard / Good / Easy** (`1`–`4`) y như flashcard — mỗi nút hiện khoảng thời gian ôn lại thật và lượt chấm ghi lịch FSRS; nút **Từ tiếp theo** bỏ qua mà không ghi lịch. Có thể **Viết lại** để viết lại chính từ đó.
 - Nếu ghi DB lỗi, card không bị chuyển và bạn chấm lại được.
 - Khi hết card đến hạn: hiện "Hôm nay đã xong" kèm bộ đang ôn, số từ và thời điểm đến hạn gần nhất **trong bộ đó**.
 
@@ -158,5 +158,5 @@ supabase/functions/grade-writing/index.ts  # edge function chấm câu bằng AI
 - Cột `state`: 0 New, 1 Learning, 2 Review, 3 Relearning (khớp enum `State` của ts-fsrs).
 - `cards.collection_id` là FK tổ hợp `(collection_id, user_id) → collections (id, user_id)` với `on delete set null (collection_id)`: RLS không bảo vệ được FK, nên ràng buộc này chặn việc gắn từ vào bộ của user khác.
 - Supabase free tier tự pause sau ~1 tuần không hoạt động; vào dashboard bấm *Resume*.
-- Chế độ Viết câu **không ghi gì vào DB**: điểm và lỗi chỉ hiện trong phiên rồi mất. Lưu lịch sử chấm cần thêm bảng (ngoài phạm vi hiện tại).
+- Chế độ Viết câu **không lưu lịch sử chấm**: điểm và lỗi chỉ hiện trong phiên rồi mất (chỉ lịch FSRS của card được ghi, giống flashcard). Lưu lịch sử chấm cần thêm bảng (ngoài phạm vi hiện tại).
 - `grade-writing` yêu cầu JWT hợp lệ (kiểm tra cả ở gateway và trong function): chỉ người đã đăng nhập gọi được, tránh lộ endpoint công khai và đốt credit AI.

@@ -492,7 +492,7 @@ Người dùng sửa được cả IPA và nghe lại trước khi lưu.
 |---|---|---|
 | `#/practice` | chọn bộ từ + chọn chế độ | — |
 | `#/practice/flashcard` | lật thẻ, chấm 4 mức (nguyên bản) | ✅ |
-| `#/practice/writing` | viết câu, AI chấm điểm + chỉ lỗi | ❌ |
+| `#/practice/writing` | viết câu, AI chấm điểm + chỉ lỗi, rồi chấm 4 mức | ✅ |
 
 **Breadcrumb** (`src/components/Breadcrumb.tsx`) ở đầu cả hai trang con: `← Ôn tập / {Flashcard|Viết câu}` — mục đầu là link quay lại màn chọn chế độ (kèm `ArrowLeft`, đây là nút back), mục cuối là trang hiện tại với `aria-current="page"`. Bọc trong `nav[aria-label="Đường dẫn trang"]`, ngăn cách bằng `/` (không dùng `·`), hiện ở **mọi** trạng thái kể cả lúc đang tải. Đặt trên CollectionBar, trong cùng một khối `space-y-3` để nhịp dọc không bị phá.
 
@@ -513,13 +513,13 @@ Dưới thẻ là vùng viết: nhãn `Viết một câu tiếng Anh có dùng t
 
 Cạnh `Chấm điểm` có nút phụ **`Từ tiếp theo`** (`.btn-quiet`) để bỏ qua từ đang viết mà không cần chấm — cùng nhãn với nút trong panel kết quả, theo luật "nút và kết quả dùng cùng một từ" (§8). Nút này **ẩn khi đã có kết quả**, vì lúc đó bản sao trong panel kết quả đã thay nó, tránh hai nút trùng chức năng trên cùng màn.
 
-**Kết quả chấm** nằm trong một `.panel`, theo thứ tự: điểm + `level` (số Literata 2rem, màu theo mức: ≥80 `accent`, ≥60 `warn`, còn lại `danger` — luôn kèm chữ `level` nên màu không phải kênh duy nhất) → `verdict` → `usedWord === false` thì `.banner-warn` → danh sách lỗi (mỗi lỗi: vạch trái 2px `danger`, `type`, đoạn sai (serif), giải thích, `Sửa: …` màu `accent`) → **`Câu đúng`** (serif 1.0625rem) → `Có thể viết` (danh sách serif `ink-soft`) → `tip` sau đường kẻ `rule`. Hai hành động: **`Từ tiếp theo`** (chính) và **`Viết lại`** (phụ).
+**Kết quả chấm** nằm trong một `.panel`, theo thứ tự: điểm + `level` (số Literata 2rem, màu theo mức: ≥80 `accent`, ≥60 `warn`, còn lại `danger` — luôn kèm chữ `level` nên màu không phải kênh duy nhất) → `verdict` → `usedWord === false` thì `.banner-warn` → danh sách lỗi (mỗi lỗi: vạch trái 2px `danger`, `type`, đoạn sai (serif), giải thích, `Sửa: …` màu `accent`) → **`Câu đúng`** (serif 1.0625rem) → `Có thể viết` (danh sách serif `ink-soft`) → `tip` sau đường kẻ `rule`. Chân panel, **sau đường kẻ `rule`**: nhãn `Chấm mức độ nhớ của từ này` + lưới **4 nút chấm** giống hệt flashcard (`.rounded-ui`, viền trên 2px theo mức — `danger`/`warn`/`accent`/`cool`, nhãn + hotkey, dưới là khoảng thời gian ôn lại thật lấy từ chính kết quả FSRS dùng để ghi DB) + dòng phụ `Thẻ “Dễ” sẽ lâu gặp lại. Phím 1–4 để chấm.`; dưới nữa là **`Từ tiếp theo`** (`.btn-quiet`, bỏ qua không ghi lịch) và **`Viết lại`**.
 
-**Màn kết thúc phiên:** `Hết câu trong phiên` + `Đã viết {n} câu · điểm trung bình {x}/100.`
+**Màn kết thúc phiên:** `Hết câu trong phiên` + `Đã viết {n} câu · điểm trung bình {x}/100.` + lưới 4 ô đếm số lần chấm mỗi mức (giống màn kết thúc của flashcard).
 
 ### 13.3. Quyết định
 
-- **Không** cập nhật FSRS ở chế độ viết. Đây là bài tập sản xuất, không phải lượt tự đánh giá; trộn điểm AI vào lịch ôn sẽ làm lịch ôn mất nghĩa. Muốn tách hẳn thì cần một lịch riêng cho kỹ năng viết.
+- Chế độ viết **có** cập nhật FSRS, nhưng chỉ qua lượt chấm 1–4 của người học **sau khi** AI chấm — điểm AI không tự suy ra lịch. Lý do: cơ chế xuất hiện của thẻ phải giống flashcard (thẻ dễ thưa, thẻ khó dày); để AI quyết lịch thì người học mất quyền tự đánh giá và điểm 0–100 không ánh xạ sạch sang 4 mức Again/Hard/Good/Easy. Nút `Từ tiếp theo` **không** ghi lịch (bỏ qua ≠ đã ôn), nên từ đó vẫn đến hạn ở phiên sau.
 - **Không** lưu lịch sử chấm (không thêm bảng): giữ đúng phạm vi, tránh một nửa tính năng lịch sử.
 - Lỗi do AI trả về có thể rỗng (câu đã đúng) — panel không hiện mục `Lỗi cần sửa` khi rỗng, và luôn hiện `Câu đúng`.
 - Nhãn/màu/kiểu chữ dùng lại đúng token và thành phần §3–§6; không thêm class mới.
@@ -534,6 +534,8 @@ Cạnh `Chấm điểm` có nút phụ **`Từ tiếp theo`** (`.btn-quiet`) đ�
 | Kết quả | `Kết quả` · `{điểm}/100` · `Câu đúng` · `Có thể viết` · `Lỗi cần sửa` |
 | Thiếu từ mục tiêu | `Câu chưa dùng từ “{từ}”. Thử lại với từ mục tiêu nhé.` |
 | Lỗi gọi máy chấm | hiện nguyên văn thông báo của function (ví dụ `Máy chấm chưa được cấu hình: thiếu secret AI_API_KEY của project.`) |
+| Chấm sau khi AI chấm | `Chấm mức độ nhớ của từ này` · `Lại`/`Khó`/`Được`/`Dễ` + hotkey `1`–`4` + khoảng thời gian ôn lại |
+| Phụ chú chấm | `Thẻ “Dễ” sẽ lâu gặp lại. Phím 1–4 để chấm.` |
 | Hết phiên | `Hết câu trong phiên` + `Đã viết {n} câu · điểm trung bình {x}/100.` |
 
 ---
