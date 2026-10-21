@@ -1,17 +1,10 @@
-/* Font: Be Vietnam Pro (UI, dựng cho tiếng Việt) + Literata (serif cho từ tiếng Anh) — nạp local, chỉ subset latin + vietnamese. */
-@import '@fontsource/be-vietnam-pro/latin-400.css';
-@import '@fontsource/be-vietnam-pro/latin-500.css';
-@import '@fontsource/be-vietnam-pro/latin-600.css';
-@import '@fontsource/be-vietnam-pro/vietnamese-400.css';
-@import '@fontsource/be-vietnam-pro/vietnamese-500.css';
-@import '@fontsource/be-vietnam-pro/vietnamese-600.css';
-@import '@fontsource-variable/literata/wght.css';
-
+/* Font: Arial cho toàn bộ web — dễ đọc, hỗ trợ đầy đủ dấu tiếng Việt, không tải webfont. */
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Literata', ui-serif, Georgia, serif;
+  --font-sans: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  /* Giữ alias `font-serif` cho các chỗ đang dùng, nhưng cũng render bằng Arial. */
+  --font-serif: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   /*
    * Hai bán kính, theo vai trò:
    *   --radius-ui   (8px)  control: nút, ô nhập, chip lọc, ô chấm
@@ -259,7 +252,7 @@
     line-height: 1.6;
   }
 
-  /* Ô "Từ": nhân vật chính của form, đặt bằng serif như mặt trước của một tấm thẻ. */
+  /* Ô "Từ": nhân vật chính của form, chữ lớn hơn để dễ đọc. */
   .field-word {
     min-height: 3.25rem;
     font-family: var(--font-serif);
@@ -267,7 +260,7 @@
     letter-spacing: -0.01em;
   }
 
-  /* Ô phiên âm: IPA đọc rõ hơn với serif. */
+  /* Ô phiên âm: IPA đọc rõ với Arial. */
   .field-phonetic {
     font-family: var(--font-serif);
     letter-spacing: 0.01em;

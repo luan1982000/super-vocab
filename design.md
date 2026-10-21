@@ -32,7 +32,7 @@ Nguồn: skill `ui-ux-pro-max` (đã cài ở `.omp/plugins/`).
 |---|---|
 | `--design-system "english learning platform minimalist elegant editorial" --variance 2 --motion 2 --density 3` | style `Minimalism & Swiss Style`, dials variance 2 / motion 2 / density 3, motion preset `Scroll Reveal (Subtle)` |
 | `--domain style "editorial magazine elegant typographic"` | `editorial-grid-magazine`, `exaggerated-minimalism` — lấy phần typography, bỏ phần asymmetric grid |
-| `--domain typography`, `--domain color` | xác nhận cặp serif+sans và palette trung tính; **palette mặc định của skill (tím `#7C3AED` / nền `#FAF5FF`) bị loại** — xem §10 |
+| `--domain typography`, `--domain color` | xác nhận palette trung tính; **palette mặc định của skill (tím `#7C3AED` / nền `#FAF5FF`) bị loại** — xem §10 |
 | `--domain ux "reading line length typography measure"` | `max-w-prose` 65–75ch cho dòng đọc, `leading 1.5–1.75`, `text-wrap: balance` cho heading ngắn, contrast chữ ≥4.5:1 |
 
 Năm quyết định lớn rút ra:
@@ -122,26 +122,25 @@ Chế độ tối theo `prefers-color-scheme`, cùng cấu trúc, chỉ đổi v
 
 ## 4. Chữ
 
-Hai family, phân vai rõ, **đều đã có sẵn trong `package.json`** (không thêm phụ thuộc, không gọi CDN):
+Một family duy nhất: **Arial** cho toàn bộ web (UI, tiêu đề, headword, câu ví dụ, form, bảng, nhãn). Arial có sẵn trên mọi hệ điều hành, hỗ trợ đầy đủ dấu tiếng Việt, và cho **độ dễ đọc cao nhất** — đây là web học ngôn ngữ nên chữ phải rõ trước tiên. Không tải webfont, không gọi CDN. Token `--font-serif` vẫn tồn tại làm alias và cũng trỏ về Arial để các chỗ dùng `font-serif` không phải sửa.
 
-| Vai | Family | Vì sao |
-|---|---|---|
-| Nội dung tiếng Anh (headword, câu ví dụ) + tiêu đề | **Literata** (`font-serif`) | serif đọc sách; headword là *chữ được tra*, không phải nhãn giao diện |
-| Toàn bộ phần còn lại (UI, nghĩa, form, bảng, nhãn) | **Be Vietnam Pro** (`font-sans`, mặc định) | sans do người Việt thiết kế, dấu tiếng Việt được vẽ riêng |
+| Vai | Family |
+|---|---|
+| Toàn bộ nội dung | **Arial** (`--font-sans`, `--font-serif`, mặc định) |
 
 ### 4.1. Thang chữ
 
 | Vai | Size / line-height | Weight | Family |
 |---|---|---|---|
-| Headword trên thẻ ôn | `clamp(2.5rem, 9vw, 4rem)` / 1.1, `tracking -0.02em` | 500 | Literata |
-| Tiêu đề trang (h1) | `1.375rem` / 1.3, `tracking -0.01em` | 400 | Literata |
-| Wordmark màn đăng nhập | `1.75rem` / 1.1, `tracking -0.015em` | 400 | Literata |
-| Headword trong sổ từ | `1.0625rem` / 1.4 | 400 | Literata |
-| Nghĩa trên thẻ | `1.25rem` / 1.45 | 500 | Be Vietnam Pro |
-| Câu ví dụ | `1.0625rem` / 1.7, tối đa `46ch` | 400 | Literata |
-| Nội dung, form, bảng | `1rem` / 1.5–1.6 | 400 | Be Vietnam Pro |
-| Nghĩa trong sổ từ | `0.9375rem` / 1.625 | 400 | Be Vietnam Pro |
-| Nhãn nhỏ (`.micro`) — tiêu đề cột, nhãn form, dòng meta | `0.8125rem` / 1.4 | 500 | Be Vietnam Pro, màu `ink-soft` |
+| Headword trên thẻ ôn | `clamp(2.5rem, 9vw, 4rem)` / 1.1, `tracking -0.02em` | 500 | Arial |
+| Tiêu đề trang (h1) | `1.375rem` / 1.3, `tracking -0.01em` | 400 | Arial |
+| Wordmark màn đăng nhập | `1.75rem` / 1.1, `tracking -0.015em` | 400 | Arial |
+| Headword trong sổ từ | `1.0625rem` / 1.4 | 400 | Arial |
+| Nghĩa trên thẻ | `1.25rem` / 1.45 | 500 | Arial |
+| Câu ví dụ | `1.0625rem` / 1.7, tối đa `46ch` | 400 | Arial |
+| Nội dung, form, bảng | `1rem` / 1.5–1.6 | 400 | Arial |
+| Nghĩa trong sổ từ | `0.9375rem` / 1.625 | 400 | Arial |
+| Nhãn nhỏ (`.micro`) — tiêu đề cột, nhãn form, dòng meta | `0.8125rem` / 1.4 | 500 | Arial, màu `ink-soft` |
 | Số liệu (khoảng cách ôn, tiến độ, bộ đếm) | theo ngữ cảnh | — | `tabular-nums` (`.tnum`) |
 
 Quy tắc:
@@ -166,7 +165,7 @@ Quy tắc:
 
 ```
 Menu dọc 240px (aside, sticky, `border-r` rule)   │  phần còn lại
-  Super Vocab   [ ⊟ ]  ↑ Literata, nút Ẩn menu cạnh wordmark
+  Super Vocab   [ ⊟ ]  ↑ Arial, nút Ẩn menu cạnh wordmark
   ▸ Từ vựng   ▪ Ôn tập  ← mục đang xem: nền accent/10, chữ accent
   …                                             │
   owner@…  [ Đăng xuất ]                         │        linh vật ở góc (≥1400px)
@@ -174,7 +173,7 @@ Menu dọc 240px (aside, sticky, `border-r` rule)   │  phần còn lại
 
 Thêm từ (`#/vocab`)
   ┌ panel ──────────────────────────────────────────────────────┐
-  │  Thêm từ                                                    │  ← h1 Literata 1.375rem
+  │  Thêm từ                                                    │  ← h1 Arial 1.375rem
   │  Từ [______]        Nghĩa [______]                          │  ← nhãn .micro, ô .field
   │  Phát âm [______]  [ Lấy phát âm ] [ Nghe ]                 │
   │  Bộ từ [ ▾ ]                                                │
@@ -195,8 +194,8 @@ Danh sách từ vựng (`#/vocab/list`)
   Từ                Nghĩa              Bộ từ          Ôn tiếp theo   Trạng thái  Thao tác
   ══════════════════════════════════════════════════════════════════════════
   eloquent          hùng hồn, lưu loát  Chưa phân loại quá hạn 1 ngày  Mới      Sửa  Xóa
-  Literata 1.0625   0.9375rem           ● + tên        nền highlighter
-                    ví dụ: Literata 0.9375rem/1.7 ink-soft
+  Arial 1.0625rem  0.9375rem          ● + tên        nền highlighter
+                    ví dụ: Arial 0.9375rem/1.7 ink-soft
   ────────────────────────────────────────────────────────────────────────── (rule)
   1–50 trong 320 từ                    [ ← Trước ] 1 … 4 [5] 6 … 12 [ Sau → ]
 ```
@@ -216,7 +215,7 @@ Danh sách từ vựng (`#/vocab/list`)
            ● IELTS Reading                        ← .micro + chấm tông
            ┌───────────────────────────────────┐
            │                                   │
-           │            ephemeral              │  ← Literata clamp(2.5–4rem), canh giữa
+           │            ephemeral              │  ← Arial clamp(2.5–4rem), canh giữa
            │           /ɪˈfem.ə.ɹəl/  [ Nghe ] │
            │     Bấm hoặc nhấn Space để xem nghĩa│
            └───────────────────────────────────┘
@@ -264,7 +263,7 @@ Chip bộ từ, track tiến độ, ô chấm, thẻ ôn là các tổ hợp uti
 | Thẻ ôn | `panel`, `max-width: 30rem`, `min-height: 16rem`; hai mặt thật (front/back) chồng khít; nhãn bộ từ nằm **ngoài** thẻ, phía trên. |
 | Nút chấm | cao **80px** (vùng chạm ≥44px), radius **8px**, viền `line-strong` + `border-top: 2px` màu mức; nhãn 15px/500 `ink`, phím tắt 12px `ink-soft`, số khoảng cách 15px/500 `accent`. Cách nhau 8px. |
 | Track tiến độ | `2px`, nền `line-strong` (≥3:1 vì đây là graphic mang nghĩa), fill `accent`. |
-| Modal | `panel` trên nền `scrim` + `backdrop-blur-sm`, tối đa 32rem, bóng `--shadow-modal`, tiêu đề Literata 1.125rem, `role="dialog"` + `aria-modal`. |
+| Modal | `panel` trên nền `scrim` + `backdrop-blur-sm`, tối đa 32rem, bóng `--shadow-modal`, tiêu đề Arial 1.125rem, `role="dialog"` + `aria-modal`. |
 | Focus | `outline: 2px solid var(--accent)`, offset `2px` — áp dụng ở cả 2 chế độ, không bao giờ tắt. |
 | Trạng thái thẻ | "Mới" (viền `rule`), "Đang học" (`warn` 10% nền), "Ôn tập" (`accent` 10%), "Học lại" (`danger` 10%) — luôn kèm chữ. |
 
@@ -500,12 +499,12 @@ Người dùng sửa được cả IPA và nghe lại trước khi lưu.
 
 - `h1` **`Ôn tập`** + một dòng phụ: `Chọn cách ôn. Cả hai dùng chung bộ từ bên dưới. Hôm nay còn {n} thẻ đến hạn.`
 - Dưới đó là **CollectionBar** (chọn bộ) — bộ này áp cho cả hai chế độ, nhớ trong `localStorage`.
-- Hai **thẻ chế độ** (`.panel`, lưới 2 cột ≥640px, `min-height 9.5rem`): icon + tên (Literata 1.125rem) + mô tả 1 câu + `Bắt đầu →` màu `accent`. Hover đổi nền `hover`. Không bóng, không bo lớn — cùng ngôn ngữ với panel hiện có.
+- Hai **thẻ chế độ** (`.panel`, lưới 2 cột ≥640px, `min-height 9.5rem`): icon + tên (Arial 1.125rem) + mô tả 1 câu + `Bắt đầu →` màu `accent`. Hover đổi nền `hover`. Không bóng, không bo lớn — cùng ngôn ngữ với panel hiện có.
 - Bộ đếm đến hạn lấy bằng `head: true, count: exact` (không tải thẻ), nên đúng cả khi quá 30 thẻ.
 
 ### 13.2. Màn viết câu
 
-Cột hẹp `30rem` (như thẻ ôn). Khối trên là **thẻ từ**: chấm tông + tên bộ (ngoài panel, như flashcard), headword Literata `clamp(1.75rem, 6vw, 2.5rem)`, phiên âm + nút `Nghe`, rồi `Nghĩa` và `Khái niệm` (`note`) canh trái.
+Cột hẹp `30rem` (như thẻ ôn). Khối trên là **thẻ từ**: chấm tông + tên bộ (ngoài panel, như flashcard), headword Arial `clamp(1.75rem, 6vw, 2.5rem)`, phiên âm + nút `Nghe`, rồi `Nghĩa` và `Khái niệm` (`note`) canh trái.
 
 > Cố ý **không** hiện `example` sẵn có: hiện thì người học chỉ việc chép lại. Ví dụ chỉ dùng làm ngữ cảnh cho AI.
 
@@ -513,7 +512,7 @@ Dưới thẻ là vùng viết: nhãn `Viết một câu tiếng Anh có dùng t
 
 Cạnh `Chấm điểm` có nút phụ **`Từ tiếp theo`** (`.btn-quiet`) để bỏ qua từ đang viết mà không cần chấm — cùng nhãn với nút trong panel kết quả, theo luật "nút và kết quả dùng cùng một từ" (§8). Nút này **ẩn khi đã có kết quả**, vì lúc đó bản sao trong panel kết quả đã thay nó, tránh hai nút trùng chức năng trên cùng màn.
 
-**Kết quả chấm** nằm trong một `.panel`, theo thứ tự: điểm + `level` (số Literata 2rem, màu theo mức: ≥80 `accent`, ≥60 `warn`, còn lại `danger` — luôn kèm chữ `level` nên màu không phải kênh duy nhất) → `verdict` → `usedWord === false` thì `.banner-warn` → danh sách lỗi (mỗi lỗi: vạch trái 2px `danger`, `type`, đoạn sai (serif), giải thích, `Sửa: …` màu `accent`) → **`Câu đúng`** (serif 1.0625rem) → `Có thể viết` (danh sách serif `ink-soft`) → `tip` sau đường kẻ `rule`. Chân panel, **sau đường kẻ `rule`**: nhãn `Chấm mức độ nhớ của từ này` + lưới **4 nút chấm** giống hệt flashcard (`.rounded-ui`, viền trên 2px theo mức — `danger`/`warn`/`accent`/`cool`, nhãn + hotkey, dưới là khoảng thời gian ôn lại thật lấy từ chính kết quả FSRS dùng để ghi DB) + dòng phụ `Thẻ “Dễ” sẽ lâu gặp lại. Phím 1–4 để chấm.`; dưới nữa là **`Từ tiếp theo`** (`.btn-quiet`, bỏ qua không ghi lịch) và **`Viết lại`**.
+**Kết quả chấm** nằm trong một `.panel`, theo thứ tự: điểm + `level` (số Arial 2rem, màu theo mức: ≥80 `accent`, ≥60 `warn`, còn lại `danger` — luôn kèm chữ `level` nên màu không phải kênh duy nhất) → `verdict` → `usedWord === false` thì `.banner-warn` → danh sách lỗi (mỗi lỗi: vạch trái 2px `danger`, `type`, đoạn sai (Arial), giải thích, `Sửa: …` màu `accent`) → **`Câu đúng`** (Arial 1.0625rem) → `Có thể viết` (danh sách Arial `ink-soft`) → `tip` sau đường kẻ `rule`. Chân panel, **sau đường kẻ `rule`**: nhãn `Chấm mức độ nhớ của từ này` + lưới **4 nút chấm** giống hệt flashcard (`.rounded-ui`, viền trên 2px theo mức — `danger`/`warn`/`accent`/`cool`, nhãn + hotkey, dưới là khoảng thời gian ôn lại thật lấy từ chính kết quả FSRS dùng để ghi DB) + dòng phụ `Thẻ “Dễ” sẽ lâu gặp lại. Phím 1–4 để chấm.`; dưới nữa là **`Từ tiếp theo`** (`.btn-quiet`, bỏ qua không ghi lịch) và **`Viết lại`**.
 
 **Màn kết thúc phiên:** `Hết câu trong phiên` + `Đã viết {n} câu · điểm trung bình {x}/100.` + lưới 4 ô đếm số lần chấm mỗi mức (giống màn kết thúc của flashcard).
 
