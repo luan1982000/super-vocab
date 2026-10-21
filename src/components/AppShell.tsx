@@ -7,6 +7,7 @@ import {
   ListBullets,
   SidebarSimple,
   SignOut,
+  SquaresFour,
   X,
 } from "@phosphor-icons/react";
 import { useAuth } from "../hooks/useAuth";
@@ -39,9 +40,13 @@ function Wordmark() {
 function NavItems({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <>
-      <NavLink to="/vocab" onClick={onNavigate} className={navLinkClass}>
+      <NavLink to="/vocab" end onClick={onNavigate} className={navLinkClass}>
         <ListBullets aria-hidden size={20} />
         Từ vựng
+      </NavLink>
+      <NavLink to="/vocab/list" onClick={onNavigate} className={navLinkClass}>
+        <SquaresFour aria-hidden size={20} />
+        Danh sách từ
       </NavLink>
       <NavLink to="/practice" onClick={onNavigate} className={navLinkClass}>
         <Cards aria-hidden size={20} />
