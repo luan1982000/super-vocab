@@ -6,8 +6,8 @@ import { CollectionBar } from '../components/CollectionBar'
 import { FullPageSpinner } from '../components/FullPageSpinner'
 import { Modal } from '../components/Modal'
 import { Pagination } from '../components/Pagination'
+import { VocabCardGrid } from '../components/VocabCardGrid'
 import { VocabForm } from '../components/VocabForm'
-import { VocabTable } from '../components/VocabTable'
 import { useCards } from '../hooks/useCards'
 import { useCollections } from '../hooks/useCollections'
 import { SCOPE_ALL, SCOPE_NONE, type CollectionScope } from '../lib/collections'
@@ -192,7 +192,13 @@ export function VocabListPage() {
           </div>
         ) : (
           <>
-            <VocabTable rows={visible} collections={collections} now={now} onEdit={setEditing} onDelete={setDeleting} />
+            <VocabCardGrid
+              rows={visible}
+              collections={collections}
+              now={now}
+              onEdit={setEditing}
+              onDelete={setDeleting}
+            />
             <Pagination
               page={safePage}
               pageCount={pageCount}
