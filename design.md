@@ -554,3 +554,91 @@ Dùng thư viện `page-mascot` (MIT) — nhân vật nhìn theo con trỏ, nhá
 **Vì sao có ngưỡng:** cột nội dung canh giữa nên linh vật chỉ không đè lên nội dung khi lề phải đủ rộng. Với sidebar 240px + cột 56rem, cần viewport ≥ 1400px; trang đăng nhập chỉ có cột 23rem nên 680px là đủ. Dưới ngưỡng, linh vật **ẩn** thay vì đè lên form — đây là đánh đổi có ý thức.
 
 Linh vật là **trang trí**: theo dõi con trỏ tự tắt khi không có `pointer: fine`, hiệu ứng nhún khi bấm tôn trọng `prefers-reduced-motion` (cả hai do thư viện lo). Nó vẫn là một `button` có `aria-label` (`Boop the linh vật`) nên bàn phím tới được.
+
+---
+
+## 15. Ngữ pháp — sổ theo dõi 49 chủ đề
+
+Hai route: `#/grammar` (danh sách) và `#/grammar/:slug` (chi tiết). Nội dung là **tài nguyên chung** (`grammar_topics`); trạng thái, mức nắm và hai ngày là **tiến độ riêng của user** (`grammar_progress`), nên hai tài khoản thấy cùng bài học nhưng lịch ôn khác nhau.
+
+### 15.1. Danh sách
+
+```
+Ngữ pháp  49 chủ đề                                   [ Tìm chủ đề ngữ pháp ]
+Học theo từng chủ đề, tự đánh giá mức nắm và để lịch ôn nhắc lại sau 3 ngày hoặc 1 tuần.
+
+┌ [icon] Hôm nay ───────────────────────────────────────────────────────┐
+│ 1 chủ đề đến hạn                          Tiến độ nắm              2%  │
+│ Đã nắm 1/49 chủ đề, 1 cần ôn             ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  │
+│                                           Xem 1 chủ đề đến hạn         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Trạng thái [Tất cả 49] [● Đến hạn 1] [● Chưa học 46] [● Đang học 1] [● Cần ôn 1] [● Đã nắm 1]
+            ↑ nền accent   ↑ highlighter   ↑ xanh xám        ↑ xanh dương      ↑ hổ phách     ↑ xanh rêu
+
+┃ [1] Giai đoạn 1 — Nền tảng câu và từ loại                    1/9 đã nắm
+┃─────────────────────────────────────────────────────────────────────────
+┃ [Cần ôn] [Mới]  Danh từ  Nouns…                        [ Đã ôn ]
+┃ Phân biệt danh từ đếm được và không đếm được, nắm quy tắc…
+┃ Đã ôn 20/10/2026   Ôn tiếp 23/10/2026 [Quá hạn 2 ngày]   Mức nắm ●●●○○ 3/5
+┃─────────────────────────────────────────────────────────────────────────
+```
+
+- **Một dòng là một chủ đề**, đường kẻ `rule` giữa các dòng — cùng ngôn ngữ “sổ kẻ dòng” với danh sách từ vựng; không card, không bóng.
+- Toàn bộ phần chữ là **một link** sang chi tiết (hover mới gạch chân tiêu đề). Nút **`Đã ôn`** nằm ngoài link để bấm nhanh mà không mở trang.
+- Thứ tự thông tin theo câu hỏi của người học: **tên → tôi đang ở đâu (trạng thái) → đã ôn khi nào → ôn tiếp khi nào → nắm tới đâu**. Ngày luôn in đủ `dd/mm/yyyy`, không rút gọn thành “3 ngày nữa”.
+- **Mỗi trạng thái một màu**, luôn kèm nhãn chữ và chấm:
+  - Chưa học — `tab-slate` (xanh xám), chữ `highlighter-ink` (7.29:1 / 7.61:1).
+  - Đang học — `cool` (xanh dương), chữ `on-accent` (7.51:1 / 8.70:1).
+  - Cần ôn — `warn` (hổ phách), chữ `on-accent` (5.02:1 / 9.35:1).
+  - Đã nắm — `accent` (xanh rêu), chữ `on-accent` (10.40:1 / 8.83:1).
+  Badge là **pill đặc** cùng dáng, không còn kiểu “ô viền nhạt / ô nền nhạt” lẫn lộn.
+- **Quá hạn** dùng `highlighter`: cả cụm `Ôn tiếp {ngày} {Quá hạn n ngày}` thành một badge, không tô cả dòng. Ngoài badge này, chỉ chip `Đến hạn` khi đang chọn dùng `highlighter` vì cùng một nghĩa.
+- Mức nắm hiện **chấm 1–5 + số** (`3/5`) trong một pill `accent/10` khi đã chấm; màu không phải kênh duy nhất.
+- Bộ lọc trạng thái kèm số lượng, **nền nhạt 25% + viền 70% cùng màu trạng thái**; chip đang chọn đổi sang nền đặc. “Đến hạn” dùng hổ phách, khi chọn là `highlighter` đặc. Nhờ vậy hàng chip vừa là bộ lọc vừa là legend cho thanh tiến độ.
+- **Thanh tiến độ chia đoạn** theo thành phần: xanh rêu (đã nắm) → hổ phách (cần ôn) → xanh dương (đang học) → track `rule` (chưa học). Không dùng một thanh accent đơn sắc.
+- Mép trên panel “Hôm nay” có **dải 4 màu 4px** (xanh xám → xanh dương → hổ phách → xanh rêu) làm chữ ký thị giác. Dải này **không mã hoá số liệu**; thanh tiến độ bên dưới mới là dữ liệu thật.
+- **Tiêu đề giai đoạn** là một dải màu: nền 20% tông giai đoạn, vạch trái 4px đặc, ô số `size-8` nền đặc chữ `highlighter-ink`. Năm giai đoạn dùng sage / slate / ochre / mauve / clay; màu chỉ để nhận diện nhóm, chữ vẫn là kênh chính.
+- **“Mới”** dùng pill đặc `tab-rose` + chữ `highlighter-ink` (7.72:1 / 8.07:1), tách hẳn khỏi màu “Đã nắm”.
+- Mobile: link xếp trên, nút `Đã ôn` full width bên dưới; chip xuống dòng thay vì cuộn ngang.
+- Tìm kiếm client-side theo tiêu đề, tên tiếng Anh và tóm tắt.
+
+### 15.2. Chi tiết
+
+```
+← Ngữ pháp / Danh từ
+Giai đoạn 1 — Nền tảng câu và từ loại   [Cần ôn] [Mới]
+Danh từ
+Nouns: countable, uncountable, plural
+[ Sửa nội dung ]                                    (mobile: full width)
+Tóm tắt một câu…
+
+┌ Nội dung (trái, 65ch) ─────────────────┐  ┌ Tiến độ của bạn (phải, 20rem, sticky) ┐
+│ Kiến thức                              │  │ [✓ Đã ôn hôm nay]                    │
+│ ### Công thức / ### Cách dùng / …     │  │ Trạng thái [Chưa học][Đang học]      │
+│                                        │  │            [Cần ôn][Đã nắm]          │
+│ Ví dụ                                  │  │ Mức độ nắm  [1][2][3][4][5]          │
+│ “There are three knives…”              │  │ Ngày học gần nhất [ 20/10/2026 ]     │
+│ “Có ba con dao…”                       │  │ Ôn tiếp           [ 23/10/2026 ]     │
+│                                        │  │ Lịch ôn — Còn 3 ngày                 │
+│ Bài tập                                │  │ Số lần đã ôn / Ghi nhận gần nhất     │
+│ Bài 1  [A][B][C][D] → đúng/sai + giải  │  │ Quy tắc 1/3/7 ngày                   │
+│ Bài 2 …  Bài 3 …                       │  └──────────────────────────────────────┘
+└────────────────────────────────────────┘
+```
+
+- Desktop: nội dung bên trái, bảng tiến độ bên phải và **sticky** để vừa đọc vừa chỉnh. Mobile: đọc nội dung, ví dụ, làm bài tập rồi mới tới bảng tiến độ — đúng thứ tự “học xong mới đánh dấu”.
+- **Hai ô ngày là `<input type="date">`**, tuyệt đối không phải `select`: người dùng mở lịch chọn ngày, gõ tay được, xoá được (→ `null`).
+- Bảng tiến độ có **viền trên 2px cùng màu trạng thái**. Bốn nút trạng thái dùng đúng màu badge: chưa chọn là nền 25% + viền 70%, đang chọn là nền đặc; mỗi nút có chấm màu. Mức nắm 1–5 là hàng nút; bấm lại mức đang chọn để bỏ đánh giá. Nghĩa của 5 mức nằm trong `<details>` để không chiếm chỗ.
+- **3 bài tập** trắc nghiệm 4 lựa chọn: chọn xong khoá lựa chọn, tô đáp án đúng bằng `accent`, lựa chọn sai bằng `danger`, hiện giải thích ngay. Nút `Làm lại` xoá lựa chọn. Kết quả bài tập **không** tự ghi tiến độ — người học tự quyết định.
+- Nút `Đã ôn hôm nay`: ghi `last_studied_on = hôm nay`, `reviewed_at`, tăng `review_count`, đặt `next_review_on` theo trạng thái (Đang học +1, Cần ôn +3, Đã nắm +7 ngày). Chưa học → chuyển thành Đang học.
+- Đổi trạng thái cũng đặt lại `next_review_on` từ hôm nay; sau đó vẫn sửa tay được. Quy tắc hiện ngay dưới bảng, không ẩn trong tooltip.
+- **Sửa nội dung** mở modal (cùng `.panel` và nút đóng như các modal khác), sửa tiêu đề, tên tiếng Anh, tóm tắt, Markdown-lite, danh sách ví dụ và đúng 3 bài tập. Modal dài dùng `items-start` + `my-auto` để không bị cắt mép trên. Nội dung lưu vào DB và dùng chung cho mọi user; form không cho lưu khi thiếu câu hỏi, lựa chọn, đáp án hoặc giải thích.
+
+### 15.3. Quyết định
+
+- **Bốn trạng thái dùng bốn màu khác nhau** (xanh xám / xanh dương / hổ phách / xanh rêu) thay vì chỉ hai tông. Tất cả là token có sẵn, không thêm palette ngoài hệ; cặp nền–chữ đều ≥5:1 ở cả hai chế độ (số đo ghi ở §15.1). Nhãn chữ vẫn là kênh chính, màu chỉ để quét nhanh.
+- **Không thêm bảng lịch sử ôn**: mỗi chủ đề chỉ giữ lần ôn gần nhất + số lần, đủ cho quy tắc 3/7 ngày; lịch sử chi tiết là tính năng khác.
+- **Không tự đổi trạng thái theo điểm bài tập**: 3 câu đúng không đồng nghĩa “đã nắm”; người học tự chấm mức nắm.
+- Nội dung là Markdown-lite tự viết (`###`, `-`, `**đậm**`, `*nghiêng*`, `` `code` ``) — không thêm thư viện Markdown, không cho HTML.
+- Ngày lưu dạng `date` (`YYYY-MM-DD`), so sánh theo giờ máy; không trộn với `timestamptz` của FSRS.

@@ -75,3 +75,69 @@ create policy "own cards" on public.cards
   to authenticated
   using ((select auth.uid()) = user_id)
   with check ((select auth.uid()) = user_id);
+
+-- 5. Ngữ pháp — nội dung chủ đề dùng chung (đọc/sửa được bởi user đã đăng nhập)
+create table if not exists public.grammar_topics (
+  id uuid primary key default gen_random_uuid(),
+  slug text not null unique check (slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
+  stage smallint not null check (stage between 1 and 5),
+  position smallint not null check (position > 0),
+  title text not null check (length(trim(title)) > 0),
+  title_en text,
+  summary text not null check (length(trim(summary)) > 0),
+  content text not null check (length(trim(content)) > 0),
+  examples jsonb not null default '[]'::jsonb check (jsonb_typeof(examples) = 'array'),
+  exercises jsonb not null default '[]'::jsonb check (jsonb_typeof(exercises) = 'array'),
+  is_new boolean not null default false,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create index if not exists grammar_topics_stage_position_idx
+  on public.grammar_topics (stage, position);
+
+alter table public.grammar_topics enable row level security;
+
+-- Nội dung là tài nguyên chung: mọi user đã đăng nhập đều đọc và sửa được.
+drop policy if exists "read grammar topics" on public.grammar_topics;
+create policy "read grammar topics" on public.grammar_topics
+  for select
+  to authenticated
+  using (true);
+
+drop policy if exists "update grammar topics" on public.grammar_topics;
+create policy "update grammar topics" on public.grammar_topics
+  for update
+  to authenticated
+  using (true)
+  with check (true);
+
+-- 6. Ngữ pháp — tiến độ theo từng user
+create table if not exists public.grammar_progress (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null default auth.uid() references auth.users (id) on delete cascade,
+  topic_id uuid not null references public.grammar_topics (id) on delete cascade,
+  status text not null default 'not_started'
+    check (status in ('not_started', 'learning', 'needs_review', 'mastered')),
+  mastery smallint check (mastery between 1 and 5),
+  last_studied_on date,
+  next_review_on date,
+  reviewed_at timestamptz,
+  review_count integer not null default 0 check (review_count >= 0),
+  updated_at timestamptz not null default now(),
+  unique (user_id, topic_id)
+);
+
+create index if not exists grammar_progress_user_next_idx
+  on public.grammar_progress (user_id, next_review_on);
+create index if not exists grammar_progress_topic_idx
+  on public.grammar_progress (topic_id);
+
+alter table public.grammar_progress enable row level security;
+
+drop policy if exists "own grammar progress" on public.grammar_progress;
+create policy "own grammar progress" on public.grammar_progress
+  for all
+  to authenticated
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);

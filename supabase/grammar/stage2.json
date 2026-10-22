@@ -1,0 +1,861 @@
+{
+  "stage": 2,
+  "stageTitle": "Hệ thống thì",
+  "topics": [
+    {
+      "slug": "present-simple",
+      "title": "Present Simple",
+      "titleEn": "Present Simple",
+      "summary": "Thì hiện tại đơn dùng cho thói quen, sự thật hiển nhiên và lịch trình cố định. Điểm cốt lõi là thêm -s/-es cho ngôi thứ ba số ít và dùng do/does trong phủ định, nghi vấn.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + V(s/es)**. Với I, you, we, they dùng động từ nguyên mẫu; với he, she, it thêm -s hoặc -es.\n- Phủ định: **S + do/does + not + V**. Dùng does not (doesn't) với he, she, it.\n- Nghi vấn: **Do/Does + S + V?** Trả lời ngắn: Yes, S + do/does. hoặc No, S + don't/doesn't.\n\n### Cách dùng\n\n- Thói quen, hành động lặp lại: I go to school by bus (Tôi đi học bằng xe buýt).\n- Sự thật hiển nhiên, quy luật tự nhiên: Water boils at 100 degrees (Nước sôi ở 100 độ C).\n- Lịch trình cố định: The film starts at 8 p.m (Phim bắt đầu lúc 8 giờ tối).\n- Suy nghĩ, cảm xúc, trạng thái: She likes coffee (Cô ấy thích cà phê).\n\n### Dấu hiệu nhận biết\n\n- Trạng từ tần suất: always, usually, often, sometimes, rarely, never.\n- Cụm thời gian: every day, every week, once a month, on Sundays.\n\n### Lỗi thường gặp\n\n- Bỏ quên -s/-es ở ngôi thứ ba: He go sai, phải là He goes.\n- Dùng sai trợ động từ: Does you...? sai, phải là Do you...?\n- Chia động từ sau doesn't: She doesn't likes sai, phải là She doesn't like.",
+      "examples": [
+        {
+          "en": "I usually get up at six o'clock.",
+          "vi": "Tôi thường thức dậy lúc sáu giờ."
+        },
+        {
+          "en": "The sun rises in the east.",
+          "vi": "Mặt trời mọc ở hướng đông."
+        },
+        {
+          "en": "She doesn't eat meat.",
+          "vi": "Cô ấy không ăn thịt."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "She ___ to work every day.",
+          "options": [
+            "go",
+            "goes",
+            "going",
+            "gone"
+          ],
+          "answer": 1,
+          "explanation": "Chủ ngữ she là ngôi thứ ba số ít nên động từ thêm -es: goes. Các lựa chọn còn lại sai vì go và gone không chia theo chủ ngữ, going thiếu trợ động từ be."
+        },
+        {
+          "prompt": "___ they live in Da Nang?",
+          "options": [
+            "Do",
+            "Does",
+            "Are",
+            "Is"
+          ],
+          "answer": 0,
+          "explanation": "Chủ ngữ they đi với trợ động từ do trong câu hỏi hiện tại đơn. Does chỉ dùng với he, she, it; are và is là dạng của be, không hợp với động từ live."
+        },
+        {
+          "prompt": "My brother ___ coffee in the morning.",
+          "options": [
+            "don't drink",
+            "doesn't drink",
+            "doesn't drinks",
+            "not drink"
+          ],
+          "answer": 1,
+          "explanation": "My brother là ngôi thứ ba số ít nên dùng doesn't và động từ giữ nguyên mẫu: doesn't drink. Không dùng don't, và sau doesn't không chia -s cho động từ."
+        }
+      ]
+    },
+    {
+      "slug": "present-continuous",
+      "title": "Present Continuous",
+      "titleEn": "Present Continuous",
+      "summary": "Thì hiện tại tiếp diễn diễn tả hành động đang xảy ra tại thời điểm nói, sự việc tạm thời hoặc xu hướng đang thay đổi. Công thức cốt lõi là am/is/are + V-ing.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + am/is/are + V-ing**.\n- Phủ định: **S + am/is/are + not + V-ing**.\n- Nghi vấn: **Am/Is/Are + S + V-ing?** Trả lời ngắn: Yes, S + am/is/are.\n\n### Cách dùng\n\n- Hành động đang diễn ra ngay lúc nói: She is reading a book (Cô ấy đang đọc sách).\n- Sự việc tạm thời, không kéo dài: I'm living with my aunt this month (Tháng này tôi đang ở nhà dì).\n- Thay đổi, xu hướng đang diễn ra: Prices are going up (Giá cả đang tăng).\n- Lời phàn nàn với always: He is always forgetting his keys (Anh ấy lúc nào cũng quên chìa khóa).\n\n### Dấu hiệu nhận biết\n\n- now, right now, at the moment, at present, currently.\n- Look!, Listen!, Be careful! thường đứng đầu câu.\n- this week, these days.\n\n### Lỗi thường gặp\n\n- Thiếu động từ to be: She reading sai, phải là She is reading.\n- Dùng -ing với động từ trạng thái: I am knowing sai, phải là I know.\n- Sai chính tả khi thêm -ing: run thành running, lie thành lying.",
+      "examples": [
+        {
+          "en": "The children are playing in the garden right now.",
+          "vi": "Bọn trẻ đang chơi trong vườn ngay lúc này."
+        },
+        {
+          "en": "I'm staying at a hotel while my flat is being repaired.",
+          "vi": "Tôi đang ở khách sạn trong khi căn hộ của tôi đang được sửa."
+        },
+        {
+          "en": "Prices are rising quickly this year.",
+          "vi": "Năm nay giá cả đang tăng nhanh."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "Listen! Someone ___ at the door.",
+          "options": [
+            "knocks",
+            "knock",
+            "is knocking",
+            "knocked"
+          ],
+          "answer": 2,
+          "explanation": "Listen! báo hiệu hành động đang diễn ra ngay lúc nói nên dùng hiện tại tiếp diễn is knocking. Knocks là hiện tại đơn, knock sai chia, knocked là quá khứ đơn."
+        },
+        {
+          "prompt": "I ___ TV at the moment, so I can't talk.",
+          "options": [
+            "watch",
+            "am watching",
+            "watched",
+            "watching"
+          ],
+          "answer": 1,
+          "explanation": "At the moment là dấu hiệu của hiện tại tiếp diễn, chủ ngữ I đi với am: am watching. Watch là thói quen, watched là quá khứ, watching thiếu to be."
+        },
+        {
+          "prompt": "She ___ with her sister this month.",
+          "options": [
+            "stays",
+            "is staying",
+            "stay",
+            "stayed"
+          ],
+          "answer": 1,
+          "explanation": "This month cho thấy một tình huống tạm thời nên dùng is staying. Stays diễn tả thói quen lâu dài, stay sai chia với she, stayed là quá khứ."
+        }
+      ]
+    },
+    {
+      "slug": "past-simple",
+      "title": "Past Simple",
+      "titleEn": "Past Simple",
+      "summary": "Thì quá khứ đơn diễn tả hành động đã kết thúc hoàn toàn trong quá khứ, thường có thời gian xác định. Cần nắm dạng V2/ed và trợ động từ did.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + V2/ed**. Động từ có quy tắc thêm -ed, động từ bất quy tắc phải học thuộc.\n- Phủ định: **S + did not + V** (didn't + động từ nguyên mẫu).\n- Nghi vấn: **Did + S + V?** Trả lời ngắn: Yes, S + did. hoặc No, S + didn't.\n\n### Cách dùng\n\n- Hành động đã kết thúc hoàn toàn, có thời gian xác định: I met her yesterday (Hôm qua tôi gặp cô ấy).\n- Chuỗi hành động liên tiếp: He opened the door, walked in and sat down (Anh ấy mở cửa, bước vào và ngồi xuống).\n- Thói quen trong quá khứ: We played football every Sunday (Chúng tôi chơi bóng mỗi Chủ nhật).\n\n### Dấu hiệu nhận biết\n\n- yesterday, last night, last week, two days ago.\n- in 2019, when I was a child, at that time.\n\n### Lỗi thường gặp\n\n- Dùng did với động từ đã chia: Did you went sai, phải là Did you go.\n- Dùng hiện tại hoàn hảo với mốc thời gian đã qua: I have seen him yesterday sai, phải là I saw him yesterday.\n- Nhầm dạng bất quy tắc: buy thành buyed sai, phải là bought.",
+      "examples": [
+        {
+          "en": "We visited Hoi An last weekend.",
+          "vi": "Chúng tôi đã đến Hội An cuối tuần trước."
+        },
+        {
+          "en": "She didn't answer my call this morning.",
+          "vi": "Sáng nay cô ấy đã không nghe điện thoại của tôi."
+        },
+        {
+          "en": "Did you see the match last night?",
+          "vi": "Tối qua bạn có xem trận đấu không?"
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "We ___ to Hue last summer.",
+          "options": [
+            "go",
+            "went",
+            "have gone",
+            "were going"
+          ],
+          "answer": 1,
+          "explanation": "Last summer là thời gian đã kết thúc nên dùng quá khứ đơn went. Go là hiện tại, have gone là hiện tại hoàn hảo không đi với mốc quá khứ, were going chỉ hành động đang diễn ra."
+        },
+        {
+          "prompt": "___ you finish the report yesterday?",
+          "options": [
+            "Did",
+            "Do",
+            "Have",
+            "Were"
+          ],
+          "answer": 0,
+          "explanation": "Câu hỏi quá khứ đơn với động từ thường dùng trợ động từ did và động từ nguyên mẫu. Do là hiện tại, Have dùng cho hiện tại hoàn hảo, Were đi với V-ing."
+        },
+        {
+          "prompt": "When I was a child, I ___ swimming every Sunday.",
+          "options": [
+            "go",
+            "went",
+            "have gone",
+            "am going"
+          ],
+          "answer": 1,
+          "explanation": "When I was a child là thói quen trong quá khứ nên dùng went. Go và am going chỉ hiện tại, have gone là hiện tại hoàn hảo không hợp với thói quen đã chấm dứt."
+        }
+      ]
+    },
+    {
+      "slug": "past-continuous",
+      "title": "Past Continuous",
+      "titleEn": "Past Continuous",
+      "summary": "Thì quá khứ tiếp diễn diễn tả hành động đang diễn ra tại một thời điểm trong quá khứ hoặc làm nền cho hành động khác cắt ngang. Công thức là was/were + V-ing.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + was/were + V-ing**. I, he, she, it dùng was; you, we, they dùng were.\n- Phủ định: **S + was/were + not + V-ing**.\n- Nghi vấn: **Was/Were + S + V-ing?** Trả lời ngắn: Yes, S + was/were.\n\n### Cách dùng\n\n- Hành động đang diễn ra tại một thời điểm xác định trong quá khứ: At 8 p.m, I was watching TV (Lúc 8 giờ tối, tôi đang xem tivi).\n- Hành động nền bị hành động khác cắt ngang: I was sleeping when the phone rang (Tôi đang ngủ thì điện thoại reo).\n- Hai hành động song song: She was cooking while he was cleaning (Cô ấy nấu ăn trong khi anh ấy dọn dẹp).\n- Mô tả bối cảnh cho một câu chuyện: It was raining and everybody was running (Trời đang mưa và mọi người đang chạy).\n\n### Dấu hiệu nhận biết\n\n- at 7 p.m yesterday, at that time, at this time last week.\n- while, when, all day yesterday.\n\n### Lỗi thường gặp\n\n- Dùng while cho hành động ngắn cắt ngang: While the phone rang sai, phải là When the phone rang.\n- Dùng -ing với động từ trạng thái: I was knowing sai, phải là I knew.\n- Nhầm was và were: They was playing sai, phải là They were playing.",
+      "examples": [
+        {
+          "en": "I was cooking when he called me.",
+          "vi": "Tôi đang nấu ăn thì anh ấy gọi cho tôi."
+        },
+        {
+          "en": "At nine yesterday, they were still working.",
+          "vi": "Lúc chín giờ hôm qua, họ vẫn đang làm việc."
+        },
+        {
+          "en": "While I was walking home, I met an old friend.",
+          "vi": "Trong khi tôi đang đi bộ về nhà, tôi gặp một người bạn cũ."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "At 8 p.m. yesterday, I ___ dinner.",
+          "options": [
+            "have",
+            "was having",
+            "had",
+            "am having"
+          ],
+          "answer": 1,
+          "explanation": "At 8 p.m. yesterday là thời điểm xác định trong quá khứ nên dùng was having. Have và am having chỉ hiện tại, had diễn tả hành động đã xong chứ không phải đang diễn ra."
+        },
+        {
+          "prompt": "While she ___ , the phone rang.",
+          "options": [
+            "cooks",
+            "cooked",
+            "was cooking",
+            "is cooking"
+          ],
+          "answer": 2,
+          "explanation": "While đứng trước hành động nền kéo dài nên dùng quá khứ tiếp diễn was cooking, còn rang là hành động cắt ngang. Cooks và is cooking chỉ hiện tại, cooked là hành động đã xong."
+        },
+        {
+          "prompt": "They ___ football when it started to rain.",
+          "options": [
+            "played",
+            "were playing",
+            "have played",
+            "play"
+          ],
+          "answer": 1,
+          "explanation": "Hành động đang diễn ra thì bị started to rain cắt ngang nên dùng were playing. Played và have played nhấn mạnh kết quả đã xong, play là hiện tại đơn."
+        }
+      ]
+    },
+    {
+      "slug": "present-perfect",
+      "title": "Present Perfect",
+      "titleEn": "Present Perfect",
+      "summary": "Thì hiện tại hoàn thành nối quá khứ với hiện tại: kinh nghiệm, kết quả còn ảnh hưởng, hoặc hành động kéo dài đến bây giờ. Công thức là have/has + V3/ed.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + have/has + V3/ed**. I, you, we, they dùng have; he, she, it dùng has.\n- Phủ định: **S + have/has + not + V3/ed**.\n- Nghi vấn: **Have/Has + S + V3/ed?** Trả lời ngắn: Yes, S + have/has.\n\n### Cách dùng\n\n- Hành động xảy ra trong quá khứ, không nêu thời điểm, kết quả còn liên quan hiện tại: I have lost my keys (Tôi đã mất chìa khóa).\n- Kinh nghiệm sống: She has visited Japan twice (Cô ấy đã đến Nhật hai lần).\n- Hành động bắt đầu trong quá khứ và còn tiếp diễn: We have lived here since 2015 (Chúng tôi sống ở đây từ năm 2015).\n- Việc vừa xảy ra: He has just left (Anh ấy vừa mới rời đi).\n\n### Dấu hiệu nhận biết\n\n- just, already, yet, ever, never, recently, so far.\n- since + mốc thời gian, for + khoảng thời gian.\n- This is the first time...\n\n### Lỗi thường gặp\n\n- Dùng với thời gian đã kết thúc: I have met him last week sai, phải là I met him last week.\n- Nhầm since và for: since five years sai, phải là for five years.\n- Nhầm been và gone: She has gone to Paris nghĩa là cô ấy đang ở đó, còn She has been to Paris nghĩa là đã từng đến và đã về.",
+      "examples": [
+        {
+          "en": "I have just finished my essay.",
+          "vi": "Tôi vừa mới hoàn thành bài luận của mình."
+        },
+        {
+          "en": "He has worked here for five years.",
+          "vi": "Anh ấy đã làm việc ở đây được năm năm."
+        },
+        {
+          "en": "Have you ever tried Thai food?",
+          "vi": "Bạn đã từng thử món ăn Thái chưa?"
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "I ___ my homework already.",
+          "options": [
+            "finish",
+            "finished",
+            "have finished",
+            "finishing"
+          ],
+          "answer": 2,
+          "explanation": "Already là dấu hiệu của hiện tại hoàn thành, nhấn mạnh kết quả còn liên quan hiện tại: have finished. Finish là hiện tại đơn, finished là quá khứ đơn, finishing thiếu trợ động từ."
+        },
+        {
+          "prompt": "She has lived here ___ 2015.",
+          "options": [
+            "for",
+            "since",
+            "from",
+            "in"
+          ],
+          "answer": 1,
+          "explanation": "2015 là mốc thời gian bắt đầu nên dùng since. For đi với khoảng thời gian như five years, from và in không dùng trong cấu trúc này."
+        },
+        {
+          "prompt": "Have you ever ___ to Japan?",
+          "options": [
+            "be",
+            "been",
+            "went",
+            "go"
+          ],
+          "answer": 1,
+          "explanation": "Cấu trúc have + V3 nên dùng been. Be là nguyên mẫu, went là quá khứ đơn không đứng sau have, go là hiện tại đơn."
+        }
+      ]
+    },
+    {
+      "slug": "past-perfect",
+      "title": "Past Perfect",
+      "titleEn": "Past Perfect",
+      "summary": "Thì quá khứ hoàn thành diễn tả hành động xảy ra trước một hành động hoặc mốc thời gian khác trong quá khứ. Công thức là had + V3/ed cho mọi ngôi.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + had + V3/ed** (dùng cho mọi ngôi).\n- Phủ định: **S + had + not + V3/ed**.\n- Nghi vấn: **Had + S + V3/ed?** Trả lời ngắn: Yes, S + had. hoặc No, S + hadn't.\n\n### Cách dùng\n\n- Hành động xảy ra trước một hành động khác trong quá khứ: The train had left when we arrived (Tàu đã rời đi khi chúng tôi đến).\n- Hành động xảy ra trước một mốc thời gian trong quá khứ: By 2020, he had written three novels (Đến năm 2020, anh ấy đã viết ba cuốn tiểu thuyết).\n- Nguyên nhân của một tình huống trong quá khứ: I was tired because I hadn't slept (Tôi mệt vì tôi đã không ngủ).\n\n### Dấu hiệu nhận biết\n\n- before, after, by the time, when (khi có hai hành động khác thời điểm).\n- already, never before, until then, by 2019.\n\n### Lỗi thường gặp\n\n- Dùng quá khứ hoàn thành khi chỉ có một hành động: I had watched a film last night sai, phải là I watched.\n- Đảo lộn trật tự: hành động xảy ra trước dùng had + V3, hành động xảy ra sau dùng quá khứ đơn.\n- Dùng had + V-ing thay vì V3: She had go sai, phải là She had gone.",
+      "examples": [
+        {
+          "en": "The train had left when we got to the station.",
+          "vi": "Tàu đã rời đi khi chúng tôi đến ga."
+        },
+        {
+          "en": "She had never seen the sea before that trip.",
+          "vi": "Cô ấy chưa từng thấy biển trước chuyến đi đó."
+        },
+        {
+          "en": "By the time I woke up, my father had gone to work.",
+          "vi": "Vào lúc tôi thức dậy, bố tôi đã đi làm rồi."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "By the time we arrived, the film ___ .",
+          "options": [
+            "starts",
+            "started",
+            "had started",
+            "has started"
+          ],
+          "answer": 2,
+          "explanation": "Hành động bắt đầu phim xảy ra trước việc chúng tôi đến nên dùng had started. Starts và has started chỉ hiện tại, started không thể hiện rõ thứ tự trước sau."
+        },
+        {
+          "prompt": "She ___ the report before the meeting began.",
+          "options": [
+            "finished",
+            "had finished",
+            "has finished",
+            "finishes"
+          ],
+          "answer": 1,
+          "explanation": "Before cho thấy việc hoàn thành báo cáo xảy ra trước khi cuộc họp bắt đầu, nên dùng had finished. Finished và finishes không đánh dấu quan hệ trước sau, has finished là hiện tại hoàn thành."
+        },
+        {
+          "prompt": "I didn't go to the cinema because I ___ the film twice.",
+          "options": [
+            "saw",
+            "have seen",
+            "had seen",
+            "see"
+          ],
+          "answer": 2,
+          "explanation": "Việc đã xem phim hai lần xảy ra trước quyết định không đi, trong bối cảnh quá khứ nên dùng had seen. Saw và have seen không thể hiện hành động xảy ra trước, see là hiện tại."
+        }
+      ]
+    },
+    {
+      "slug": "future-simple",
+      "title": "Future Simple",
+      "titleEn": "Future Simple (will)",
+      "summary": "Thì tương lai đơn với will dùng cho quyết định tức thời, lời hứa, lời đề nghị và dự đoán chủ quan. Công thức đơn giản là will + động từ nguyên mẫu.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + will + V** (will dùng cho mọi ngôi).\n- Phủ định: **S + will + not + V** (viết tắt won't + V).\n- Nghi vấn: **Will + S + V?** Trả lời ngắn: Yes, S + will. hoặc No, S + won't.\n\n### Cách dùng\n\n- Quyết định tức thời ngay lúc nói: The phone is ringing. I'll answer it (Điện thoại đang reo. Tôi sẽ nghe).\n- Dự đoán dựa trên suy nghĩ, không có bằng chứng rõ ràng: I think it will rain (Tôi nghĩ trời sẽ mưa).\n- Lời hứa, lời đề nghị, lời cảnh báo: I'll help you with that (Tôi sẽ giúp bạn việc đó).\n- Sự thật tương lai chắc chắn, không phụ thuộc kế hoạch: She will be 30 next year (Năm sau cô ấy sẽ 30 tuổi).\n\n### Dấu hiệu nhận biết\n\n- tomorrow, next week, next month, in 2030, soon.\n- I think, I hope, probably, perhaps, I promise.\n\n### Lỗi thường gặp\n\n- Thêm to sau will: I will to go sai, phải là I will go.\n- Dùng will trong mệnh đề when/if chỉ tương lai: When I will arrive sai, phải là When I arrive.\n- Dùng will cho kế hoạch đã sắp xếp sẵn, khi đó nên dùng be going to hoặc hiện tại tiếp diễn.",
+      "examples": [
+        {
+          "en": "I'll call you as soon as I arrive.",
+          "vi": "Tôi sẽ gọi cho bạn ngay khi tôi đến."
+        },
+        {
+          "en": "I think our team will win the final.",
+          "vi": "Tôi nghĩ đội của chúng ta sẽ thắng trận chung kết."
+        },
+        {
+          "en": "Don't worry, I won't tell anyone.",
+          "vi": "Đừng lo, tôi sẽ không nói với ai đâu."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "Don't worry, I ___ you with the bags.",
+          "options": [
+            "help",
+            "will help",
+            "am helping",
+            "helped"
+          ],
+          "answer": 1,
+          "explanation": "Đây là lời đề nghị đưa ra ngay lúc nói nên dùng will help. Help là hiện tại đơn, am helping chỉ việc đang làm, helped là quá khứ đơn."
+        },
+        {
+          "prompt": "I think it ___ tomorrow.",
+          "options": [
+            "rains",
+            "will rain",
+            "is raining",
+            "rained"
+          ],
+          "answer": 1,
+          "explanation": "I think thể hiện dự đoán chủ quan về tương lai nên dùng will rain. Rains và is raining chỉ hiện tại, rained là quá khứ."
+        },
+        {
+          "prompt": "We ___ know the result until next Monday.",
+          "options": [
+            "will",
+            "won't",
+            "don't",
+            "aren't"
+          ],
+          "answer": 1,
+          "explanation": "Until next Monday chỉ mốc tương lai, và nghĩa phủ định phù hợp với until: chúng tôi sẽ không biết kết quả cho đến thứ Hai. Will thiếu not, don't và aren't là hiện tại."
+        }
+      ]
+    },
+    {
+      "slug": "be-going-to-va-hien-tai-tiep-dien-tuong-lai",
+      "title": "Be going to và Present Continuous chỉ tương lai",
+      "titleEn": "Be going to and Present Continuous for future",
+      "summary": "Hai cấu trúc này đều nói về tương lai nhưng khác sắc thái: be going to cho dự định hoặc dự đoán có căn cứ, hiện tại tiếp diễn cho kế hoạch đã sắp xếp cụ thể.",
+      "isNew": true,
+      "content": "### Be going to\n\n- Khẳng định: **S + am/is/are + going to + V**; phủ định thêm not sau be; nghi vấn **Am/Is/Are + S + going to + V?**\n- Diễn tả dự định đã quyết định trước lúc nói: I'm going to buy a new laptop (Tôi định mua một chiếc laptop mới).\n- Dự đoán dựa trên bằng chứng hiện tại: Look at those clouds! It's going to rain (Nhìn mây kìa! Trời sắp mưa).\n\n### Present Continuous chỉ tương lai\n\n- Công thức: **S + am/is/are + V-ing** kèm thời gian tương lai.\n- Diễn tả kế hoạch, cuộc hẹn đã sắp xếp cụ thể với người khác: I'm meeting the doctor at 9 a.m tomorrow (Mai 9 giờ tôi có hẹn gặp bác sĩ).\n- Thường có thời gian, địa điểm rõ ràng hoặc vé, lịch đã đặt trước.\n\n### Phân biệt nhanh\n\n- will: quyết định ngay lúc nói, lời hứa, dự đoán chủ quan.\n- be going to: dự định có từ trước hoặc dự đoán có căn cứ nhìn thấy được.\n- Present Continuous: kế hoạch đã chốt, thường có sắp xếp với người khác.\n\n### Lỗi thường gặp\n\n- Dùng will cho cuộc hẹn đã đặt trước: kém tự nhiên, nên dùng hiện tại tiếp diễn.\n- Viết going to + V-ing: I'm going to meeting sai, phải là I'm going to meet.\n- Quên to be: She going to travel sai, phải là She is going to travel.",
+      "examples": [
+        {
+          "en": "Look at the sky! It's going to snow.",
+          "vi": "Nhìn trời kìa! Trời sắp có tuyết rơi."
+        },
+        {
+          "en": "We're having dinner with my parents tonight.",
+          "vi": "Tối nay chúng tôi sẽ ăn tối với bố mẹ tôi."
+        },
+        {
+          "en": "She's going to open a small shop next month.",
+          "vi": "Cô ấy định mở một cửa hàng nhỏ vào tháng sau."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "Look at those black clouds! It ___ .",
+          "options": [
+            "rains",
+            "will rain",
+            "is going to rain",
+            "is raining"
+          ],
+          "answer": 2,
+          "explanation": "Có bằng chứng nhìn thấy trước mắt nên dùng dự đoán với be going to: is going to rain. Will rain là dự đoán không căn cứ, rains và is raining chỉ hiện tại."
+        },
+        {
+          "prompt": "I ___ my dentist at 10 a.m. tomorrow.",
+          "options": [
+            "see",
+            "will see",
+            "am seeing",
+            "am going see"
+          ],
+          "answer": 2,
+          "explanation": "Đây là cuộc hẹn đã sắp xếp với thời gian cụ thể nên dùng hiện tại tiếp diễn am seeing. See là hiện tại đơn, will see kém tự nhiên cho lịch hẹn, am going see sai cấu trúc."
+        },
+        {
+          "prompt": "I have already booked the tickets. I ___ to Hanoi on Friday.",
+          "options": [
+            "fly",
+            "will fly",
+            "am flying",
+            "would fly"
+          ],
+          "answer": 2,
+          "explanation": "Vé đã đặt xong, tức kế hoạch đã chốt nên dùng am flying. Fly là hiện tại đơn, will fly không phù hợp với kế hoạch đã sắp xếp, would fly diễn tả điều kiện giả định."
+        }
+      ]
+    },
+    {
+      "slug": "future-continuous",
+      "title": "Future Continuous",
+      "titleEn": "Future Continuous",
+      "summary": "Thì tương lai tiếp diễn diễn tả hành động sẽ đang diễn ra tại một thời điểm xác định trong tương lai, hoặc một việc đã được sắp xếp sẵn.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + will be + V-ing**\n- Phủ định: **S + will not (won't) be + V-ing**\n- Nghi vấn: **Will + S + be + V-ing?**\n\n### Cách dùng\n\n- Diễn tả hành động đang diễn ra tại một thời điểm xác định trong tương lai: At 8 p.m. tomorrow, I will be watching the match (Lúc 8 giờ tối mai, tôi sẽ đang xem trận đấu).\n- Diễn tả việc đã được sắp xếp, sẽ diễn ra như một phần của lịch trình: This time next week, we will be flying to Japan (Tuần sau vào giờ này, chúng tôi sẽ đang bay tới Nhật).\n- Dùng để hỏi lịch sự về kế hoạch của người khác: Will you be using the car this afternoon? (Chiều nay bạn có dùng xe không?).\n- Nhấn mạnh quá trình đang tiếp diễn, khác với will + V chỉ nêu sự việc sẽ xảy ra.\n\n### Dấu hiệu nhận biết\n\n- at this time tomorrow, at 8 p.m. next Sunday, this time next week\n- all day tomorrow, at noon tomorrow\n- when / while + mệnh đề chia hiện tại đơn: While you are studying, I will be cleaning the house (Trong khi bạn học, tôi sẽ đang dọn nhà).\n\n### Lỗi thường gặp\n\n- Dùng will + V khi cần nhấn mạnh hành động đang diễn ra tại một mốc: At 9 a.m. tomorrow I will have a meeting chỉ nêu lịch, muốn nhấn đang diễn ra thì dùng I will be having a meeting.\n- Chia V-ing cho động từ trạng thái như know, believe, own; với các động từ này dùng will + V.\n- Chia will trong mệnh đề when / while: sai When you will arrive, I will be cooking.",
+      "examples": [
+        {
+          "en": "At this time tomorrow, I will be flying to Hanoi.",
+          "vi": "Vào giờ này ngày mai, tôi sẽ đang bay tới Hà Nội."
+        },
+        {
+          "en": "Don't call me at eight tonight because I will be having dinner with my family.",
+          "vi": "Đừng gọi cho tôi lúc 8 giờ tối nay vì tôi sẽ đang ăn tối với gia đình."
+        },
+        {
+          "en": "This time next month, they will be building the new bridge.",
+          "vi": "Tháng sau vào giờ này, họ sẽ đang thi công cây cầu mới."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "At 9 a.m. tomorrow, she ___ a presentation to the board.",
+          "options": [
+            "gives",
+            "will give",
+            "will be giving",
+            "has given"
+          ],
+          "answer": 2,
+          "explanation": "At 9 a.m. tomorrow là thời điểm xác định trong tương lai và hành động đang diễn ra lúc đó, nên dùng will be giving. Will give chỉ nêu sự việc sẽ xảy ra mà không nhấn quá trình; gives và has given sai mốc thời gian."
+        },
+        {
+          "prompt": "Don't phone him at 7 p.m. because he ___ his piano lesson then.",
+          "options": [
+            "has",
+            "is having",
+            "will be having",
+            "had"
+          ],
+          "answer": 2,
+          "explanation": "Then trỏ tới 7 p.m. trong tương lai, hành động đang diễn ra tại mốc đó nên cần will be having. Is having chỉ dùng cho hiện tại hoặc kế hoạch đã chốt, còn has và had sai thì."
+        },
+        {
+          "prompt": "Will you ___ your car at 6 p.m. tomorrow? I need a lift.",
+          "options": [
+            "use",
+            "be using",
+            "have used",
+            "used"
+          ],
+          "answer": 1,
+          "explanation": "Sau will cần be + V-ing để hỏi về việc xe đang được dùng tại một mốc tương lai. Use thiếu be, còn have used và used sai cấu trúc."
+        }
+      ]
+    },
+    {
+      "slug": "future-perfect",
+      "title": "Future Perfect",
+      "titleEn": "Future Perfect",
+      "summary": "Thì tương lai hoàn thành diễn tả hành động sẽ hoàn tất trước một mốc thời gian trong tương lai, nhấn mạnh kết quả.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + will have + V3/V-ed**\n- Phủ định: **S + will not (won't) have + V3/V-ed**\n- Nghi vấn: **Will + S + have + V3/V-ed?**\n- Bị động: **S + will have been + V3/V-ed**\n\n### Cách dùng\n\n- Diễn tả hành động sẽ hoàn thành trước một mốc thời gian trong tương lai: By the end of this month, we will have finished the report (Đến cuối tháng này, chúng tôi sẽ hoàn thành xong báo cáo).\n- Nhấn mạnh kết quả tại mốc đó, không quan tâm hành động kéo dài bao lâu.\n- Thường gặp với by the time + mệnh đề hiện tại đơn: By the time you come back, I will have painted the room (Trước khi bạn quay về, tôi sẽ sơn xong căn phòng).\n- Không dùng với mốc mơ hồ như someday, one day; những trạng từ này thường đi với tương lai đơn.\n\n### Dấu hiệu nhận biết\n\n- by + mốc tương lai: by 2030, by next Friday, by then\n- by the time, before + mốc thời gian\n- in + khoảng thời gian: in two years' time (trong hai năm nữa)\n\n### Lỗi thường gặp\n\n- Nhầm với tương lai tiếp diễn: will have + V3 cho việc đã hoàn thành, will be + V-ing cho việc đang diễn ra.\n- Chia will trong mệnh đề by the time: sai By the time you will arrive, đúng By the time you arrive.\n- Dùng will have + V-ing, dạng này không tồn tại; nếu nhấn thời lượng phải dùng will have been + V-ing.\n- Dùng sai cột bất quy tắc: sai will have wrote, đúng will have written.",
+      "examples": [
+        {
+          "en": "By the end of this year, I will have finished my master's degree.",
+          "vi": "Đến cuối năm nay, tôi sẽ hoàn thành xong bằng thạc sĩ."
+        },
+        {
+          "en": "By the time the guests arrive, we will have prepared everything.",
+          "vi": "Trước khi khách tới, chúng tôi sẽ chuẩn bị xong mọi thứ."
+        },
+        {
+          "en": "She will have saved enough money to buy a house by 2030.",
+          "vi": "Cô ấy sẽ tiết kiệm đủ tiền mua nhà trước năm 2030."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "By next June, they ___ the new bridge.",
+          "options": [
+            "finish",
+            "will finish",
+            "will have finished",
+            "have finished"
+          ],
+          "answer": 2,
+          "explanation": "By + mốc tương lai nhấn mạnh việc hoàn thành trước mốc đó nên dùng will have finished. Will finish chỉ nêu việc sẽ làm, không cho biết đã xong trước mốc hay chưa."
+        },
+        {
+          "prompt": "The report ___ by the time the manager returns.",
+          "options": [
+            "finishes",
+            "will finish",
+            "will have been finished",
+            "is finishing"
+          ],
+          "answer": 2,
+          "explanation": "Báo cáo là đối tượng bị hoàn thành nên cần bị động will have been + V3. Will finish ở dạng chủ động không hợp nghĩa, còn finishes và is finishing sai thì."
+        },
+        {
+          "prompt": "By the end of the week, she ___ enough for the trip.",
+          "options": [
+            "saves",
+            "will save",
+            "will have saved",
+            "is saving"
+          ],
+          "answer": 2,
+          "explanation": "Cụm by the end of the week là mốc tương lai và việc tiết kiệm phải xong trước mốc đó, nên dùng will have saved. Will save không thể hiện được ý hoàn tất trước mốc."
+        }
+      ]
+    },
+    {
+      "slug": "present-perfect-continuous",
+      "title": "Present Perfect Continuous",
+      "titleEn": "Present Perfect Continuous",
+      "summary": "Thì hiện tại hoàn thành tiếp diễn diễn tả hành động bắt đầu trong quá khứ, kéo dài đến hiện tại, nhấn mạnh quá trình và thời lượng.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + have/has been + V-ing**\n- Phủ định: **S + have/has not been + V-ing**\n- Nghi vấn: **Have/Has + S + been + V-ing?**\n\n### Cách dùng\n\n- Diễn tả hành động bắt đầu trong quá khứ, kéo dài đến hiện tại và có thể còn tiếp tục: I have been learning Japanese for two years (Tôi đã học tiếng Nhật được hai năm).\n- Nhấn mạnh quá trình và độ dài, khác hiện tại hoàn thành vốn nhấn kết quả: I have painted the wall (đã sơn xong) so với I have been painting the wall (còn đang sơn dở).\n- Giải thích nguyên nhân của một trạng thái hiện tại: Her eyes are red because she has been crying (Mắt cô ấy đỏ vì cô ấy vừa khóc).\n- Dùng với how long để hỏi về khoảng thời gian kéo dài: How long have you been waiting? (Bạn đã chờ bao lâu rồi?).\n\n### Dấu hiệu nhận biết\n\n- for + khoảng thời gian, since + mốc thời gian\n- all morning, all day, all week\n- lately, recently, how long\n\n### Lỗi thường gặp\n\n- Dùng thì này khi nêu số lần hoặc kết quả: sai I have been reading this book three times, đúng I have read this book three times.\n- Dùng với động từ trạng thái như know, like, own, believe; các động từ này chia ở hiện tại hoàn thành.\n- Nhầm since + mốc với for + khoảng thời gian: sai since two hours, đúng for two hours.\n- Chia hiện tại tiếp diễn dù có for / since: sai I am waiting for two hours, đúng I have been waiting for two hours.",
+      "examples": [
+        {
+          "en": "I have been waiting for the bus for twenty minutes.",
+          "vi": "Tôi đã chờ xe buýt được hai mươi phút rồi."
+        },
+        {
+          "en": "She has been studying English since she was ten.",
+          "vi": "Cô ấy đã học tiếng Anh từ khi mười tuổi."
+        },
+        {
+          "en": "The ground is wet because it has been raining all night.",
+          "vi": "Mặt đất ướt vì trời đã mưa suốt đêm."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "How long ___ you ___ in this city?",
+          "options": [
+            "do / live",
+            "have / been living",
+            "are / living",
+            "did / live"
+          ],
+          "answer": 1,
+          "explanation": "How long hỏi khoảng thời gian kéo dài đến hiện tại nên cần hiện tại hoàn thành tiếp diễn have been living. Do / live và are / living không diễn tả được sự kéo dài từ quá khứ."
+        },
+        {
+          "prompt": "My eyes are red because I ___ at the screen all morning.",
+          "options": [
+            "stare",
+            "stared",
+            "have been staring",
+            "had stared"
+          ],
+          "answer": 2,
+          "explanation": "All morning nối hành động kéo dài tới hiện tại và đang là nguyên nhân của trạng thái hiện tại, nên dùng have been staring. Stared và had stared đẩy sự việc vào quá khứ."
+        },
+        {
+          "prompt": "He ___ three cups of coffee today.",
+          "options": [
+            "has been drinking",
+            "has drunk",
+            "is drinking",
+            "drinks"
+          ],
+          "answer": 1,
+          "explanation": "Three cups là số lượng kết quả đã hoàn thành nên dùng hiện tại hoàn thành has drunk. Has been drinking nhấn quá trình, không phù hợp khi đếm số lần."
+        }
+      ]
+    },
+    {
+      "slug": "past-perfect-continuous",
+      "title": "Past Perfect Continuous",
+      "titleEn": "Past Perfect Continuous",
+      "summary": "Thì quá khứ hoàn thành tiếp diễn diễn tả hành động đã kéo dài liên tục trước một mốc hoặc một hành động khác trong quá khứ.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + had been + V-ing**\n- Phủ định: **S + had not been + V-ing**\n- Nghi vấn: **Had + S + been + V-ing?**\n\n### Cách dùng\n\n- Diễn tả hành động kéo dài liên tục trước một hành động hoặc mốc khác trong quá khứ: They had been driving for six hours before they stopped for lunch (Họ đã lái xe sáu tiếng trước khi dừng ăn trưa).\n- Nhấn mạnh quá trình kéo dài là nguyên nhân của một trạng thái trong quá khứ: He was out of breath because he had been running (Anh ấy thở hổn hển vì vừa chạy).\n- Thường xuất hiện trong câu có before, after, when, by the time với mệnh đề chia quá khứ đơn.\n- Khác quá khứ hoàn thành: had + V3 nhấn kết quả đã xong, had been + V-ing nhấn quá trình kéo dài.\n\n### Dấu hiệu nhận biết\n\n- before, after, when, by the time + mệnh đề quá khứ đơn\n- for + khoảng thời gian, since + mốc quá khứ\n- all day, all morning\n\n### Lỗi thường gặp\n\n- Nhầm had been + V-ing với had + V3 khi câu chỉ cần nêu kết quả.\n- Dùng với động từ trạng thái như know, belong, own.\n- Chia quá khứ đơn cho hành động xảy ra trước: sai When I arrived, he cooked for an hour, đúng When I arrived, he had been cooking for an hour.\n- Viết sai cấu trúc had been + V3 thay vì had been + V-ing.",
+      "examples": [
+        {
+          "en": "He had been working at the factory for ten years before he retired.",
+          "vi": "Ông ấy đã làm việc ở nhà máy mười năm trước khi nghỉ hưu."
+        },
+        {
+          "en": "She was tired because she had been running for an hour.",
+          "vi": "Cô ấy mệt vì đã chạy suốt một tiếng đồng hồ."
+        },
+        {
+          "en": "We had been waiting for two hours by the time the train arrived.",
+          "vi": "Chúng tôi đã chờ được hai tiếng khi tàu đến."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "When I met her, she ___ in London for five years.",
+          "options": [
+            "lives",
+            "lived",
+            "had been living",
+            "has been living"
+          ],
+          "answer": 2,
+          "explanation": "Việc sống ở London kéo dài năm năm trước thời điểm met trong quá khứ nên dùng had been living. Has been living nối tới hiện tại, còn lived không thể hiện được sự kéo dài trước."
+        },
+        {
+          "prompt": "His hands were dirty because he ___ the car.",
+          "options": [
+            "repairs",
+            "repaired",
+            "had been repairing",
+            "has repaired"
+          ],
+          "answer": 2,
+          "explanation": "Hành động sửa xe kéo dài trước và là nguyên nhân của trạng thái tay bẩn trong quá khứ, nên dùng had been repairing. Repaired chỉ nêu một việc đã xảy ra, không nhấn quá trình."
+        },
+        {
+          "prompt": "She ___ all day, so she went to bed early.",
+          "options": [
+            "had been cleaning",
+            "has been cleaning",
+            "cleans",
+            "cleaned"
+          ],
+          "answer": 0,
+          "explanation": "Việc dọn dẹp kéo dài suốt ngày trước khi cô ấy đi ngủ trong quá khứ, nên dùng had been cleaning. Has been cleaning kéo tới hiện tại nên không khớp với went."
+        }
+      ]
+    },
+    {
+      "slug": "future-perfect-continuous",
+      "title": "Future Perfect Continuous",
+      "titleEn": "Future Perfect Continuous",
+      "summary": "Thì tương lai hoàn thành tiếp diễn diễn tả hành động sẽ kéo dài liên tục đến một mốc trong tương lai, nhấn mạnh thời lượng.",
+      "isNew": false,
+      "content": "### Công thức\n\n- Khẳng định: **S + will have been + V-ing**\n- Phủ định: **S + will not (won't) have been + V-ing**\n- Nghi vấn: **Will + S + have been + V-ing?**\n\n### Cách dùng\n\n- Diễn tả hành động sẽ kéo dài liên tục đến một mốc trong tương lai, nhấn mạnh thời lượng: By next month, I will have been teaching here for ten years (Đến tháng sau, tôi sẽ dạy ở đây được mười năm).\n- Thường đi kèm by + mốc tương lai và for + khoảng thời gian để làm rõ độ dài.\n- Có thể dùng để nói về nguyên nhân của một trạng thái trong tương lai, nhưng cách dùng này ít gặp.\n- Khác tương lai hoàn thành: will have + V3 nhấn kết quả đã xong, will have been + V-ing nhấn quá trình kéo dài.\n\n### Dấu hiệu nhận biết\n\n- by + mốc tương lai + for + khoảng thời gian: by 2030, for fifteen years\n- by the time + mệnh đề hiện tại đơn + for + khoảng thời gian\n- when + mệnh đề hiện tại đơn, đi cùng một khoảng thời gian kéo dài\n\n### Lỗi thường gặp\n\n- Nhầm với will have + V3: nếu câu có for + khoảng thời gian và nhấn kéo dài thì phải dùng will have been + V-ing.\n- Chia will trong mệnh đề by the time: sai By the time you will finish, đúng By the time you finish.\n- Dùng với động từ trạng thái như know, own, belong.\n- Viết sai trật tự: sai will be have been working, đúng will have been working.",
+      "examples": [
+        {
+          "en": "By next month, I will have been teaching here for ten years.",
+          "vi": "Đến tháng sau, tôi sẽ dạy ở đây được mười năm."
+        },
+        {
+          "en": "When you arrive, she will have been driving for eight hours.",
+          "vi": "Khi bạn tới, cô ấy sẽ đã lái xe được tám tiếng."
+        },
+        {
+          "en": "By the end of the day, they will have been painting the house for a week.",
+          "vi": "Đến cuối ngày, họ sẽ sơn nhà được một tuần."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "By December, we ___ this course for six months.",
+          "options": [
+            "take",
+            "will take",
+            "will have been taking",
+            "have taken"
+          ],
+          "answer": 2,
+          "explanation": "By December là mốc tương lai, còn for six months nhấn thời lượng kéo dài đến mốc đó nên cần will have been taking. Will take không diễn tả được sự kéo dài."
+        },
+        {
+          "prompt": "By the time the movie ends, he ___ for three hours.",
+          "options": [
+            "sleeps",
+            "will sleep",
+            "will have been sleeping",
+            "has slept"
+          ],
+          "answer": 2,
+          "explanation": "Hành động ngủ kéo dài ba tiếng tính đến lúc phim kết thúc trong tương lai, nên dùng will have been sleeping. Will sleep chỉ nêu việc sẽ ngủ, không nêu thời lượng."
+        },
+        {
+          "prompt": "When the new manager starts, she ___ with the company for a decade.",
+          "options": [
+            "works",
+            "worked",
+            "will have been working",
+            "has worked"
+          ],
+          "answer": 2,
+          "explanation": "Mệnh đề when chia hiện tại đơn để nói tương lai, còn for a decade nhấn quá trình kéo dài đến lúc đó nên dùng will have been working. Has worked gắn với hiện tại nên sai."
+        }
+      ]
+    },
+    {
+      "slug": "used-to-would",
+      "title": "Used to / Would (thói quen trong quá khứ)",
+      "titleEn": "Used to / Would for past habits",
+      "summary": "Used to và would dùng để kể về thói quen hoặc trạng thái trong quá khứ; used to dùng được cho cả trạng thái, còn would chỉ dùng cho hành động lặp lại.",
+      "isNew": true,
+      "content": "### Công thức\n\n- **S + used to + V** (đã từng làm gì, nay không còn)\n- **S + did not (didn't) use to + V** / **Did + S + use to + V?**\n- **S + would + V** (thói quen trong quá khứ, thường để hồi tưởng)\n- **S + be/get used to + V-ing** (quen với việc gì, nghĩa khác hoàn toàn)\n\n### Cách dùng\n\n- Used to diễn tả thói quen hoặc trạng thái trong quá khứ và hàm ý hiện tại không còn: I used to live in a small village (Tôi từng sống ở một ngôi làng nhỏ).\n- Would chỉ dùng cho hành động lặp lại, không dùng cho trạng thái: sai I would have a dog, đúng I used to have a dog.\n- Would thường xuất hiện trong câu kể chuyện, gợi không khí hồi tưởng: Every summer, we would visit our grandparents (Mỗi mùa hè, chúng tôi lại về thăm ông bà).\n- Be used to + V-ing diễn tả trạng thái quen với việc gì ở hiện tại: I am used to getting up early (Tôi đã quen dậy sớm).\n\n### Dấu hiệu nhận biết\n\n- when I was a child, in those days, years ago, back then\n- every summer, every evening, whenever + mệnh đề quá khứ\n\n### Lỗi thường gặp\n\n- Thêm -ing sau used to: sai I used to playing football, đúng I used to play football.\n- Viết didn't used to; dạng đúng là didn't use to.\n- Dùng would với động từ trạng thái như have, know, live, be.\n- Nhầm used to (đã từng) với be used to (quen với).",
+      "examples": [
+        {
+          "en": "My grandfather used to tell us stories every evening.",
+          "vi": "Ông tôi thường kể chuyện cho chúng tôi nghe mỗi tối."
+        },
+        {
+          "en": "When I was a student, I would ride my bike to school every day.",
+          "vi": "Khi còn là sinh viên, ngày nào tôi cũng đạp xe đến trường."
+        },
+        {
+          "en": "There used to be a small market on this corner.",
+          "vi": "Trước đây từng có một khu chợ nhỏ ở góc phố này."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "My sister ___ short hair when she was little, but now it's long.",
+          "options": [
+            "used to have",
+            "would have",
+            "is used to having",
+            "uses to have"
+          ],
+          "answer": 0,
+          "explanation": "Have short hair là trạng thái trong quá khứ nên phải dùng used to have. Would không dùng với trạng thái, is used to having nói về hiện tại, còn uses to have sai cấu trúc."
+        },
+        {
+          "prompt": "In those days, my father ___ home late every night.",
+          "options": [
+            "would come",
+            "is coming",
+            "has come",
+            "is used to coming"
+          ],
+          "answer": 0,
+          "explanation": "Come home là hành động lặp lại trong quá khứ, có in those days làm mốc, nên would come phù hợp. Is coming và has come thuộc hiện tại, is used to coming diễn tả thói quen hiện tại."
+        },
+        {
+          "prompt": "I ___ getting up early now, but it was hard at first.",
+          "options": [
+            "used to",
+            "am used to",
+            "would",
+            "use to"
+          ],
+          "answer": 1,
+          "explanation": "Câu nói về việc đã quen với dậy sớm ở hiện tại nên cần am used to + V-ing. Used to và would chỉ dùng cho quá khứ, còn use to thiếu trợ động từ."
+        }
+      ]
+    },
+    {
+      "slug": "on-tap-so-sanh-cac-thi",
+      "title": "Ôn tập và so sánh các thì",
+      "titleEn": "Tense review and contrast",
+      "summary": "Hệ thống lại cách chọn thì dựa trên mốc thời gian, trạng thái hành động và từ tín hiệu, đồng thời phân biệt các cặp thì dễ nhầm.",
+      "isNew": true,
+      "content": "### Nguyên tắc chọn thì\n\n- Bước 1: xác định mốc thời gian của câu là quá khứ, hiện tại hay tương lai.\n- Bước 2: xác định hành động đang diễn ra, đã hoàn thành hay lặp lại thành thói quen.\n- Bước 3: đối chiếu từ tín hiệu trong câu để chốt thì.\n\n### Các cặp dễ nhầm\n\n- Quá khứ đơn và hiện tại hoàn thành: quá khứ đơn gắn với mốc đã kết thúc (yesterday, in 2019, last week); hiện tại hoàn thành nối với hiện tại (since, for, already, yet, ever).\n- Hiện tại hoàn thành và hiện tại hoàn thành tiếp diễn: thì đầu nhấn kết quả hoặc số lần, thì sau nhấn quá trình và độ dài.\n- Quá khứ đơn và quá khứ hoàn thành: hành động xảy ra trước dùng had + V3, hành động xảy ra sau dùng quá khứ đơn.\n- Will, be going to và hiện tại tiếp diễn: will cho quyết định tức thời hoặc dự đoán; be going to cho dự định trước hoặc dự đoán có bằng chứng; hiện tại tiếp diễn cho lịch hẹn đã sắp xếp.\n- Will have + V3 và will have been + V-ing: thì thứ nhất nhấn hoàn thành trước mốc, thì thứ hai nhấn kéo dài đến mốc.\n- Used to và would: used to dùng cho cả trạng thái và thói quen, would chỉ dùng cho hành động lặp lại.\n\n### Chiến lược làm bài\n\n- Gạch chân từ tín hiệu thời gian trước khi nhìn đáp án.\n- Loại đáp án sai mốc thời gian trước, rồi mới xét tiếp diễn hay hoàn thành.\n- Với câu có hai hành động, xác định việc nào xảy ra trước.\n\n### Lỗi thường gặp\n\n- Thấy since hoặc for là chọn ngay hiện tại hoàn thành tiếp diễn, bỏ qua động từ trạng thái.\n- Bỏ qua bằng chứng ở hiện tại khi cân nhắc be going to.\n- Dùng hiện tại hoàn thành với mốc quá khứ đã kết thúc: sai I have seen him yesterday.",
+      "examples": [
+        {
+          "en": "I have lived in this city for ten years, but my brother moved away in 2019.",
+          "vi": "Tôi đã sống ở thành phố này mười năm, nhưng anh trai tôi đã chuyển đi năm 2019."
+        },
+        {
+          "en": "She had been cooking for two hours when the guests arrived.",
+          "vi": "Cô ấy đã nấu ăn được hai tiếng khi khách tới."
+        },
+        {
+          "en": "Next year, I will have been working here for a decade.",
+          "vi": "Năm sau, tôi sẽ làm việc ở đây được mười năm."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "I ___ my keys yesterday, so I can't get into the house now.",
+          "options": [
+            "lose",
+            "lost",
+            "have lost",
+            "had lost"
+          ],
+          "answer": 1,
+          "explanation": "Yesterday là mốc quá khứ đã kết thúc nên phải dùng quá khứ đơn lost. Have lost tuy diễn tả kết quả hiện tại nhưng không đi với mốc quá khứ xác định."
+        },
+        {
+          "prompt": "Look at those dark clouds! It ___.",
+          "options": [
+            "rains",
+            "rained",
+            "is going to rain",
+            "has rained"
+          ],
+          "answer": 2,
+          "explanation": "Câu có bằng chứng trực tiếp ở hiện tại là những đám mây đen nên dùng be going to để dự đoán. Rains và has rained không hợp ngữ cảnh, rained sai mốc thời gian."
+        },
+        {
+          "prompt": "By the time we got to the cinema, the film ___.",
+          "options": [
+            "starts",
+            "started",
+            "had started",
+            "has started"
+          ],
+          "answer": 2,
+          "explanation": "Phim đã bắt đầu trước khi chúng tôi tới rạp, hai việc đều trong quá khứ, nên hành động xảy ra trước dùng had started. Started không thể hiện được thứ tự trước sau."
+        }
+      ]
+    }
+  ]
+}

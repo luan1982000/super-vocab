@@ -2,8 +2,9 @@
 
 Web học từ vựng cá nhân: lưu từ và ôn bằng flashcard theo thuật toán spaced repetition (FSRS).
 
-- **Trang:** Login (`#/login`) · Thêm từ (`#/vocab`) · Danh sách từ vựng (`#/vocab/list`) · Ôn tập (`#/practice` → chọn chế độ)
+- **Trang:** Login (`#/login`) · Thêm từ (`#/vocab`) · Danh sách từ vựng (`#/vocab/list`) · Ngữ pháp (`#/grammar`) · Ôn tập (`#/practice` → chọn chế độ)
 - **2 chế độ ôn:** Flashcard (`#/practice/flashcard`) · Viết câu (`#/practice/writing`, chấm bằng AI)
+- **Ngữ pháp:** 49 chủ đề / 5 giai đoạn, mỗi chủ đề có bài học, ví dụ và **3 bài tập**; tiến độ (trạng thái, mức nắm 1–5, ngày học, ngày ôn tiếp) lưu riêng theo user
 - **Bộ từ (collection):** gom từ theo chủ đề; phiên ôn tập chỉ gồm từ trong bộ đang chọn
 - **Stack:** Vite + React + TypeScript · Tailwind CSS · react-router-dom (HashRouter) · Supabase (DB + Auth) · ts-fsrs · `@phosphor-icons/react` (icon) · `page-mascot` (linh vật ở góc)
 - **Giao diện:** xem [`design.md`](./design.md) — hệ token, bảng màu, thang chữ, thành phần dùng chung
@@ -18,15 +19,16 @@ npm run dev
 
 ### Backend Supabase
 
-Project `qqtpselvrnkfcahdarbn` **đã được cấu hình sẵn**: bảng `cards` + 2 index + RLS (`own cards`) đã được apply qua MCP, security/performance advisors không còn cảnh báo. Việc còn lại chỉ là điền key vào `.env.local`.
+Project `qqtpselvrnkfcahdarbn` **đã được cấu hình sẵn**: `collections`, `cards`, `grammar_topics` (49 chủ đề đã seed), `grammar_progress`, index và RLS đã được apply qua MCP. Việc còn lại chỉ là điền key vào `.env.local`.
 
 Nếu dựng project khác:
 
 1. Tạo project tại [supabase.com](https://supabase.com).
-2. Chạy `supabase/schema.sql` (SQL Editor, hoặc `apply_migration` qua Supabase MCP). File này tạo bảng `cards`, index và **bật RLS** (mỗi user chỉ đọc/ghi được card của mình).
-3. Lấy key ở **Project Settings → API**: dùng **publishable key** (`sb_publishable_…`, khuyến nghị) hoặc legacy `anon` key — cả hai đã được kiểm chứng hoạt động với app này.
-4. **Authentication → Providers → Email**: tắt *Enable email confirmations* nếu không muốn xác nhận email (tiện khi dùng cá nhân), hoặc để bật và xác nhận qua mail.
-5. Chỉ dùng public key ở frontend. Không bao giờ đưa `service_role key` vào code hay biến `VITE_*`.
+2. Chạy `supabase/schema.sql` (SQL Editor, hoặc `apply_migration` qua Supabase MCP). File này tạo `collections`, `cards`, `grammar_topics`, `grammar_progress`, index và **bật RLS**.
+3. Nạp nội dung ngữ pháp: chạy `supabase/grammar-seed.sql` trong SQL Editor (upsert 49 chủ đề, chạy lại nhiều lần vẫn an toàn). File này sinh từ `supabase/grammar/*.json` bằng `npm run seed:grammar`; sửa nội dung trong app sẽ ghi thẳng vào bảng `grammar_topics`.
+4. Lấy key ở **Project Settings → API**: dùng **publishable key** (`sb_publishable_…`, khuyến nghị) hoặc legacy `anon` key — cả hai đã được kiểm chứng hoạt động với app này.
+5. **Authentication → Providers → Email**: tắt *Enable email confirmations* nếu không muốn xác nhận email (tiện khi dùng cá nhân), hoặc để bật và xác nhận qua mail.
+6. Chỉ dùng public key ở frontend. Không bao giờ đưa `service_role key` vào code hay biến `VITE_*`.
 
 Nếu build thiếu biến môi trường, app hiện màn hình hướng dẫn thay vì trắng trang.
 
@@ -65,6 +67,7 @@ Function **tự chặn** request không có phiên đăng nhập (401), vì khó
 | `npm run dev` | Dev server |
 | `npm run build` | Typecheck (`tsc -b`) + build ra `dist/` |
 | `npm run preview` | Xem thử bản build |
+| `npm run seed:grammar` | Gộp `supabase/grammar/*.json` → `supabase/grammar-seed.sql` (validate 3 ví dụ + 3 bài tập/chủ đề) |
 | `npm run lint` | oxlint |
 
 ## 3. Deploy lên GitHub Pages
@@ -108,6 +111,9 @@ Bảng `collections` cũng có policy riêng (`own collections`). Kiểm tra th�
 - **Bộ từ (collection):** mỗi bộ chứa nhiều từ. Chip “Bộ từ:” có ở cả trang thêm từ, trang danh sách và các chế độ ôn; nút **＋ Quản lý bộ từ** (trang thêm từ và trang danh sách) để tạo / đổi tên / xóa. Tên bộ không được trùng nhau (không phân biệt hoa/thường). Xóa bộ **không xóa từ** — các từ rơi về “Chưa phân loại” (`on delete set null`).
 - **Thêm từ (`#/vocab`):** form thêm từ (từ, nghĩa, phát âm, ví dụ, ghi chú, bộ từ). Chọn bộ ở dải chip vừa để lọc vừa **đặt bộ mặc định cho từ mới** (form tự xoá sau mỗi lần thêm, giữ nguyên bộ đang chọn). Từ mới mặc định đến hạn ngay (`due = now()`). Chặn thêm trùng từ (không phân biệt hoa/thường). Sau khi thêm có dòng `Đã thêm {từ}. Xem trong danh sách`.
 - **Danh sách từ vựng (`#/vocab/list`):** lọc theo bộ + tìm kiếm client-side theo từ/nghĩa, **phân trang 50 mục/trang** (số trang + `Trước`/`Sau`, chỗ nhảy có `…`, hiện `1–50 trong N từ`), sửa qua modal (đổi được cả bộ từ), xóa có xác nhận.
+- **Ngữ pháp (`#/grammar`):** 49 chủ đề nhóm theo 5 giai đoạn. Lọc theo trạng thái (**Đến hạn · Chưa học · Đang học · Cần ôn · Đã nắm**), tìm theo tên/tóm tắt. Mỗi dòng hiện tên, trạng thái, **ngày học gần nhất**, **ngày ôn tiếp** (nền `highlighter` khi quá hạn) và mức nắm 1–5; nút **Đã ôn** ghi ngày hôm nay và tự tính lịch mới.
+- **Chi tiết ngữ pháp (`#/grammar/:slug`):** bài học (Markdown-lite), 3 ví dụ, **3 bài tập trắc nghiệm** chấm ngay kèm giải thích. Cột/bảng **Tiến độ** cho chọn trạng thái, mức nắm 1–5, và hai ô **date picker** cho `Ngày học gần nhất` và `Ôn tiếp` (không phải select); nút **Đã ôn hôm nay** tăng số lần ôn và đặt lịch. Nút **Sửa nội dung** mở form sửa tiêu đề, tóm tắt, bài học, ví dụ và 3 bài tập — nội dung dùng chung cho mọi tài khoản.
+- **Quy tắc lịch ngữ pháp:** Đang học → ôn sau 1 ngày; Cần ôn → sau 3 ngày; Đã nắm → sau 7 ngày (học lại nếu thật sự cần). Đổi trạng thái đặt lại ngày ôn tiếp; ngày vẫn sửa tay được bằng date picker.
 - **Ôn tập (`#/practice`):** chọn bộ ở chip trên cùng, rồi chọn chế độ. Bộ đang chọn được nhớ trong `localStorage`, **dùng chung cho cả hai chế độ**. Phiên ôn chỉ gồm từ trong bộ đó, lấy tối đa 30 card có `due <= now()` sắp theo `due` tăng dần.
 - **Chế độ Flashcard (`#/practice/flashcard`):** lật thẻ để xem nghĩa, chấm **Again / Hard / Good / Easy** (phím `1`–`4`, `Space` để lật). Mỗi nút hiện khoảng thời gian ôn lại thật, lấy từ chính kết quả FSRS dùng để ghi DB.
 - **Chế độ Viết câu (`#/practice/writing`):** hiện từ, phiên âm, nghĩa, khái niệm; bạn viết một câu tiếng Anh có dùng từ đó rồi bấm **Chấm điểm** (`⌘/Ctrl + Enter`). AI trả về điểm 0–100, nhận xét, danh sách lỗi (loại lỗi · đoạn sai · giải thích · cách sửa), **câu đúng** đã sửa, vài câu mẫu khác và một mẹo. Sau khi chấm, bạn chấm mức độ nhớ **Again / Hard / Good / Easy** (`1`–`4`) y như flashcard — mỗi nút hiện khoảng thời gian ôn lại thật và lượt chấm ghi lịch FSRS; nút **Từ tiếp theo** bỏ qua mà không ghi lịch. Có thể **Viết lại** để viết lại chính từ đó.
@@ -136,18 +142,23 @@ src/
 │   ├── writing.ts              # gọi edge function grade-writing, chuẩn hoá kết quả chấm
 │   ├── fsrs.ts                 # map row ⇄ Card của ts-fsrs, lịch 4 mức chấm
 │   ├── format.ts               # format ngày giờ, khoảng thời gian, nhãn trạng thái
-│   └── types.ts                # kiểu CardRow / CollectionRow / CardInput / CardUpdate
+│   ├── grammar.ts              # trạng thái/mức nắm, lịch ôn 1/3/7 ngày, so sánh ngày
+│   └── types.ts                # kiểu CardRow / CollectionRow / Grammar*
 ├── hooks/
 │   ├── AuthProvider.tsx        # subscribe session Supabase, expose signIn/signOut
 │   ├── useAuth.ts              # context + hook useAuth()
 │   ├── useCollections.ts       # nạp danh sách bộ từ
 │   ├── useCards.ts             # nạp toàn bộ từ (dùng chung 2 trang từ vựng)
+│   ├── useGrammar.ts           # nạp chủ đề + tiến độ, lưu tiến độ/nội dung
 │   └── useCollectionScope.ts   # scope bộ từ dùng chung giữa các chế độ ôn
-├── components/                 # AppShell (menu dọc + drawer + linh vật), Breadcrumb, Pagination, Modal, CollectionBar, VocabForm, VocabTable, FlashCard, MascotCorner, …
+├── components/                 # AppShell, Breadcrumb, Modal, CollectionBar, VocabForm, FlashCard, GrammarProgressPanel, GrammarExercises, GrammarTopicEditor, …
 ├── assets/mascot/              # knight-directions.webp + knight-reactions.webp (2 sheet 3×3 của page-mascot)
-└── pages/                      # LoginPage, VocabPage, VocabListPage, PracticePage, FlashcardPage, WritingPage
-supabase/schema.sql             # collections + cards + index + RLS
+└── pages/                      # LoginPage, VocabPage, VocabListPage, GrammarListPage, GrammarDetailPage, PracticePage, FlashcardPage, WritingPage
+supabase/schema.sql             # collections + cards + grammar_* + index + RLS
+supabase/grammar/*.json         # nội dung nguồn 49 chủ đề (5 giai đoạn)
+supabase/grammar-seed.sql       # SQL upsert sinh từ JSON bằng npm run seed:grammar
 supabase/functions/grade-writing/index.ts  # edge function chấm câu bằng AI
+scripts/build-grammar-seed.mjs  # gộp JSON + validate (3 ví dụ, 3 bài tập) → seed SQL
 .github/workflows/deploy.yml    # build → GitHub Pages
 ```
 
@@ -157,6 +168,9 @@ supabase/functions/grade-writing/index.ts  # edge function chấm câu bằng AI
 - Cột `learning_steps` được thêm so với bản thiết kế ban đầu vì `Card` của ts-fsrs v5 cần trường này.
 - Cột `state`: 0 New, 1 Learning, 2 Review, 3 Relearning (khớp enum `State` của ts-fsrs).
 - `cards.collection_id` là FK tổ hợp `(collection_id, user_id) → collections (id, user_id)` với `on delete set null (collection_id)`: RLS không bảo vệ được FK, nên ràng buộc này chặn việc gắn từ vào bộ của user khác.
+- Ngữ pháp tách hai tầng: `grammar_topics` là nội dung dùng chung (mọi user đã đăng nhập đọc/sửa được), `grammar_progress` là tiến độ riêng từng user (RLS `own grammar progress`, unique `(user_id, topic_id)`).
+- `last_studied_on` / `next_review_on` là cột `date` dạng `YYYY-MM-DD` (đúng ngữ nghĩa lịch chọn ngày), không phải `timestamptz`; so sánh với ngày hôm nay theo giờ máy. `reviewed_at` mới là `timestamptz`.
+- Quy tắc lịch: `learning` +1 ngày, `needs_review` +3 ngày, `mastered` +7 ngày, `not_started` chưa đặt lịch. `reviewedPatch` là nguồn duy nhất cho nút **Đã ôn**; `statusPatch`/`nextReviewFor` dùng khi đổi trạng thái, nên lịch trong DB luôn khớp nhãn hiển thị.
 - Supabase free tier tự pause sau ~1 tuần không hoạt động; vào dashboard bấm *Resume*.
 - Chế độ Viết câu **không lưu lịch sử chấm**: điểm và lỗi chỉ hiện trong phiên rồi mất (chỉ lịch FSRS của card được ghi, giống flashcard). Lưu lịch sử chấm cần thêm bảng (ngoài phạm vi hiện tại).
 - `grade-writing` yêu cầu JWT hợp lệ (kiểm tra cả ở gateway và trong function): chỉ người đã đăng nhập gọi được, tránh lộ endpoint công khai và đốt credit AI.

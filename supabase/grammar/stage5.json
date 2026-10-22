@@ -1,0 +1,342 @@
+{
+  "stage": 5,
+  "stageTitle": "Nâng cao và luyện thi TOEIC",
+  "topics": [
+    {
+      "slug": "cau-tao-tu",
+      "title": "Cấu tạo từ (word formation: hậu tố, tiền tố)",
+      "titleEn": "Word formation",
+      "summary": "Nhận diện tiền tố đổi nghĩa và hậu tố quyết định từ loại để chọn đúng dạng từ trong câu, đặc biệt ở câu hỏi từ loại của đề thi.",
+      "isNew": true,
+      "content": "### Tiền tố thay đổi nghĩa\n\nTiền tố (prefix) đứng trước từ gốc và đổi nghĩa chứ không đổi từ loại. Nhóm phủ định quen thuộc gồm **un-**, **in-**, **im-**, **il-**, **ir-**, **dis-**, **non-**, **mis-** (unfair: không công bằng; impossible: không thể; misunderstand: hiểu nhầm). Nhóm chỉ mức độ hoặc thời gian gồm **re-** (làm lại), **pre-** (trước), **post-** (sau), **over-** (quá mức), **under-** (dưới mức), **sub-** (dưới), **inter-** (giữa các). Khi gặp từ lạ, hãy tách tiền tố rồi đoán nghĩa từ phần còn lại.\n\n### Hậu tố quyết định từ loại\n\nHậu tố (suffix) đứng sau từ gốc và quyết định từ loại, đây là điểm được hỏi nhiều nhất trong đề thi.\n\n- Danh từ: **-tion/-sion**, **-ment**, **-ness**, **-ity**, **-ance/-ence**, **-er/-or**, **-ist**, **-ship** (decision, development, happiness, ability, performance, employer, scientist, leadership).\n- Tính từ: **-ful**, **-less**, **-ous**, **-ive**, **-able/-ible**, **-al**, **-ic** (careful, careless, dangerous, effective, reliable, national, economic).\n- Động từ: **-ize/-ise**, **-ify**, **-en**, **-ate** (modernize, simplify, strengthen, activate).\n- Trạng từ: **-ly** (carefully, rapidly).\n\n### Cách dùng khi làm bài\n\n- Xác định vị trí cần điền: sau mạo từ hoặc tính từ sở hữu thường là danh từ; sau động từ liên kết **be, seem, become** thường là tính từ; bổ nghĩa cho động từ thường là trạng từ.\n- Nếu bốn lựa chọn cùng gốc, chỉ khác hậu tố thì câu hỏi đang kiểm tra từ loại chứ không phải nghĩa.\n- Đọc cả câu để phát hiện phủ định; tiền tố phủ định có thể làm đổi nghĩa hoàn toàn (The report was incomplete - báo cáo chưa đầy đủ).\n\n### Lỗi thường gặp\n\n- Chọn trạng từ khi vị trí cần tính từ bổ nghĩa cho danh từ.\n- Nhầm **-ing** và **-ed** của tính từ: dùng **-ed** cho cảm xúc của người, **-ing** cho tính chất gây ra cảm xúc (bored/boring).\n- Viết sai chính tả khi thêm hậu tố, ví dụ bỏ **e** trước **-ment** hoặc đổi **y** thành **i**.",
+      "examples": [
+        {
+          "en": "The supervisor thanked the staff for their patience during the transition.",
+          "vi": "Người giám sát cảm ơn nhân viên vì sự kiên nhẫn của họ trong thời gian chuyển đổi."
+        },
+        {
+          "en": "The instructions were unclear, so several employees made mistakes.",
+          "vi": "Hướng dẫn không rõ ràng nên nhiều nhân viên đã mắc lỗi."
+        },
+        {
+          "en": "Our department will modernize the filing system next quarter.",
+          "vi": "Bộ phận chúng tôi sẽ hiện đại hóa hệ thống lưu hồ sơ vào quý sau."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "The manager praised the team for their ___ to the project.",
+          "options": ["commit", "committed", "commitment", "committing"],
+          "answer": 2,
+          "explanation": "Sau tính từ sở hữu their cần một danh từ, và commitment là danh từ duy nhất trong các lựa chọn. Các từ còn lại là động từ hoặc dạng V-ing/V-ed."
+        },
+        {
+          "prompt": "The new policy is ___ with the company's long-term goals.",
+          "options": ["consistent", "consistence", "consistently", "consist"],
+          "answer": 0,
+          "explanation": "Sau động từ be cần tính từ, và cụm cố định be consistent with nghĩa là phù hợp với. Consistence là danh từ, consistently là trạng từ nên không đứng sau be."
+        },
+        {
+          "prompt": "Because the instructions were ___, the staff could not follow them.",
+          "options": ["clear", "clearly", "unclear", "clarity"],
+          "answer": 2,
+          "explanation": "Vị trí sau were cần tính từ, và vế sau cho thấy nghĩa phủ định nên phải dùng unclear. Clearly là trạng từ, clarity là danh từ."
+        }
+      ]
+    },
+    {
+      "slug": "phrasal-verbs",
+      "title": "Phrasal verbs",
+      "titleEn": "Phrasal verbs",
+      "summary": "Nắm cách cấu tạo, phân loại và trật tự tân ngữ của cụm động từ, đồng thời học các cụm thường gặp trong môi trường công việc.",
+      "isNew": true,
+      "content": "### Cấu tạo và phân loại\n\nCụm động từ (phrasal verb) gồm một động từ và một tiểu từ như **up, down, in, out, off, on, over, away**. Nghĩa của cả cụm thường khác nghĩa động từ gốc, không thể suy luận từng từ. Có hai nhóm chính: nội động, không cần tân ngữ (break down: hỏng máy) và ngoại động, cần tân ngữ.\n\n- Không tách được: tân ngữ luôn đứng sau tiểu từ (look after the children - chăm sóc bọn trẻ).\n- Tách được: tân ngữ có thể đứng giữa hoặc sau tiểu từ (turn off the light / turn the light off).\n- Nếu tân ngữ là đại từ **it, them, him, her** thì bắt buộc đứng giữa: turn it off, không nói turn off it.\n\n### Nhóm theo động từ gốc\n\n- **take**: take off (cất cánh, cởi), take over (tiếp quản), take up (bắt đầu một sở thích), take after (giống ai).\n- **put**: put off (hoãn), put on (mặc vào), put out (dập tắt), put up with (chịu đựng).\n- **turn**: turn down (từ chối, giảm âm lượng), turn up (đến, tăng âm lượng), turn in (nộp).\n- **look**: look into (điều tra), look after (chăm sóc), look forward to (mong chờ), look up (tra cứu).\n\n### Cách dùng trong ngữ cảnh công việc\n\nTrong đề thi và email công sở, hãy dựa vào tiểu từ đi kèm và nghĩa của cả câu thay vì dịch từng chữ. Ví dụ **carry out a survey** (tiến hành khảo sát), **come up with a plan** (nghĩ ra kế hoạch), **go over the figures** (xem lại số liệu).\n\n### Lỗi thường gặp\n\n- Đặt đại từ sau tiểu từ: sai **pick up it**, đúng **pick it up**.\n- Dùng sai tiểu từ vì nghĩa gần giống nhau: **turn down** là từ chối, không phải giảm nhiệt độ.\n- Chia sai thì khi cụm động từ ở dạng quá khứ: chỉ động từ chính thêm **-ed**, tiểu từ giữ nguyên (called off, không phải call offed).",
+      "examples": [
+        {
+          "en": "The flight was called off because of heavy fog.",
+          "vi": "Chuyến bay bị hủy vì sương mù dày."
+        },
+        {
+          "en": "She took over the department after her manager retired.",
+          "vi": "Cô ấy tiếp quản bộ phận sau khi quản lý của mình nghỉ hưu."
+        },
+        {
+          "en": "Please fill out the form and hand it in at the front desk.",
+          "vi": "Vui lòng điền vào mẫu đơn và nộp ở quầy lễ tân."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "The meeting was ___ until next Monday because of the storm.",
+          "options": ["put on", "put off", "put up", "put out"],
+          "answer": 1,
+          "explanation": "Put off nghĩa là hoãn, phù hợp với việc dời cuộc họp sang thứ Hai. Put on là mặc vào, put up là dựng lên, put out là dập tắt."
+        },
+        {
+          "prompt": "Please ___ your report by Friday at the latest.",
+          "options": ["turn up", "turn down", "turn in", "turn over"],
+          "answer": 2,
+          "explanation": "Turn in nghĩa là nộp, đúng với việc nộp báo cáo. Turn up là xuất hiện, turn down là từ chối, turn over là chuyển giao."
+        },
+        {
+          "prompt": "The manager asked the team to ___ the complaint immediately.",
+          "options": ["look after", "look up", "look into", "look forward to"],
+          "answer": 2,
+          "explanation": "Look into nghĩa là điều tra, xem xét, phù hợp với việc xử lý một lời phàn nàn. Look after là chăm sóc, look up là tra cứu, look forward to là mong chờ."
+        }
+      ]
+    },
+    {
+      "slug": "so-such-too-enough",
+      "title": "So / Such / Too / Enough",
+      "titleEn": "So / Such / Too / Enough",
+      "summary": "Phân biệt bốn cấu trúc chỉ mức độ qua từ loại đi kèm và ý nghĩa tích cực hay tiêu cực của câu.",
+      "isNew": true,
+      "content": "### Công thức cơ bản\n\nBốn cấu trúc này đều nói về mức độ nhưng khác nhau ở từ loại đi kèm và trật tự câu.\n\n- **so + tính từ/trạng từ + that + mệnh đề**: The soup was so salty that nobody finished it (món súp mặn đến mức không ai ăn hết).\n- **such + (a/an) + tính từ + danh từ + that + mệnh đề**: It was such a long journey that we stopped twice (chuyến đi dài đến mức chúng tôi dừng hai lần).\n- **too + tính từ/trạng từ + to + động từ**: The box is too heavy to lift (cái hộp quá nặng để nâng).\n- **tính từ/trạng từ + enough + to + động từ**: She is old enough to drive (cô ấy đủ tuổi để lái xe).\n\n### Cách dùng\n\n- **So** và **such** nhấn mạnh mức độ dẫn tới một kết quả, thường đi với **that**. **Such** đứng trước cụm danh từ, **so** đứng trước tính từ đơn lẻ.\n- **Too** mang nghĩa tiêu cực, hàm ý không thể thực hiện được hành động phía sau. **Enough** mang nghĩa đủ, tích cực hơn.\n- **Enough** đứng sau tính từ nhưng đứng trước danh từ: enough money (đủ tiền), not rich enough (không đủ giàu).\n\n### Dấu hiệu nhận biết nhanh\n\n- Thấy **that** phía sau và trước chỗ trống là tính từ đơn lẻ thì chọn **so**.\n- Thấy cụm **a/an + tính từ + danh từ** thì chọn **such**, không dùng **so**.\n- Thấy **to + động từ** phía sau thì cân nhắc **too** hoặc **enough** tùy nghĩa câu.\n\n### Lỗi thường gặp\n\n- Viết **so a difficult test**, đúng là **such a difficult test**.\n- Dùng **too ... to** cho nghĩa tích cực, ví dụ sai **He is too tall to reach the shelf**.\n- Đặt **enough** trước tính từ: sai **enough old**, đúng **old enough**.",
+      "examples": [
+        {
+          "en": "The lecture was so boring that half the audience left early.",
+          "vi": "Bài giảng nhàm chán đến mức nửa khán giả ra về sớm."
+        },
+        {
+          "en": "It was such a difficult test that many students ran out of time.",
+          "vi": "Bài kiểm tra khó đến mức nhiều học sinh hết thời gian."
+        },
+        {
+          "en": "This box is too heavy for me to lift alone.",
+          "vi": "Cái hộp này quá nặng để tôi nâng một mình."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "The coffee was ___ hot that I could not drink it.",
+          "options": ["such", "so", "too", "enough"],
+          "answer": 1,
+          "explanation": "Trước tính từ hot và sau là mệnh đề that nên dùng so. Such phải đi với cụm danh từ, too và enough không đi với that theo cấu trúc này."
+        },
+        {
+          "prompt": "It was ___ a complicated form that nobody could complete it.",
+          "options": ["so", "such", "too", "very"],
+          "answer": 1,
+          "explanation": "Có cụm a complicated form là cụm danh từ nên phải dùng such. So chỉ đứng trước tính từ đơn lẻ, còn very không đi với that."
+        },
+        {
+          "prompt": "The room is not warm ___ for the children to sleep in.",
+          "options": ["enough", "too", "so", "such"],
+          "answer": 0,
+          "explanation": "Enough đứng sau tính từ warm và trước cụm to + động từ, nghĩa là đủ ấm. Too mang nghĩa quá mức nên trái với ý câu."
+        }
+      ]
+    },
+    {
+      "slug": "dao-ngu-va-cau-nhan-manh",
+      "title": "Đảo ngữ và câu nhấn mạnh",
+      "titleEn": "Inversion and emphasis",
+      "summary": "Nắm các mẫu đảo ngữ cố định và câu chẻ để nhấn mạnh thông tin, tránh sai trật tự từ khi viết trang trọng.",
+      "isNew": true,
+      "content": "### Đảo ngữ là gì\n\nĐảo ngữ (inversion) là hiện tượng đưa trợ động từ hoặc động từ lên trước chủ ngữ, thường dùng để nhấn mạnh hoặc theo cấu trúc cố định. Trật tự chuẩn là **trạng từ phủ định + trợ động từ + chủ ngữ + động từ chính**. Ví dụ Never have I seen such a result (tôi chưa từng thấy kết quả như vậy).\n\n### Các dạng đảo ngữ thường gặp\n\n- Với **never, rarely, seldom, hardly, little, nowhere**: Never does she arrive late (cô ấy không bao giờ đến muộn).\n- Với **not only ... but also**: Not only did he finish early, but he also helped others (anh ấy không chỉ xong sớm mà còn giúp người khác).\n- Với **only after, only when, only if** ở đầu câu: Only after the audit did the company realize the error (chỉ sau cuộc kiểm toán công ty mới nhận ra lỗi).\n- Với **no sooner ... than** và **hardly ... when**: Hardly had the meeting begun when the alarm rang (cuộc họp vừa bắt đầu thì chuông báo cháy vang lên).\n\n### Câu nhấn mạnh\n\n- Câu chẻ với **It is/was ... that**: It was the marketing team that proposed the new slogan (chính nhóm marketing đã đề xuất khẩu hiệu mới).\n- Câu chẻ với **What ... is/was**: What we need is more time (điều chúng ta cần là thêm thời gian).\n- **Do/does/did** đứng trước động từ để nhấn mạnh khẳng định: I do appreciate your help (tôi thực sự trân trọng sự giúp đỡ của bạn).\n\n### Lỗi thường gặp\n\n- Đảo ngữ nhưng quên chia trợ động từ theo thì: sai **Never she has seen**, đúng **Never has she seen**.\n- Dùng **that** thay cho **when** sau **hardly**: đúng là hardly ... when.\n- Đảo ngữ ở cả mệnh đề phụ không cần thiết, khiến câu sai trật tự so với cấu trúc cố định.",
+      "examples": [
+        {
+          "en": "Rarely does the company accept late applications.",
+          "vi": "Hiếm khi công ty chấp nhận đơn đăng ký muộn."
+        },
+        {
+          "en": "Not only did she finish the report, but she also presented it.",
+          "vi": "Cô ấy không chỉ hoàn thành báo cáo mà còn trình bày nó."
+        },
+        {
+          "en": "It was the design team that won the annual award.",
+          "vi": "Chính nhóm thiết kế là bên giành giải thưởng thường niên."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "Never ___ I seen such a well-prepared presentation.",
+          "options": ["has", "have", "had", "do"],
+          "answer": 1,
+          "explanation": "Chủ ngữ là I nên trợ động từ phải là have, và đảo ngữ đưa have lên trước chủ ngữ. Has chỉ dùng với ngôi thứ ba số ít."
+        },
+        {
+          "prompt": "Only after the audit ___ the company realize the error.",
+          "options": ["does", "was", "did", "had"],
+          "answer": 2,
+          "explanation": "Mệnh đề chính dùng động từ nguyên mẫu realize ở quá khứ nên cần trợ động từ did. Had sẽ tạo thành thì quá khứ hoàn thành không phù hợp với realize."
+        },
+        {
+          "prompt": "It was in 2019 ___ the branch opened.",
+          "options": ["which", "when", "that", "where"],
+          "answer": 2,
+          "explanation": "Đây là câu chẻ nhấn mạnh trạng ngữ thời gian, cấu trúc cố định là It was ... that. Which, when và where không dùng trong mẫu này."
+        }
+      ]
+    },
+    {
+      "slug": "on-ngu-phap-toeic-part-5-6",
+      "title": "Ôn ngữ pháp TOEIC Part 5–6",
+      "titleEn": "TOEIC Part 5–6 grammar",
+      "summary": "Chiến lược xử lý câu điền khuyết và đoạn điền khuyết: nhận diện dạng câu hỏi, loại trừ theo từ loại và quản lý thời gian.",
+      "isNew": false,
+      "content": "### Cấu trúc phần thi\n\nPart 5 gồm các câu điền khuyết ngắn, mỗi câu có một chỗ trống và bốn lựa chọn. Part 6 là đoạn văn ngắn có nhiều chỗ trống, đòi hỏi đọc cả ngữ cảnh chứ không chỉ một câu. Cả hai phần đều kiểm tra ngữ pháp và từ vựng trong tình huống công việc.\n\n### Dạng câu hỏi thường gặp\n\n- Từ loại: bốn lựa chọn cùng gốc, khác hậu tố (decide, decision, decisive, decisively).\n- Thì và hòa hợp chủ vị, đặc biệt khi chủ ngữ dài hoặc có cụm xen giữa.\n- Giới từ và cụm giới từ cố định (responsible for, comply with, in charge of).\n- Đại từ quan hệ và liên từ nối hai mệnh đề.\n- Từ vựng doanh nghiệp: hợp đồng, giao hàng, tuyển dụng, lịch họp.\n\n### Chiến lược làm bài\n\n- Đọc hết câu trước khi nhìn lựa chọn để nắm nghĩa, sau đó mới xác định vị trí trống cần từ loại gì.\n- Với Part 6, đọc lướt cả đoạn để biết chủ đề và thì chung; câu trước và câu sau thường quyết định đáp án.\n- Loại trừ theo từ loại trước rồi mới xét nghĩa; cách này nhanh hơn dịch toàn bộ câu.\n- Không dừng quá lâu ở một câu; câu khó hãy đánh dấu và quay lại sau.\n\n### Quy trình chữa lỗi\n\n- Ghi lại câu sai, đáp án đã chọn, đáp án đúng và lý do chọn sai.\n- Phân loại lỗi theo nhóm kiến thức để thấy nhóm nào lặp lại nhiều nhất.\n- Làm lại các câu đã sai sau vài ngày, chỉ gạch tên khi đã đúng hai lần liên tiếp.",
+      "examples": [
+        {
+          "en": "Applicants are requested to submit their documents by March 15.",
+          "vi": "Ứng viên được yêu cầu nộp hồ sơ trước ngày 15 tháng 3."
+        },
+        {
+          "en": "The new software significantly reduces the time needed for data entry.",
+          "vi": "Phần mềm mới giúp giảm đáng kể thời gian nhập dữ liệu."
+        },
+        {
+          "en": "Due to limited seating, early registration is highly recommended.",
+          "vi": "Do số ghế có hạn nên rất nên đăng ký sớm."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "All employees must ___ their identification badges at all times.",
+          "options": ["wear", "wears", "wearing", "worn"],
+          "answer": 0,
+          "explanation": "Sau động từ khuyết thiếu must phải dùng động từ nguyên mẫu wear. Wears chia theo ngôi, wearing và worn không đứng sau must."
+        },
+        {
+          "prompt": "The shipment will be delivered ___ Friday afternoon.",
+          "options": ["until", "since", "by", "during"],
+          "answer": 2,
+          "explanation": "By + mốc thời gian nghĩa là trước hoặc muộn nhất vào lúc đó. Until nhấn mạnh kéo dài đến mốc, since chỉ mốc bắt đầu, during đi với danh từ chỉ khoảng thời gian."
+        },
+        {
+          "prompt": "Ms. Chen is responsible ___ training new staff.",
+          "options": ["of", "for", "to", "with"],
+          "answer": 1,
+          "explanation": "Cụm cố định là be responsible for + danh từ/V-ing, nghĩa là chịu trách nhiệm về việc gì. Of, to và with không tạo thành cụm này."
+        }
+      ]
+    },
+    {
+      "slug": "luyen-de-va-so-loi-sai",
+      "title": "Luyện đề và sổ lỗi sai",
+      "titleEn": "Practice tests and error log",
+      "summary": "Biến mỗi đề đã làm thành dữ liệu học tập bằng cách ghi lỗi có hệ thống, phân loại nguyên nhân và ôn lại theo chu kỳ.",
+      "isNew": false,
+      "content": "### Quy trình làm một đề\n\nLàm đề là bước kiểm tra chứ không phải bước học kiến thức mới. Hãy làm trong điều kiện giống thi: đủ thời gian, không tra từ điển, không dừng quá lâu ở một câu. Sau khi hết giờ mới chấm điểm và ghi lại thời điểm bắt đầu, kết thúc để biết tốc độ của mình.\n\n### Cách ghi sổ lỗi sai\n\n- Mỗi lỗi ghi thành một dòng gồm câu gốc, đáp án đã chọn, đáp án đúng và lý do sai.\n- Gắn nhãn theo nhóm: từ loại, thì, giới từ, mệnh đề quan hệ, từ vựng, đọc hiểu.\n- Với lỗi do không biết từ, ghi thêm nghĩa và một câu ví dụ do bạn tự đặt.\n- Đánh dấu mức độ: lỗi do thiếu kiến thức hay do bất cẩn; hai loại này cần cách xử lý khác nhau.\n\n### Phân tích kết quả\n\nĐừng chỉ nhìn số câu đúng. Hãy đếm số lỗi theo từng nhóm để chọn nội dung ôn tiếp theo. Nếu phần lớn lỗi nằm ở một nhóm, ôn lại lý thuyết nhóm đó rồi làm thêm câu cùng dạng trước khi chuyển sang nhóm khác.\n\n### Vòng lặp ôn tập\n\n- Ngày 1: làm đề và ghi lỗi.\n- Ngày 2: học lại lý thuyết của nhóm lỗi nhiều nhất.\n- Ngày 4: làm lại đúng những câu đã sai.\n- Ngày 7: làm đề mới, so sánh tỉ lệ lỗi theo nhóm với lần trước.\n\nChỉ khi tỉ lệ lỗi của một nhóm giảm rõ rệt mới coi là đã xử lý xong nhóm đó.",
+      "examples": [
+        {
+          "en": "Neither the supervisor nor the technicians were informed about the change.",
+          "vi": "Cả người giám sát lẫn các kỹ thuật viên đều không được thông báo về thay đổi."
+        },
+        {
+          "en": "The proposal, along with the budget estimate, has been forwarded to headquarters.",
+          "vi": "Bản đề xuất cùng với dự toán ngân sách đã được chuyển đến trụ sở chính."
+        },
+        {
+          "en": "If payment is received today, the goods will be shipped tomorrow.",
+          "vi": "Nếu thanh toán được nhận hôm nay thì hàng sẽ được gửi đi vào ngày mai."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "Neither the manager nor the employees ___ aware of the new schedule.",
+          "options": ["was", "were", "is", "has"],
+          "answer": 1,
+          "explanation": "Với neither ... nor, động từ chia theo chủ ngữ gần nhất là employees số nhiều, nên dùng were. Was và is là dạng số ít, has không hợp nghĩa."
+        },
+        {
+          "prompt": "The contract, along with the appendices, ___ been signed.",
+          "options": ["have", "has", "having", "to have"],
+          "answer": 1,
+          "explanation": "Chủ ngữ chính là the contract số ít; cụm along with the appendices chỉ bổ sung nên không làm đổi số của động từ. Vì vậy dùng has."
+        },
+        {
+          "prompt": "If the order ___ today, it will arrive by Friday.",
+          "options": ["placed", "will be placed", "is placed", "placing"],
+          "answer": 2,
+          "explanation": "Câu điều kiện loại một dùng hiện tại đơn ở mệnh đề if, và order là đối tượng được đặt nên cần dạng bị động is placed. Will be placed không dùng trong mệnh đề if."
+        }
+      ]
+    },
+    {
+      "slug": "on-tap-tong-hop",
+      "title": "Ôn tập tổng hợp",
+      "titleEn": "Comprehensive review",
+      "summary": "Hệ thống hóa toàn bộ kiến thức đã học, tập trung vào các cặp dễ nhầm và chiến lược ôn theo nhóm lỗi.",
+      "isNew": false,
+      "content": "### Hệ thống lại kiến thức\n\nTrước khi ôn, hãy lập danh sách các nhóm kiến thức đã học: từ loại và cấu tạo từ, thì, câu bị động, mệnh đề quan hệ, câu điều kiện, so sánh, giới từ, liên từ. Với mỗi nhóm, viết một dòng công thức cốt lõi và một ví dụ của riêng bạn. Việc tự viết ví dụ giúp phát hiện chỗ hiểu chưa chắc.\n\n### Các cặp dễ nhầm\n\n- **Số ít hay số nhiều của chủ ngữ**: the number of + danh từ số nhiều nhưng động từ số ít; a number of + danh từ số nhiều và động từ số nhiều.\n- **Tính từ và trạng từ**: tính từ bổ nghĩa danh từ, trạng từ bổ nghĩa động từ hoặc tính từ.\n- **Mệnh đề quan hệ xác định và không xác định**: mệnh đề không xác định đứng sau dấu phẩy và không dùng **that**.\n- **Hiện tại hoàn thành và quá khứ đơn**: hiện tại hoàn thành gắn với hiện tại, quá khứ đơn gắn với mốc thời gian đã kết thúc.\n- **Bị động và chủ động**: xác định ai thực hiện hành động trước khi chọn dạng động từ.\n\n### Chiến lược ôn tập\n\n- Ôn theo nhóm lỗi, không ôn tràn lan theo thứ tự sách.\n- Xen kẽ dạng bài: một lượt lý thuyết, một lượt câu hỏi ngắn, một lượt đọc hiểu.\n- Tự giải thích đáp án thành lời; nếu không giải thích được thì chưa nắm.\n- Dành thời gian cuối để rà lại những câu từng sai, không học thêm kiến thức mới.\n\n### Lỗi thường gặp\n\n- Chọn đáp án theo cảm giác quen tai thay vì kiểm tra cấu trúc.\n- Bỏ qua cụm xen giữa khi xác định chủ ngữ.\n- Dịch cả câu quá lâu trong khi chỉ cần xác định từ loại tại chỗ trống.",
+      "examples": [
+        {
+          "en": "A number of employees have volunteered for the weekend shift.",
+          "vi": "Một số nhân viên đã tình nguyện làm ca cuối tuần."
+        },
+        {
+          "en": "She speaks English more fluently than her colleague.",
+          "vi": "Cô ấy nói tiếng Anh trôi chảy hơn đồng nghiệp của mình."
+        },
+        {
+          "en": "Hardly had she arrived when the client called.",
+          "vi": "Cô ấy vừa mới đến thì khách hàng gọi."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "The number of applicants ___ increased sharply this year.",
+          "options": ["have", "has", "having", "to have"],
+          "answer": 1,
+          "explanation": "Chủ ngữ là the number of applicants, trong đó the number là số ít nên động từ dùng has. Have chỉ đúng với cấu trúc a number of + danh từ số nhiều."
+        },
+        {
+          "prompt": "She speaks English ___ than her colleague.",
+          "options": ["more fluent", "more fluently", "fluent", "fluency"],
+          "answer": 1,
+          "explanation": "Trạng từ fluently bổ nghĩa cho động từ speaks và dùng dạng so sánh hơn more fluently. Fluent là tính từ, fluency là danh từ."
+        },
+        {
+          "prompt": "Hardly ___ the guests sat down when the lights went out.",
+          "options": ["has", "did", "had", "was"],
+          "answer": 2,
+          "explanation": "Cấu trúc hardly ... when dùng quá khứ hoàn thành, và đảo ngữ đưa had lên trước chủ ngữ. Did và was không tạo đúng thì quá khứ hoàn thành cho mệnh đề này."
+        }
+      ]
+    },
+    {
+      "slug": "de-toeic-tong-hop",
+      "title": "Đề TOEIC tổng hợp",
+      "titleEn": "Full TOEIC practice",
+      "summary": "Luyện đề trọn quy trình: mô phỏng điều kiện thi, phân bổ thời gian hợp lý và phân tích kết quả để hành động ở lần sau.",
+      "isNew": false,
+      "content": "### Mô phỏng điều kiện thi\n\nĐề tổng hợp dùng để kiểm tra sức bền và khả năng phân bổ thời gian. Hãy làm liền mạch, không nghỉ giữa các phần, không tra cứu. Chuẩn bị giấy nháp để đánh dấu câu chưa chắc và quay lại nếu còn thời gian.\n\n### Phân bổ thời gian\n\n- Chia thời gian theo từng phần thi, không để một phần chiếm quá nhiều.\n- Lượt một: làm các câu chắc chắn, bỏ qua câu cần suy nghĩ lâu.\n- Lượt hai: quay lại câu đã đánh dấu, xử lý theo thứ tự dễ đến khó.\n- Luôn để thời gian cuối để tô đáp án và kiểm tra những câu bỏ trống.\n\n### Dạng câu hỏi dễ mất điểm\n\n- Câu có mệnh đề xen giữa khiến chủ ngữ và động từ cách xa nhau.\n- Câu có hai mệnh đề nối bằng liên từ, cần xác định thì của từng mệnh đề.\n- Đoạn văn có chỗ trống là câu nối ý, phải đọc cả câu trước và câu sau.\n- Từ vựng gần nghĩa, chỉ phân biệt được bằng ngữ cảnh.\n\n### Quy trình sau khi làm đề\n\n- Chấm điểm và ghi lại tỉ lệ đúng theo từng phần.\n- Chọn ba lỗi nghiêm trọng nhất để phân tích kỹ thay vì xem lại toàn bộ.\n- Ghi vào sổ lỗi và phân loại theo nhóm kiến thức như khi luyện đề.\n- Lên kế hoạch ôn cho tuần tiếp theo dựa trên nhóm lỗi lặp lại nhiều nhất.\n\nMột đề chỉ có giá trị khi bạn rút ra được hành động cụ thể cho lần làm sau.",
+      "examples": [
+        {
+          "en": "The workshop will cover basic safety procedures for new staff.",
+          "vi": "Buổi tập huấn sẽ đề cập các quy trình an toàn cơ bản cho nhân viên mới."
+        },
+        {
+          "en": "The invoice must be approved by the finance department before payment.",
+          "vi": "Hóa đơn phải được bộ phận tài chính phê duyệt trước khi thanh toán."
+        },
+        {
+          "en": "Please confirm your attendance no later than two days before the event.",
+          "vi": "Vui lòng xác nhận việc tham dự muộn nhất là hai ngày trước sự kiện."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "The company is looking for a candidate with strong ___ skills.",
+          "options": ["lead", "leader", "leadership", "leading"],
+          "answer": 2,
+          "explanation": "Trước danh từ skills cần một danh từ bổ nghĩa, và leadership skills nghĩa là kỹ năng lãnh đạo. Lead là động từ hoặc danh từ chỉ kim loại, leading là tính từ không hợp cụm này."
+        },
+        {
+          "prompt": "All travel expenses will be ___ by the company.",
+          "options": ["reimburse", "reimbursed", "reimbursing", "reimbursement"],
+          "answer": 1,
+          "explanation": "Câu bị động với will be cần quá khứ phân từ reimbursed, nghĩa là được hoàn trả. Reimburse là nguyên mẫu, reimbursement là danh từ."
+        },
+        {
+          "prompt": "The workshop is intended for staff ___ are new to the department.",
+          "options": ["who", "which", "whom", "whose"],
+          "answer": 0,
+          "explanation": "Đại từ quan hệ thay cho staff chỉ người và làm chủ ngữ của are nên dùng who. Whom làm tân ngữ, which chỉ vật, whose chỉ sở hữu."
+        }
+      ]
+    }
+  ]
+}

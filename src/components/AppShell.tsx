@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   BookOpen,
+  BookOpenText,
   Cards,
   List,
   ListBullets,
@@ -47,6 +48,10 @@ function NavItems({ onNavigate }: { onNavigate?: () => void }) {
       <NavLink to="/vocab/list" onClick={onNavigate} className={navLinkClass}>
         <SquaresFour aria-hidden size={20} />
         Danh sách từ
+      </NavLink>
+      <NavLink to="/grammar" onClick={onNavigate} className={navLinkClass}>
+        <BookOpenText aria-hidden size={20} />
+        Ngữ pháp
       </NavLink>
       <NavLink to="/practice" onClick={onNavigate} className={navLinkClass}>
         <Cards aria-hidden size={20} />

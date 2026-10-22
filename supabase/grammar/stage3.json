@@ -1,0 +1,342 @@
+{
+  "stage": 3,
+  "stageTitle": "Mở rộng",
+  "topics": [
+    {
+      "slug": "modal-verbs",
+      "title": "Modal verbs",
+      "titleEn": "Modal verbs",
+      "summary": "Động từ khuyết thiếu diễn tả khả năng, nghĩa vụ, lời khuyên và sự cho phép; không chia theo ngôi và luôn đi với động từ nguyên mẫu.",
+      "isNew": false,
+      "content": "### Công thức\n\nĐộng từ khuyết thiếu (modal verbs) đứng trước động từ chính ở dạng nguyên mẫu không \"to\": **S + modal + V (bare) + O**. Modal không chia theo ngôi, không thêm -s, -ed hay -ing. Câu phủ định thêm **not** sau modal; câu hỏi đảo modal lên đầu câu.\n\n- She can swim. (Cô ấy biết bơi.)\n- He cannot come today. (Anh ấy không thể đến hôm nay.)\n- Should we leave now? (Chúng ta có nên đi ngay không?)\n\n### Các modal thông dụng\n\n- **can / could**: khả năng, xin phép; could lịch sự hơn hoặc chỉ khả năng trong quá khứ.\n- **may / might**: xin phép trang trọng hoặc dự đoán khả năng; might ít chắc chắn hơn.\n- **must**: bắt buộc theo ý người nói; **have to** là bắt buộc do hoàn cảnh.\n- **should / ought to**: đưa lời khuyên.\n- **will / would**: dự đoán, lời hứa, lời mời.\n\n### Cách dùng\n\n- Diễn tả khả năng: I can speak a little Japanese. (Tôi nói được một chút tiếng Nhật.)\n- Diễn tả nghĩa vụ: Visitors must sign in at reception. (Khách phải ký tên ở quầy lễ tân.)\n- Đưa lời khuyên: You should get more sleep. (Bạn nên ngủ nhiều hơn.)\n- Phân biệt **mustn't** (bị cấm) với **don't have to** (không cần thiết): You mustn't smoke here. / You don't have to come early.\n\n### Lỗi thường gặp\n\n- Không thêm \"to\" sau modal: nói *She can swims* là sai, đúng là **She can swim**.\n- Không dùng hai modal liền nhau; thay bằng cụm tương đương như **will be able to** thay cho *will can*.\n- Không thêm -s ở ngôi thứ ba: **He must go**, không phải *He musts go*.",
+      "examples": [
+        {
+          "en": "You must wear a helmet when you ride a motorbike.",
+          "vi": "Bạn phải đội mũ bảo hiểm khi đi xe máy."
+        },
+        {
+          "en": "Students may use the library until nine p.m.",
+          "vi": "Sinh viên có thể dùng thư viện đến chín giờ tối."
+        },
+        {
+          "en": "We should book the tickets early.",
+          "vi": "Chúng ta nên đặt vé sớm."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "You ___ park here; it is a no-parking zone.",
+          "options": ["must", "mustn't", "don't have to", "should"],
+          "answer": 1,
+          "explanation": "Biển cấm đỗ xe nên dùng mustn't (bị cấm). must nghĩa là phải đỗ, don't have to là không cần thiết, should là lời khuyên nên không hợp nghĩa."
+        },
+        {
+          "prompt": "She ___ speak three languages when she was ten.",
+          "options": ["can", "could", "must", "should"],
+          "answer": 1,
+          "explanation": "Có mốc quá khứ when she was ten nên dùng could để chỉ khả năng trong quá khứ. can chỉ khả năng hiện tại, must và should không diễn tả khả năng."
+        },
+        {
+          "prompt": "It is raining heavily. You ___ take an umbrella.",
+          "options": ["should", "shouldn't", "mustn't", "can't"],
+          "answer": 0,
+          "explanation": "Đây là lời khuyên nên dùng should. shouldn't là không nên, mustn't là bị cấm, can't là không thể nên đều sai nghĩa."
+        }
+      ]
+    },
+    {
+      "slug": "cum-gioi-tu",
+      "title": "Cụm giới từ",
+      "titleEn": "Prepositional phrases, time and place",
+      "summary": "Nắm cách dùng in/on/at cho thời gian và nơi chốn, cùng các cụm giới từ cố định thường gặp trong giao tiếp và bài thi.",
+      "isNew": true,
+      "content": "### Giới từ chỉ thời gian: in, on, at\n\n- **in** dùng với khoảng thời gian dài: tháng, năm, mùa, thế kỷ — in July, in 2024, in winter.\n- **on** dùng với ngày và thứ cụ thể — on Monday, on 2 September, on my birthday.\n- **at** dùng với giờ và dịp ngắn — at 7 a.m., at noon, at Christmas.\n- **for** chỉ khoảng thời gian (for two hours), **since** chỉ mốc bắt đầu (since 2015).\n\n### Giới từ chỉ nơi chốn\n\n- **in**: bên trong không gian hoặc khu vực lớn — in the box, in Hanoi.\n- **on**: trên bề mặt, có tiếp xúc — on the table, on the wall.\n- **at**: tại một điểm cụ thể — at the bus stop, at the door.\n- **under, behind, between, next to, opposite, near** mô tả vị trí tương đối giữa các vật.\n\n### Cụm giới từ thông dụng\n\nCụm giới từ là nhóm **giới từ + danh từ/đại từ**, thường làm trạng ngữ hoặc bổ nghĩa cho động từ, tính từ.\n\n- in the morning (vào buổi sáng), at night (vào ban đêm), on time (đúng giờ), in time (kịp lúc).\n- by bus (bằng xe buýt), on foot (đi bộ), with a pen (bằng bút).\n- interested in (quan tâm đến), good at (giỏi về), afraid of (sợ), depend on (phụ thuộc vào).\n\n### Lỗi thường gặp\n\n- Nhầm **in/on/at**: nói *in Monday* là sai, đúng là **on Monday**; *at 2024* sai, đúng là **in 2024**.\n- Dùng **since** với khoảng thời gian: *since three years* sai, đúng là **for three years**.\n- Bỏ mất giới từ cố định sau tính từ hoặc động từ: **listen to music**, không phải *listen music*.\n\n### Mẹo ghi nhớ\n\nHọc giới từ theo cả cụm thay vì học từng từ riêng lẻ; ghi kèm một câu ví dụ để nhớ ngữ cảnh sử dụng.",
+      "examples": [
+        {
+          "en": "The meeting starts at nine o'clock on Monday.",
+          "vi": "Cuộc họp bắt đầu lúc chín giờ vào thứ Hai."
+        },
+        {
+          "en": "She has lived in Hanoi since 2015.",
+          "vi": "Cô ấy đã sống ở Hà Nội từ năm 2015."
+        },
+        {
+          "en": "The keys are in the top drawer.",
+          "vi": "Chìa khóa ở trong ngăn kéo trên cùng."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "The meeting starts ___ 9 a.m. ___ Monday.",
+          "options": ["in / on", "at / on", "on / at", "at / in"],
+          "answer": 1,
+          "explanation": "Giờ cụ thể dùng at, ngày cụ thể dùng on. Các phương án còn lại đặt sai giới từ cho giờ hoặc cho thứ."
+        },
+        {
+          "prompt": "She has lived in Hanoi ___ 2015.",
+          "options": ["for", "since", "in", "at"],
+          "answer": 1,
+          "explanation": "since dùng với mốc thời gian bắt đầu (2015). for dùng với khoảng thời gian, in và at không phù hợp với mốc bắt đầu."
+        },
+        {
+          "prompt": "The keys are ___ the drawer.",
+          "options": ["in", "on", "at", "by"],
+          "answer": 0,
+          "explanation": "Vật nằm bên trong ngăn kéo nên dùng in. on chỉ bề mặt, at chỉ điểm cụ thể, by nghĩa là bên cạnh."
+        }
+      ]
+    },
+    {
+      "slug": "to-infinitive-va-v-ing",
+      "title": "To-infinitive và V-ing",
+      "titleEn": "To-infinitive and V-ing",
+      "summary": "Phân biệt khi nào dùng to + động từ nguyên mẫu và khi nào dùng V-ing, kèm nhóm động từ đổi nghĩa theo hình thức.",
+      "isNew": false,
+      "content": "### Công thức\n\n- **to + V (nguyên mẫu)**: I want to learn Spanish. (Tôi muốn học tiếng Tây Ban Nha.)\n- **V-ing (danh động từ)**: I enjoy learning languages. (Tôi thích học ngôn ngữ.)\n- Cả hai đều có thể làm chủ ngữ, tân ngữ hoặc bổ ngữ: To travel is exciting. / Traveling is exciting.\n\n### Động từ theo sau là to-infinitive\n\n- Nhóm ý định, quyết định: **decide, plan, hope, want, need, agree, refuse, promise, offer**.\n- She decided to change her job. (Cô ấy quyết định đổi việc.)\n- They promised to help us. (Họ hứa sẽ giúp chúng tôi.)\n- Sau tính từ thường dùng to-infinitive: It is important to practise daily. (Việc luyện tập hằng ngày là quan trọng.)\n\n### Động từ theo sau là V-ing\n\n- Nhóm thích, tránh, kết thúc: **enjoy, like, love, hate, avoid, finish, mind, suggest, keep**.\n- He avoids driving at night. (Anh ấy tránh lái xe ban đêm.)\n- We finished cleaning the room. (Chúng tôi đã dọn xong phòng.)\n- Sau giới từ luôn dùng V-ing: She is good at cooking. (Cô ấy nấu ăn giỏi.)\n\n### Động từ đổi nghĩa\n\n- **stop to do**: dừng lại để làm việc gì; **stop doing**: từ bỏ việc gì.\n- **remember/forget to do**: nhớ hoặc quên phải làm; **remember/forget doing**: nhớ hoặc quên đã làm.\n- **try to do**: cố gắng làm; **try doing**: thử làm một cách khác.\n\n### Lỗi thường gặp\n\n- Dùng sai dạng sau giới từ: *interested in read* sai, đúng là **interested in reading**.\n- Thêm \"to\" sau modal hoặc sau **make/let**: **Let me go**, không phải *Let me to go*.\n- Học thuộc máy móc một động từ mà không chú ý nghĩa, dẫn đến chọn sai dạng khi nghĩa thay đổi.",
+      "examples": [
+        {
+          "en": "I want to improve my English this year.",
+          "vi": "Tôi muốn cải thiện tiếng Anh của mình trong năm nay."
+        },
+        {
+          "en": "She avoids eating late at night.",
+          "vi": "Cô ấy tránh ăn muộn vào ban đêm."
+        },
+        {
+          "en": "They plan to travel to Da Nang next month.",
+          "vi": "Họ dự định đi Đà Nẵng vào tháng sau."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "I enjoy ___ books before bed.",
+          "options": ["read", "to read", "reading", "reads"],
+          "answer": 2,
+          "explanation": "enjoy luôn đi với V-ing nên dùng reading. to read và read không đúng sau enjoy, reads là dạng chia theo ngôi nên càng sai."
+        },
+        {
+          "prompt": "She decided ___ a new job.",
+          "options": ["applying for", "to apply for", "apply for", "applied for"],
+          "answer": 1,
+          "explanation": "decide đi với to-infinitive nên chọn to apply for. applying for đứng sau giới từ, apply for thiếu to, applied for là dạng quá khứ."
+        },
+        {
+          "prompt": "He stopped ___ two years ago and has been healthier since then.",
+          "options": ["to smoke", "smoking", "smoke", "smoked"],
+          "answer": 1,
+          "explanation": "stop smoking nghĩa là từ bỏ hút thuốc, phù hợp với việc khỏe hơn. stop to smoke nghĩa là dừng lại để hút thuốc, trái với ngữ cảnh."
+        }
+      ]
+    },
+    {
+      "slug": "so-sanh",
+      "title": "So sánh",
+      "titleEn": "Comparisons",
+      "summary": "Ba dạng so sánh cơ bản trong tiếng Anh: bằng, hơn và nhất, cùng quy tắc thêm -er/-est hoặc more/most.",
+      "isNew": false,
+      "content": "### So sánh bằng\n\n**S + be/V + as + adj/adv + as + noun/pronoun**\n\n- This room is as large as that one. (Phòng này rộng bằng phòng kia.)\n- Phủ định: **not as/so ... as** — He doesn't run as fast as his brother. (Anh ấy không chạy nhanh bằng anh trai.)\n- Với danh từ đếm được dùng **as many ... as**, không đếm được dùng **as much ... as**.\n\n### So sánh hơn\n\n- Tính từ ngắn: **adj + -er + than** — Hanoi is colder than Saigon in winter. (Hà Nội lạnh hơn Sài Gòn vào mùa đông.)\n- Tính từ dài: **more + adj + than** — This book is more interesting than that one. (Cuốn sách này thú vị hơn cuốn kia.)\n- Trạng từ: **more slowly**, **faster**; bất quy tắc: good → better, bad → worse, far → farther/further.\n\n### So sánh nhất\n\n- Ngắn: **the + adj + -est** — She is the tallest girl in the class. (Cô ấy là cô gái cao nhất lớp.)\n- Dài: **the most + adj** — This is the most expensive phone in the shop. (Đây là chiếc điện thoại đắt nhất cửa hàng.)\n- Bất quy tắc: best, worst, farthest. Thường dùng với **in** (phạm vi) hoặc **of** (nhóm).\n\n### Lỗi thường gặp\n\n- Dùng cả -er và more: *more cheaper* sai, đúng là **cheaper**.\n- Thiếu \"than\" trong so sánh hơn hoặc thiếu \"the\" trước so sánh nhất.\n- Nhân đôi phụ âm sai: big → **bigger**, hot → **hotter**, nhưng happy → **happier**.\n\n### Mẹo\n\nĐếm âm tiết để chọn -er/-est hay more/most; học thuộc các dạng bất quy tắc và luôn kiểm tra lại đuôi tính từ.",
+      "examples": [
+        {
+          "en": "Mount Everest is the highest mountain in the world.",
+          "vi": "Everest là ngọn núi cao nhất trên thế giới."
+        },
+        {
+          "en": "Today is hotter than yesterday.",
+          "vi": "Hôm nay nóng hơn hôm qua."
+        },
+        {
+          "en": "This exercise is as easy as the previous one.",
+          "vi": "Bài tập này dễ như bài trước."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "This hotel is ___ than the one we stayed in last year.",
+          "options": ["cheap", "cheaper", "cheapest", "more cheap"],
+          "answer": 1,
+          "explanation": "Có than nên cần so sánh hơn; cheap là tính từ ngắn nên dùng cheaper. cheap là dạng gốc, cheapest là so sánh nhất, more cheap sai vì vừa dùng more vừa dùng tính từ ngắn."
+        },
+        {
+          "prompt": "She is the ___ student in her class.",
+          "options": ["intelligent", "more intelligent", "most intelligent", "intelligenter"],
+          "answer": 2,
+          "explanation": "Có the và phạm vi in her class nên dùng so sánh nhất; intelligent là tính từ dài nên chọn most intelligent. more intelligent là so sánh hơn, intelligenter không tồn tại."
+        },
+        {
+          "prompt": "My phone is not as ___ as yours.",
+          "options": ["expensive", "more expensive", "most expensive", "expensiver"],
+          "answer": 0,
+          "explanation": "Cấu trúc so sánh bằng là as + tính từ gốc + as, nên dùng expensive. more expensive và most expensive không đứng trong cấu trúc as ... as, expensiver sai vì tính từ dài."
+        }
+      ]
+    },
+    {
+      "slug": "cau-bi-dong-co-ban",
+      "title": "Câu bị động cơ bản",
+      "titleEn": "Basic passive voice",
+      "summary": "Chuyển câu chủ động sang bị động với công thức be + V3, chia theo thì và lược bỏ tác nhân khi không cần thiết.",
+      "isNew": false,
+      "content": "### Công thức\n\nCâu bị động nhấn mạnh người hoặc vật nhận hành động:\n\n**S + be + V3/ed (+ by + O)**\n\n- Chủ động: The chef cooked the meal. → Bị động: The meal was cooked by the chef. (Bữa ăn được đầu bếp nấu.)\n- Tân ngữ của câu chủ động trở thành chủ ngữ câu bị động; \"by + tác nhân\" có thể lược bỏ khi không quan trọng.\n\n### Chia thì\n\n- Hiện tại đơn: **am/is/are + V3** — English is spoken worldwide. (Tiếng Anh được nói trên toàn thế giới.)\n- Quá khứ đơn: **was/were + V3** — The letter was sent yesterday. (Lá thư được gửi hôm qua.)\n- Hiện tại hoàn thành: **has/have been + V3** — The room has been cleaned. (Căn phòng đã được dọn.)\n- Tương lai đơn: **will be + V3** — The results will be announced tomorrow. (Kết quả sẽ được công bố ngày mai.)\n- Modal: **modal + be + V3** — This form must be signed. (Biểu mẫu này phải được ký.)\n\n### Cách dùng\n\n- Khi không biết hoặc không cần nêu người thực hiện: My bike was stolen last night. (Xe đạp của tôi bị lấy cắp tối qua.)\n- Khi muốn nhấn mạnh đối tượng chịu tác động: The tree was planted by students. (Cây được trồng bởi sinh viên.)\n- Trong văn phong trang trọng, khoa học và tin tức.\n\n### Lỗi thường gặp\n\n- Quên đổi động từ thành V3: *The house was build* sai, đúng là **was built**.\n- Giữ nguyên tân ngữ sau động từ bị động: *It was sent the email* sai; đúng là **The email was sent**.\n- Chia sai \"be\" theo thì hoặc theo số ít, số nhiều của chủ ngữ.",
+      "examples": [
+        {
+          "en": "The house was built in 1990.",
+          "vi": "Ngôi nhà được xây vào năm 1990."
+        },
+        {
+          "en": "The emails are checked every morning.",
+          "vi": "Email được kiểm tra mỗi buổi sáng."
+        },
+        {
+          "en": "A new policy will be announced tomorrow.",
+          "vi": "Một chính sách mới sẽ được công bố vào ngày mai."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "The report ___ by the manager yesterday.",
+          "options": ["wrote", "was written", "is written", "has written"],
+          "answer": 1,
+          "explanation": "Báo cáo nhận hành động và có mốc yesterday nên dùng bị động quá khứ was written. wrote và has written là chủ động, is written sai thì."
+        },
+        {
+          "prompt": "English ___ in many countries around the world.",
+          "options": ["speaks", "is speaking", "is spoken", "has spoken"],
+          "answer": 2,
+          "explanation": "Tiếng Anh được nói bởi nhiều người nên cần bị động hiện tại is spoken. speaks và has spoken là chủ động, is speaking là tiếp diễn chủ động."
+        },
+        {
+          "prompt": "The new bridge ___ next year.",
+          "options": ["will build", "will be built", "is building", "built"],
+          "answer": 1,
+          "explanation": "Cây cầu nhận hành động xây và có mốc tương lai nên dùng will be built. will build và built là chủ động, is building sai thì và sai thể."
+        }
+      ]
+    },
+    {
+      "slug": "cau-dieu-kien-loai-0",
+      "title": "Câu điều kiện loại 0",
+      "titleEn": "Zero conditional",
+      "summary": "Diễn tả sự thật hiển nhiên, quy luật tự nhiên và thói quen luôn đúng, với cả hai vế chia ở hiện tại đơn.",
+      "isNew": false,
+      "content": "### Công thức\n\n**If + S + V (hiện tại đơn), S + V (hiện tại đơn)**\n\n- If you heat water to 100°C, it boils. (Nếu bạn đun nước đến 100°C, nó sôi.)\n- Có thể đảo hai mệnh đề: It boils if you heat water to 100°C.\n- Mệnh đề if có thể dùng **when** với nghĩa tương tự khi nói về quy luật.\n\n### Cách dùng\n\n- Diễn tả sự thật hiển nhiên, quy luật tự nhiên hoặc thói quen luôn đúng.\n- If plants don't get sunlight, they die. (Nếu cây không nhận ánh sáng, chúng sẽ chết.)\n- If I stay up late, I feel tired the next day. (Nếu tôi thức khuya, hôm sau tôi thấy mệt.)\n- Cả hai vế đều dùng thì hiện tại; không dùng will ở mệnh đề if.\n\n### Dấu hiệu nhận biết\n\n- Câu nói về quy luật, sự thật chung hoặc hướng dẫn vận hành.\n- Thường gặp **if/when + hiện tại đơn**, kết quả cũng ở hiện tại đơn.\n- Có thể dùng mệnh lệnh ở vế sau: If you feel sick, see a doctor. (Nếu bạn thấy mệt, hãy đi khám bác sĩ.)\n\n### Lỗi thường gặp\n\n- Dùng will ở mệnh đề if: *If it will rain* sai, đúng là **If it rains**.\n- Dùng thì quá khứ cho một sự thật hiển nhiên.\n- Nhầm với câu điều kiện loại 1: loại 0 nói quy luật chung, loại 1 nói tình huống cụ thể trong tương lai.\n\n### Mẹo\n\nNếu câu có thể thay if bằng when mà nghĩa không đổi, đó thường là câu điều kiện loại 0.",
+      "examples": [
+        {
+          "en": "If you mix red and blue, you get purple.",
+          "vi": "Nếu bạn trộn đỏ với xanh dương, bạn sẽ được màu tím."
+        },
+        {
+          "en": "Water boils if you heat it to 100 degrees Celsius.",
+          "vi": "Nước sôi nếu bạn đun đến 100 độ C."
+        },
+        {
+          "en": "If I drink coffee at night, I cannot sleep.",
+          "vi": "Nếu tôi uống cà phê vào ban đêm, tôi không ngủ được."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "If you heat ice, it ___.",
+          "options": ["melts", "will melt", "melted", "would melt"],
+          "answer": 0,
+          "explanation": "Đây là quy luật tự nhiên nên cả hai vế dùng hiện tại đơn, chọn melts. will melt, melted và would melt đều không phù hợp với câu điều kiện loại 0."
+        },
+        {
+          "prompt": "If she ___ late, she misses the bus.",
+          "options": ["is", "will be", "was", "would be"],
+          "answer": 0,
+          "explanation": "Câu điều kiện loại 0 dùng hiện tại đơn ở mệnh đề if nên chọn is. will be không dùng sau if trong loại 0, was và would be sai thì."
+        },
+        {
+          "prompt": "Plants die if they ___ enough water.",
+          "options": ["don't get", "won't get", "didn't get", "wouldn't get"],
+          "answer": 0,
+          "explanation": "Quy luật chung nên mệnh đề if dùng hiện tại đơn phủ định don't get. won't get, didn't get và wouldn't get đều sai thì so với câu điều kiện loại 0."
+        }
+      ]
+    },
+    {
+      "slug": "cau-dieu-kien-loai-1",
+      "title": "Câu điều kiện loại 1",
+      "titleEn": "First conditional",
+      "summary": "Diễn tả tình huống có thể xảy ra trong tương lai và kết quả của nó, với if + hiện tại đơn và will + động từ nguyên mẫu.",
+      "isNew": false,
+      "content": "### Công thức\n\n**If + S + V (hiện tại đơn), S + will/can/may + V (nguyên mẫu)**\n\n- If it rains tomorrow, we will cancel the trip. (Nếu mai trời mưa, chúng tôi sẽ hủy chuyến đi.)\n- Mệnh đề chính có thể dùng **can, may, should, must** thay cho will tùy mức độ chắc chắn.\n- Có thể đảo hai mệnh đề: We will cancel the trip if it rains tomorrow.\n\n### Cách dùng\n\n- Diễn tả khả năng có thể xảy ra trong tương lai và kết quả của nó.\n- If you study hard, you will pass the exam. (Nếu bạn học chăm, bạn sẽ đỗ.)\n- Dùng để đưa ra lời hứa, cảnh báo hoặc đề nghị: If you need help, I will call you. (Nếu bạn cần giúp, tôi sẽ gọi cho bạn.)\n- **Unless** = if not: Unless you hurry, you will be late. (Trừ khi bạn nhanh lên, bạn sẽ bị muộn.)\n\n### Biến thể\n\n- Mệnh đề if có thể dùng hiện tại tiếp diễn hoặc hiện tại hoàn thành: If you are waiting for the bus, I will join you. (Nếu bạn đang đợi xe buýt, tôi sẽ tham gia cùng.)\n- Mệnh đề chính có thể là mệnh lệnh: If you see her, tell her the news. (Nếu bạn gặp cô ấy, hãy kể cho cô ấy tin đó.)\n- Không dùng will ở mệnh đề if, trừ khi if mang nghĩa \"nếu bạn sẵn lòng\": If you will help me, we can finish early.\n\n### Lỗi thường gặp\n\n- *If it will rain, I will stay home* sai; đúng là **If it rains, I will stay home**.\n- Dùng unless kèm phủ định: *Unless you don't hurry* sai; đúng là **Unless you hurry**.\n- Chia sai thì ở mệnh đề chính, chẳng hạn dùng V-ing hoặc thì quá khứ.\n\n### Mẹo\n\nXác định tình huống chỉ là khả năng trong tương lai thì chọn loại 1; nếu là quy luật luôn đúng thì chuyển sang loại 0.",
+      "examples": [
+        {
+          "en": "If you finish early, we will go for a walk.",
+          "vi": "Nếu bạn xong sớm, chúng ta sẽ đi dạo."
+        },
+        {
+          "en": "Unless you hurry, you will miss the train.",
+          "vi": "Trừ khi bạn nhanh lên, bạn sẽ lỡ chuyến tàu."
+        },
+        {
+          "en": "If I see him, I will tell him the news.",
+          "vi": "Nếu tôi gặp anh ấy, tôi sẽ kể cho anh ấy tin đó."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "If it ___ tomorrow, we will stay at home.",
+          "options": ["rains", "will rain", "rained", "would rain"],
+          "answer": 0,
+          "explanation": "Mệnh đề if của câu điều kiện loại 1 dùng hiện tại đơn nên chọn rains. will rain không dùng sau if, rained và would rain thuộc loại 2."
+        },
+        {
+          "prompt": "If you study hard, you ___ the exam.",
+          "options": ["pass", "will pass", "passed", "would pass"],
+          "answer": 1,
+          "explanation": "Mệnh đề chính của loại 1 dùng will + động từ nguyên mẫu nên chọn will pass. pass thiếu will, passed và would pass sai thì."
+        },
+        {
+          "prompt": "If she ___ time, she will join us.",
+          "options": ["has", "will have", "had", "would have"],
+          "answer": 0,
+          "explanation": "Mệnh đề if dùng hiện tại đơn nên chọn has. will have không đứng sau if, had và would have thuộc câu điều kiện loại 2."
+        }
+      ]
+    },
+    {
+      "slug": "lien-tu-cau-ghep-cau-phuc",
+      "title": "Liên từ, câu ghép và câu phức",
+      "titleEn": "Conjunctions, compound and complex sentences",
+      "summary": "Phân biệt liên từ kết hợp, liên từ phụ thuộc và trạng từ liên kết; từ đó nhận diện và tạo câu ghép, câu phức chính xác.",
+      "isNew": true,
+      "content": "### Liên từ kết hợp (FANBOYS)\n\nBảy liên từ nối hai mệnh đề độc lập: **for, and, nor, but, or, yet, so**.\n\n- I was tired, but I finished my report. (Tôi mệt nhưng vẫn hoàn thành báo cáo.)\n- She studied hard, so she passed the exam. (Cô ấy học chăm nên đã đỗ.)\n- Trước liên từ kết hợp thường có dấu phẩy khi nối hai mệnh đề dài.\n\n### Liên từ phụ thuộc\n\nMở đầu mệnh đề phụ, không thể đứng một mình tạo thành câu hoàn chỉnh: **because, although, since, if, when, while, unless, so that**.\n\n- Although it was raining, we went out. (Dù trời mưa, chúng tôi vẫn ra ngoài.)\n- I stayed home because I felt sick. (Tôi ở nhà vì tôi thấy mệt.)\n- Mệnh đề phụ có thể đứng trước hoặc sau mệnh đề chính; đứng trước thì dùng dấu phẩy.\n\n### Trạng từ liên kết\n\nNối ý giữa hai câu, thường đứng sau dấu chấm phẩy hoặc dấu chấm: **however, therefore, moreover, for example, in addition**.\n\n- The road was flooded; therefore, we took another route. (Đường bị ngập, vì vậy chúng tôi đi đường khác.)\n- However, the plan still has some risks. (Tuy nhiên, kế hoạch vẫn còn một số rủi ro.)\n- Khác với liên từ, trạng từ liên kết không nối trực tiếp hai mệnh đề chỉ bằng một dấu phẩy.\n\n### Câu ghép và câu phức\n\n- **Câu ghép**: hai mệnh đề độc lập nối bằng liên từ kết hợp hoặc dấu chấm phẩy.\n- **Câu phức**: một mệnh đề chính và ít nhất một mệnh đề phụ thuộc.\n- **Câu ghép - phức**: kết hợp cả hai khi ý phức tạp hơn.\n\n### Lỗi thường gặp\n\n- Dùng dấu phẩy nối hai mệnh đề độc lập mà không có liên từ (comma splice).\n- Nhầm although với but trong cùng một câu: *Although it rained, but we went out* sai.\n- Dùng however như liên từ nối trực tiếp hai mệnh đề, hoặc đặt sai vị trí trạng từ liên kết.",
+      "examples": [
+        {
+          "en": "I wanted to go out, but it was too cold.",
+          "vi": "Tôi muốn ra ngoài, nhưng trời quá lạnh."
+        },
+        {
+          "en": "Although she was tired, she kept working.",
+          "vi": "Dù cô ấy mệt, cô ấy vẫn tiếp tục làm việc."
+        },
+        {
+          "en": "The road was closed; therefore, we took another route.",
+          "vi": "Con đường bị đóng, vì vậy chúng tôi đi đường khác."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "She was tired, ___ she finished her homework.",
+          "options": ["so", "because", "although", "unless"],
+          "answer": 0,
+          "explanation": "Hai mệnh đề có quan hệ kết quả nên dùng so. because và although chỉ nguyên nhân hoặc nhượng bộ, unless nghĩa là trừ khi, không hợp ngữ cảnh."
+        },
+        {
+          "prompt": "___ it was raining, we went for a walk.",
+          "options": ["Although", "Because", "So", "Therefore"],
+          "answer": 0,
+          "explanation": "Hai ý tương phản nên dùng Although. Because chỉ nguyên nhân, So và Therefore chỉ kết quả nên không phù hợp."
+        },
+        {
+          "prompt": "He passed the exam; ___, he was very happy.",
+          "options": ["however", "therefore", "although", "because"],
+          "answer": 1,
+          "explanation": "Đỗ kỳ thi dẫn tới việc vui nên dùng trạng từ liên kết therefore. however chỉ tương phản, although và because là liên từ phụ thuộc, không đứng sau dấu chấm phẩy như vậy."
+        }
+      ]
+    }
+  ]
+}

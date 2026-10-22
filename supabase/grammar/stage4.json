@@ -1,0 +1,384 @@
+{
+  "stage": 4,
+  "stageTitle": "Ứng dụng",
+  "topics": [
+    {
+      "slug": "cau-bi-dong-nhieu-thi",
+      "title": "Câu bị động ở nhiều thì",
+      "titleEn": "Passive voice across tenses",
+      "summary": "Nắm cấu trúc be + V3 và cách chia be theo từng thì để chuyển câu chủ động sang bị động chính xác.",
+      "isNew": false,
+      "content": "### Công thức chung\n\nCâu bị động được dùng khi ta muốn nhấn mạnh người hoặc vật chịu tác động của hành động, thay vì người thực hiện. Cấu trúc nền tảng là **be + V3/V-ed (+ by + tác nhân)**. Động từ chính luôn ở dạng quá khứ phân từ, còn thì của câu được thể hiện ở động từ be.\n\n### Chia be theo thì\n\n- Hiện tại đơn: **am/is/are + V3** — The room is cleaned every morning (Phòng được dọn mỗi sáng).\n- Quá khứ đơn: **was/were + V3** — The letter was sent yesterday (Lá thư được gửi hôm qua).\n- Hiện tại hoàn thành: **have/has been + V3** — The work has been finished (Công việc đã được hoàn thành).\n- Hiện tại tiếp diễn: **is/are being + V3** — The road is being repaired (Con đường đang được sửa).\n- Tương lai và động từ khiếm khuyết: **will be / must be + V3** — The form must be signed (Mẫu đơn phải được ký).\n\n### Cách dùng\n\n- Khi người thực hiện không rõ, không quan trọng hoặc quá hiển nhiên: My bike was stolen last night (Xe đạp của tôi bị mất trộm tối qua).\n- Khi muốn đưa đối tượng chịu tác động lên vị trí nhấn mạnh, thường gặp trong tin tức và văn bản học thuật.\n- Bỏ cụm **by + tác nhân** nếu tác nhân chung chung như people, they, someone.\n\n### Lỗi thường gặp\n\n- Giữ nguyên thì ở động từ chính thay vì chia thì ở be: sai “The house built in 1990”, đúng “The house was built in 1990”.\n- Dùng bị động với nội động từ không có tân ngữ như happen, arrive, sleep.\n- Nhầm **is being + V3** với “is been + V3”; dạng đúng của tiếp diễn bị động là is being repaired.",
+      "examples": [
+        {
+          "en": "The bridge was built in 1990 and is still used every day.",
+          "vi": "Cây cầu được xây năm 1990 và vẫn được sử dụng hằng ngày."
+        },
+        {
+          "en": "All the documents have been checked by the manager.",
+          "vi": "Tất cả tài liệu đã được quản lý kiểm tra."
+        },
+        {
+          "en": "The new policy will be announced tomorrow morning.",
+          "vi": "Chính sách mới sẽ được công bố vào sáng mai."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "This temple ___ more than a century ago.",
+          "options": ["built", "was built", "is built", "has built"],
+          "answer": 1,
+          "explanation": "Có mốc thời gian quá khứ “a century ago” nên dùng bị động quá khứ was built. “Built” là chủ động thiếu tân ngữ, còn “is built” sai thì."
+        },
+        {
+          "prompt": "The reports ___ by the accountant at the moment.",
+          "options": ["are checking", "are being checked", "have checked", "check"],
+          "answer": 1,
+          "explanation": "“At the moment” chỉ hành động đang diễn ra, bị động tiếp diễn là are being + V3. Các phương án còn lại đều là chủ động hoặc sai thì."
+        },
+        {
+          "prompt": "Nothing ___ about the problem since last week.",
+          "options": ["has done", "has been done", "was doing", "is done"],
+          "answer": 1,
+          "explanation": "“Since last week” đi với hiện tại hoàn thành, và “nothing” là đối tượng chịu tác động nên cần has been done. “Has done” là chủ động sai nghĩa."
+        }
+      ]
+    },
+    {
+      "slug": "menh-de-quan-he",
+      "title": "Mệnh đề quan hệ",
+      "titleEn": "Relative clauses",
+      "summary": "Dùng who, which, that, whose, where để nối hai câu và bổ sung thông tin cho danh từ, phân biệt mệnh đề xác định và không xác định.",
+      "isNew": false,
+      "content": "### Các đại từ quan hệ\n\n- **who**: thay cho người, làm chủ ngữ hoặc tân ngữ.\n- **whom**: thay cho người làm tân ngữ, trang trọng hơn who.\n- **which**: thay cho vật hoặc cho cả một mệnh đề phía trước.\n- **that**: thay cho người hoặc vật, chỉ dùng trong mệnh đề xác định.\n- **whose**: chỉ sở hữu, theo sau là danh từ không có mạo từ.\n- **where / when**: thay cho cụm trạng ngữ chỉ nơi chốn hoặc thời gian.\n\n### Mệnh đề xác định và không xác định\n\nMệnh đề xác định cung cấp thông tin cần thiết để nhận diện đối tượng và không có dấu phẩy: The man who called you is my uncle (Người đàn ông gọi cho bạn là chú tôi). Mệnh đề không xác định chỉ bổ sung thông tin, được tách bằng dấu phẩy và không dùng that: My uncle, who lives in Hue, is a teacher (Chú tôi, người sống ở Huế, là giáo viên).\n\n### Lược bỏ đại từ quan hệ\n\nCó thể bỏ đại từ khi nó làm tân ngữ trong mệnh đề xác định: The book I bought is interesting (Cuốn sách tôi mua rất thú vị). Không được bỏ khi đại từ làm chủ ngữ, và không bao giờ lược bỏ trong mệnh đề không xác định.\n\n### Lỗi thường gặp\n\n- Dùng that ngay sau dấu phẩy trong mệnh đề không xác định.\n- Lặp đại từ: sai “The girl who she won”, đúng “The girl who won”.\n- Dùng where cho tân ngữ chỉ vật: sai “the book where I read”, đúng “the book which I read”.",
+      "examples": [
+        {
+          "en": "The woman who lives next door is a doctor.",
+          "vi": "Người phụ nữ sống cạnh nhà là bác sĩ."
+        },
+        {
+          "en": "This is the café where we first met.",
+          "vi": "Đây là quán cà phê nơi chúng tôi gặp nhau lần đầu."
+        },
+        {
+          "en": "My brother, who works in Hanoi, is visiting us this weekend.",
+          "vi": "Anh trai tôi, người làm việc ở Hà Nội, sẽ đến thăm chúng tôi cuối tuần này."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "The man ___ car was stolen reported it to the police.",
+          "options": ["whose", "who", "which", "whom"],
+          "answer": 0,
+          "explanation": "Sau chỗ trống là danh từ “car” nên cần đại từ sở hữu whose. “Who” và “whom” chỉ thay cho người làm chủ ngữ hoặc tân ngữ, không đứng trước danh từ."
+        },
+        {
+          "prompt": "The café ___ we met last year has closed down.",
+          "options": ["which", "where", "who", "whose"],
+          "answer": 1,
+          "explanation": "“We met” đã đủ chủ ngữ và tân ngữ, chỗ trống thay cho cụm chỉ nơi chốn nên dùng where. “Which” sẽ tạo câu thiếu giới từ chỉ nơi chốn."
+        },
+        {
+          "prompt": "Her latest novel, ___ was published in May, became a bestseller.",
+          "options": ["that", "which", "who", "what"],
+          "answer": 1,
+          "explanation": "Đây là mệnh đề không xác định sau dấu phẩy nên dùng which, không dùng that. “Who” chỉ dùng cho người, còn “what” không làm đại từ quan hệ."
+        }
+      ]
+    },
+    {
+      "slug": "rut-gon-menh-de-phan-tu",
+      "title": "Rút gọn mệnh đề và phân từ (V-ing / V-ed)",
+      "titleEn": "Reduced relative clauses and participles",
+      "summary": "Biết khi nào bỏ đại từ quan hệ và dùng V-ing cho nghĩa chủ động, V3 cho nghĩa bị động, tránh lỗi phân từ treo.",
+      "isNew": true,
+      "content": "### Nguyên tắc rút gọn\n\nMệnh đề quan hệ chỉ được rút gọn khi đại từ quan hệ làm chủ ngữ. Ta bỏ đại từ, sau đó đổi động từ theo thể chủ động hoặc bị động. Cách này giúp câu ngắn gọn và tự nhiên hơn, đặc biệt trong văn viết.\n\n### Chủ động: V-ing\n\nBỏ who/which/that và đưa động từ về **V-ing**: The girl who is sitting near the window is my sister → The girl sitting near the window is my sister (Cô gái ngồi cạnh cửa sổ là chị tôi). Nếu hành động đã xảy ra trước, dùng **having + V3**: Having finished the test, he left the room (Sau khi làm xong bài, cậu ấy rời phòng).\n\n### Bị động: V3\n\nBỏ đại từ và động từ be, giữ lại **V3/V-ed**: The car which was stolen has been found → The car stolen has been found (Chiếc xe bị trộm đã được tìm thấy). Với hành động hoàn tất trước, dùng **having been + V3**.\n\n### Cụm phân từ và lỗi thường gặp\n\nCụm phân từ có thể đứng đầu câu để chỉ lý do hoặc thời gian: Walking home, I met an old friend (Trên đường về, tôi gặp một người bạn cũ). Chủ ngữ của cụm phân từ phải trùng với chủ ngữ câu chính; sai “Walking home, the rain started” vì mưa không biết đi bộ. Cũng không rút gọn khi đại từ quan hệ làm tân ngữ: sai “The book writing by Nam”, đúng “The book written by Nam”.",
+      "examples": [
+        {
+          "en": "The students sitting at the back couldn't hear the teacher.",
+          "vi": "Những học sinh ngồi ở phía sau không nghe được giáo viên."
+        },
+        {
+          "en": "The money stolen from the office has not been found.",
+          "vi": "Số tiền bị mất trộm ở văn phòng vẫn chưa được tìm thấy."
+        },
+        {
+          "en": "Having finished her homework, Lan went out with friends.",
+          "vi": "Sau khi làm xong bài tập, Lan đi chơi với bạn."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "The documents ___ on the desk belong to the sales team.",
+          "options": ["leaving", "left", "are left", "which leaving"],
+          "answer": 1,
+          "explanation": "Tài liệu “bị để lại” nên cần quá khứ phân từ left mang nghĩa bị động. “Leaving” mang nghĩa chủ động, còn “which leaving” sai cấu trúc."
+        },
+        {
+          "prompt": "___ the report, she emailed it to the manager.",
+          "options": ["Completing", "Completed", "Having completed", "To complete"],
+          "answer": 2,
+          "explanation": "Hành động hoàn thành báo cáo xảy ra trước khi gửi nên dùng having completed. “Completing” chỉ hành động đồng thời, “Completed” mang nghĩa bị động."
+        },
+        {
+          "prompt": "The baby ___ in the next room started crying.",
+          "options": ["sleeping", "slept", "is sleeping", "sleep"],
+          "answer": 0,
+          "explanation": "Em bé đang ngủ là chủ động nên rút gọn bằng V-ing: the baby sleeping. Các phương án còn lại sai dạng phân từ hoặc biến câu thành hai động từ chính."
+        }
+      ]
+    },
+    {
+      "slug": "cau-dieu-kien-loai-2",
+      "title": "Câu điều kiện loại 2",
+      "titleEn": "Second conditional",
+      "summary": "Diễn tả giả định trái với hiện tại bằng If + quá khứ đơn, would + V, kèm cách dùng were và unless.",
+      "isNew": false,
+      "content": "### Công thức\n\n**If + S + V2/V-ed, S + would/could/might + V**. Mệnh đề if dùng quá khứ đơn, mệnh đề chính dùng would + động từ nguyên mẫu. Câu điều kiện loại 2 diễn tả tình huống không có thật hoặc khó xảy ra ở hiện tại và tương lai.\n\n### Cách dùng\n\n- Đưa ra giả định trái với thực tế hiện tại: If I had a car, I would drive to work (Nếu tôi có ô tô, tôi sẽ lái xe đi làm — thực tế tôi không có).\n- Lời khuyên nhẹ nhàng với **If I were you**: If I were you, I would accept the offer (Nếu tôi là bạn, tôi sẽ nhận lời đề nghị).\n- Dùng **unless** thay cho if not: Unless you hurry, you will miss the train (Trừ khi bạn nhanh lên, bạn sẽ lỡ tàu).\n\n### Động từ be\n\nVới be, dùng **were** cho tất cả các ngôi trong văn viết chuẩn: If she were here, she would help us (Nếu cô ấy ở đây, cô ấy sẽ giúp chúng ta). Dạng was vẫn gặp trong khẩu ngữ nhưng ít trang trọng hơn.\n\n### Lỗi thường gặp\n\n- Dùng would trong mệnh đề if: sai “If I would have time”, đúng “If I had time”.\n- Dùng thì hiện tại cho giả định không thật: sai “If I am rich”, đúng “If I were rich”.\n- Nhầm với loại 1: loại 1 nói khả năng có thật (If it rains, I will stay home), loại 2 nói điều trái thực tế.",
+      "examples": [
+        {
+          "en": "If I had more time, I would learn to play the guitar.",
+          "vi": "Nếu tôi có nhiều thời gian hơn, tôi sẽ học chơi ghi-ta."
+        },
+        {
+          "en": "If she were taller, she could join the basketball team.",
+          "vi": "Nếu cô ấy cao hơn, cô ấy có thể vào đội bóng rổ."
+        },
+        {
+          "en": "What would you do if you lost your passport?",
+          "vi": "Bạn sẽ làm gì nếu bạn mất hộ chiếu?"
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "If I ___ you, I would apologize to her.",
+          "options": ["am", "was", "were", "would be"],
+          "answer": 2,
+          "explanation": "Cấu trúc lời khuyên If I were you dùng were cho mọi ngôi. “Would be” không được xuất hiện trong mệnh đề if."
+        },
+        {
+          "prompt": "We would go camping this weekend if the weather ___ better.",
+          "options": ["is", "was", "will be", "would be"],
+          "answer": 1,
+          "explanation": "Mệnh đề chính dùng would nên đây là điều kiện loại 2, mệnh đề if cần quá khứ đơn was. “Is” và “will be” thuộc loại 1, “would be” sai vị trí."
+        },
+        {
+          "prompt": "If he ___ so lazy, he would finish his work on time.",
+          "options": ["isn't", "weren't", "won't be", "wouldn't be"],
+          "answer": 1,
+          "explanation": "Giả định trái hiện tại với be ở dạng phủ định là weren't. “Isn't” là hiện tại thật, còn “wouldn't be” không dùng trong mệnh đề if."
+        }
+      ]
+    },
+    {
+      "slug": "cau-dieu-kien-loai-3",
+      "title": "Câu điều kiện loại 3",
+      "titleEn": "Third conditional",
+      "summary": "Nói về giả định trái với quá khứ với If + had + V3, would have + V3, kể cả dạng đảo ngữ và could/might have.",
+      "isNew": false,
+      "content": "### Công thức\n\n**If + S + had + V3, S + would have + V3**. Mệnh đề if dùng quá khứ hoàn thành, mệnh đề chính dùng would have + quá khứ phân từ. Câu điều kiện loại 3 diễn tả giả định trái với quá khứ, điều đã không xảy ra và nay không thể thay đổi.\n\n### Cách dùng\n\n- Bày tỏ sự tiếc nuối hoặc phê phán hành động trong quá khứ: If you had told me, I would have helped you (Nếu bạn nói với tôi, tôi đã giúp bạn).\n- Suy luận ngược về nguyên nhân: If they had left earlier, they wouldn't have missed the flight (Nếu họ đi sớm hơn, họ đã không lỡ chuyến bay).\n- Thay would bằng **could have / might have** để nói khả năng hoặc kết quả có thể khác: If I had studied harder, I could have passed (Nếu tôi học chăm hơn, tôi đã có thể đỗ).\n\n### Đảo ngữ\n\nCó thể bỏ if bằng cách đảo had lên đầu câu, dùng trong văn trang trọng: Had I known the truth, I would have acted differently (Nếu tôi biết sự thật, tôi đã hành động khác).\n\n### Lỗi thường gặp\n\n- Dùng would have trong mệnh đề if: sai “If I would have known”, đúng “If I had known”.\n- Dùng quá khứ đơn thay vì quá khứ hoàn thành: sai “If I saw him yesterday”, đúng “If I had seen him yesterday” khi nói giả định trái quá khứ.\n- Nhầm với loại 2: loại 2 nói hiện tại (If I knew), loại 3 nói quá khứ (If I had known).",
+      "examples": [
+        {
+          "en": "If I had known about the traffic, I would have left earlier.",
+          "vi": "Nếu tôi biết về tình trạng tắc đường, tôi đã rời đi sớm hơn."
+        },
+        {
+          "en": "If they had booked the tickets, they could have saved a lot of money.",
+          "vi": "Nếu họ đã đặt vé, họ đã có thể tiết kiệm được nhiều tiền."
+        },
+        {
+          "en": "She wouldn't have missed the flight if she had set an alarm.",
+          "vi": "Cô ấy đã không lỡ chuyến bay nếu cô ấy đã đặt báo thức."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "If we ___ the map, we wouldn't have got lost.",
+          "options": ["didn't bring", "hadn't brought", "haven't brought", "wouldn't bring"],
+          "answer": 1,
+          "explanation": "Mệnh đề chính dùng wouldn't have + V3 nên mệnh đề if phải dùng quá khứ hoàn thành hadn't brought. “Didn't bring” sai thì, “wouldn't bring” không dùng trong mệnh đề if."
+        },
+        {
+          "prompt": "He would have passed the exam if he ___ harder.",
+          "options": ["studied", "had studied", "studies", "would study"],
+          "answer": 1,
+          "explanation": "Giả định trái quá khứ cần had studied ở mệnh đề if. “Studied” là loại 2, còn “would study” không đứng sau if."
+        },
+        {
+          "prompt": "If you had told me earlier, I ___ you.",
+          "options": ["helped", "would help", "would have helped", "had helped"],
+          "answer": 2,
+          "explanation": "Mệnh đề if ở quá khứ hoàn thành nên mệnh đề chính dùng would have helped. “Would help” là kết quả hiện tại của loại 2, không khớp mốc quá khứ."
+        }
+      ]
+    },
+    {
+      "slug": "cau-dieu-kien-hon-hop",
+      "title": "Câu điều kiện hỗn hợp",
+      "titleEn": "Mixed conditionals",
+      "summary": "Kết hợp hai mốc thời gian: nguyên nhân quá khứ với kết quả hiện tại, hoặc nguyên nhân hiện tại với kết quả quá khứ.",
+      "isNew": false,
+      "content": "### Hai dạng chính\n\nCâu điều kiện hỗn hợp kết hợp hai mốc thời gian khác nhau, thường gặp hai dạng:\n\n- Nguyên nhân ở quá khứ, kết quả ở hiện tại: **If + S + had + V3, S + would + V**.\n- Nguyên nhân ở hiện tại, kết quả ở quá khứ: **If + S + V2/V-ed, S + would have + V3**.\n\n### Dạng 1: quá khứ đến hiện tại\n\nDùng khi một việc đã xảy ra trong quá khứ để lại hậu quả đến bây giờ: If I had taken that job, I would be living in Da Nang now (Nếu tôi nhận công việc đó, giờ tôi đã sống ở Đà Nẵng). Trạng từ now, today, at the moment là dấu hiệu rõ ràng của dạng này.\n\n### Dạng 2: hiện tại đến quá khứ\n\nDùng khi tính cách hoặc tình trạng hiện tại giải thích một kết quả trong quá khứ: If she weren't so shy, she would have spoken up at the meeting (Nếu cô ấy không quá nhút nhát, cô ấy đã phát biểu ở cuộc họp). Mệnh đề if mô tả hiện tại, mệnh đề chính nói về việc đã qua.\n\n### Lỗi thường gặp\n\n- Dùng loại 3 thuần túy khi kết quả rõ ràng ở hiện tại: sai “I would have been rich now”, đúng “I would be rich now”.\n- Đổi thì cả hai vế theo cùng một mốc: sai “If I had taken that job, I would have lived in Da Nang now”.\n- Bỏ qua dấu hiệu thời gian; hãy xác định kết quả xảy ra khi nào trước khi chọn dạng.",
+      "examples": [
+        {
+          "en": "If I had taken that job, I would be living in Da Nang now.",
+          "vi": "Nếu tôi đã nhận công việc đó, giờ tôi đã sống ở Đà Nẵng."
+        },
+        {
+          "en": "If she weren't so shy, she would have spoken up at the meeting.",
+          "vi": "Nếu cô ấy không quá nhút nhát, cô ấy đã phát biểu ở cuộc họp."
+        },
+        {
+          "en": "If he had saved money, he wouldn't be in debt now.",
+          "vi": "Nếu anh ấy đã tiết kiệm tiền, giờ anh ấy đã không nợ nần."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "If I had invested in that company, I ___ rich now.",
+          "options": ["will be", "would be", "would have been", "am"],
+          "answer": 1,
+          "explanation": "Nguyên nhân ở quá khứ nhưng kết quả ở hiện tại (now) nên dùng would be. “Would have been” chỉ đúng khi kết quả cũng ở quá khứ."
+        },
+        {
+          "prompt": "If you weren't afraid of heights, you ___ the trip last week.",
+          "options": ["would enjoy", "would have enjoyed", "enjoyed", "will enjoy"],
+          "answer": 1,
+          "explanation": "Mệnh đề if mô tả hiện tại, còn kết quả “last week” ở quá khứ nên dùng would have enjoyed. “Would enjoy” là kết quả hiện tại, không khớp mốc thời gian."
+        },
+        {
+          "prompt": "If she ___ the news yesterday, she would be here with us now.",
+          "options": ["heard", "had heard", "hears", "would hear"],
+          "answer": 1,
+          "explanation": "Hành động nghe tin xảy ra trước mốc hiện tại nên mệnh đề if dùng had heard. “Heard” sai thì so với yesterday trong câu điều kiện hỗn hợp này."
+        }
+      ]
+    },
+    {
+      "slug": "wish-if-only",
+      "title": "Wish / If only",
+      "titleEn": "Wish / If only",
+      "summary": "Ba cấu trúc wish cho ước hiện tại, hối tiếc quá khứ và mong ai thay đổi, cùng cách dùng If only mạnh hơn.",
+      "isNew": true,
+      "content": "### Công thức\n\n- **S + wish + S + V2/V-ed**: ước một điều không đúng ở hiện tại.\n- **S + wish + S + had + V3**: hối tiếc một việc đã làm hoặc chưa làm trong quá khứ.\n- **S + wish + S + would + V**: mong ai đó thay đổi hoặc phàn nàn về hành vi lặp lại.\n- **If only** mang nghĩa mạnh hơn wish nhưng dùng cấu trúc giống hệt.\n\n### Cách dùng\n\n- Ước hiện tại: I wish I knew how to swim (Tôi ước mình biết bơi — thực tế không biết).\n- Hối tiếc quá khứ: I wish I hadn't said that (Tôi ước mình đã không nói điều đó).\n- Phàn nàn, mong thay đổi: I wish you would stop interrupting me (Tôi ước bạn đừng ngắt lời tôi nữa).\n- Với be, dùng **were** cho mọi ngôi: I wish she were here (Tôi ước cô ấy ở đây).\n\n### Phân biệt wish và hope\n\nHope dùng cho điều có thể thành hiện thực và theo sau là thì hiện tại hoặc will: I hope she comes tomorrow. Wish dùng cho điều trái thực tế hoặc không thể thay đổi, nên động từ luôn lùi một thì so với thời điểm được nói tới.\n\n### Lỗi thường gặp\n\n- Dùng will sau wish: sai “I wish she will come”, đúng “I wish she would come”.\n- Dùng thì hiện tại cho ước hiện tại: sai “I wish I have more time”, đúng “I wish I had more time”.\n- Nhầm wish + would với lời mời lịch sự: cấu trúc này thường thể hiện sự khó chịu, không dùng để đề nghị.",
+      "examples": [
+        {
+          "en": "I wish I spoke Japanese fluently.",
+          "vi": "Tôi ước mình nói tiếng Nhật lưu loát."
+        },
+        {
+          "en": "If only we had booked a table in advance.",
+          "vi": "Giá mà chúng tôi đã đặt bàn trước."
+        },
+        {
+          "en": "I wish you would turn down the music.",
+          "vi": "Tôi ước bạn vặn nhỏ nhạc xuống."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "I wish I ___ how to swim.",
+          "options": ["know", "knew", "have known", "will know"],
+          "answer": 1,
+          "explanation": "Ước một điều trái với hiện tại nên động từ lùi về quá khứ đơn knew. “Know” và “will know” không dùng sau wish, “have known” chỉ dùng cho hối tiếc quá khứ."
+        },
+        {
+          "prompt": "If only I ___ my phone at the hotel.",
+          "options": ["didn't leave", "hadn't left", "haven't left", "wouldn't leave"],
+          "answer": 1,
+          "explanation": "Đây là hối tiếc về việc đã xảy ra nên dùng hadn't left. “Didn't leave” chỉ là ước hiện tại, không diễn tả được điều đã lỡ."
+        },
+        {
+          "prompt": "I wish he ___ complaining about the food.",
+          "options": ["stops", "stopped", "would stop", "had stopped"],
+          "answer": 2,
+          "explanation": "Wish + would dùng để phàn nàn về hành vi lặp lại và mong người khác thay đổi. “Stopped” chỉ là ước hiện tại, không thể hiện rõ sự khó chịu."
+        }
+      ]
+    },
+    {
+      "slug": "cau-gian-tiep",
+      "title": "Câu gián tiếp",
+      "titleEn": "Reported speech",
+      "summary": "Quy tắc lùi thì, đổi đại từ và trạng ngữ, cùng cách tường thuật câu hỏi, mệnh lệnh chính xác.",
+      "isNew": false,
+      "content": "### Quy tắc lùi thì\n\nKhi động từ tường thuật ở quá khứ (said, told, asked), động từ trong lời nói gián tiếp thường lùi một thì:\n\n- Hiện tại đơn thành quá khứ đơn; hiện tại tiếp diễn thành quá khứ tiếp diễn.\n- Hiện tại hoàn thành thành quá khứ hoàn thành; quá khứ đơn thành quá khứ hoàn thành.\n- will thành would; can thành could; must thành had to.\n\n### Đổi đại từ và trạng ngữ\n\nI thành he/she, we thành they, my thành his/her; today thành that day, tomorrow thành the following day, yesterday thành the day before, here thành there, this thành that. Ví dụ: She said she would call me the next day (Cô ấy nói cô ấy sẽ gọi cho tôi ngày hôm sau).\n\n### Câu hỏi và mệnh lệnh\n\n- Câu hỏi yes/no: **asked + if/whether + S + V**, trật tự từ trở về dạng khẳng định: He asked me whether I had finished the assignment (Anh ấy hỏi tôi đã làm xong bài tập chưa).\n- Câu hỏi có từ để hỏi: giữ từ để hỏi nhưng không đảo trợ động từ: She asked where I lived.\n- Mệnh lệnh: **told/asked + O + (not) to V**: The doctor told him to take the medicine twice a day (Bác sĩ bảo anh ấy uống thuốc hai lần mỗi ngày).\n\n### Lỗi thường gặp\n\n- Giữ trật tự đảo trong câu hỏi gián tiếp: sai “He asked where was I”, đúng “He asked where I was”.\n- Nhầm say và tell: tell cần tân ngữ chỉ người, say không cần.\n- Không lùi thì dù động từ tường thuật ở quá khứ.",
+      "examples": [
+        {
+          "en": "She said she was moving to Hanoi the following month.",
+          "vi": "Cô ấy nói cô ấy sẽ chuyển đến Hà Nội vào tháng sau."
+        },
+        {
+          "en": "He asked me whether I had finished the assignment.",
+          "vi": "Anh ấy hỏi tôi đã hoàn thành bài tập chưa."
+        },
+        {
+          "en": "The doctor told him to take the medicine twice a day.",
+          "vi": "Bác sĩ bảo anh ấy uống thuốc hai lần mỗi ngày."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "She said she ___ the report the day before.",
+          "options": ["finishes", "finished", "has finished", "had finished"],
+          "answer": 3,
+          "explanation": "“The day before” cho thấy hành động đã hoàn thành trước lúc nói, nên lùi về quá khứ hoàn thành had finished. “Finished” không thể hiện được quan hệ trước sau."
+        },
+        {
+          "prompt": "He asked me ___ interested in the position.",
+          "options": ["if I was", "if was I", "that I was", "was I"],
+          "answer": 0,
+          "explanation": "Câu hỏi yes/no gián tiếp dùng if + trật tự khẳng định: if I was. “If was I” còn đảo trợ động từ, “that I was” sai vì đây là câu hỏi."
+        },
+        {
+          "prompt": "The teacher told us ___ noise during the test.",
+          "options": ["don't make", "not to make", "to not making", "not make"],
+          "answer": 1,
+          "explanation": "Mệnh lệnh phủ định gián tiếp là tell someone not to do something. “Don't make” giữ nguyên lời nói trực tiếp, “to not making” sai dạng động từ."
+        }
+      ]
+    },
+    {
+      "slug": "the-sai-khien",
+      "title": "Thể sai khiến (have/get something done, make/let/have someone do)",
+      "titleEn": "Causatives",
+      "summary": "Phân biệt have/get something done với make/let/have someone do và các lỗi thường gặp về dạng động từ.",
+      "isNew": true,
+      "content": "### Cấu trúc chính\n\n- **have/get + something + V3**: nhờ người khác làm việc gì cho mình. I had my car repaired yesterday (Hôm qua tôi đi sửa xe).\n- **get + someone + to V**: thuyết phục ai làm gì. She got her brother to carry the boxes (Cô ấy nhờ anh trai bê các thùng hàng).\n- **make/let/have + someone + V**: bắt buộc, cho phép, yêu cầu; động từ không có to. The teacher made us rewrite the essay (Giáo viên bắt chúng tôi viết lại bài).\n\n### Phân biệt make, let, have\n\nMake mang nghĩa ép buộc, let là cho phép, have là yêu cầu một cách trung tính. Ở thể bị động, make cần to: We were made to wait outside. Let chuyển thành be allowed to.\n\n### Cách dùng khác\n\n- **need + V-ing** mang nghĩa bị động: My hair needs cutting (Tóc tôi cần được cắt), tương đương needs to be cut.\n- **help + someone + (to) V**: cả hai dạng đều đúng, có to trang trọng hơn.\n- Dùng have/get something done khi muốn nhấn mạnh dịch vụ được thực hiện chứ không phải người thực hiện.\n\n### Lỗi thường gặp\n\n- Thêm to sau make/let/have: sai “made us to wait”, đúng “made us wait”.\n- Dùng V-ing sau have: sai “have my car repairing”, đúng “have my car repaired”.\n- Nhầm get someone do với get someone to do: dạng đúng luôn có to trước động từ.",
+      "examples": [
+        {
+          "en": "I had my car repaired yesterday.",
+          "vi": "Hôm qua tôi đã cho người sửa xe của mình."
+        },
+        {
+          "en": "She got her brother to carry the boxes upstairs.",
+          "vi": "Cô ấy nhờ anh trai bê các thùng hàng lên lầu."
+        },
+        {
+          "en": "The teacher made us rewrite the essay.",
+          "vi": "Giáo viên bắt chúng tôi viết lại bài luận."
+        }
+      ],
+      "exercises": [
+        {
+          "prompt": "I need to get my hair ___ before the wedding.",
+          "options": ["cut", "to cut", "cutting", "be cut"],
+          "answer": 0,
+          "explanation": "Get something done dùng quá khứ phân từ cut vì tóc được người khác cắt. “To cut” và “cutting” sai dạng, “be cut” không đứng sau get trong cấu trúc này."
+        },
+        {
+          "prompt": "The manager made the team ___ the proposal again.",
+          "options": ["to revise", "revising", "revise", "revised"],
+          "answer": 2,
+          "explanation": "Sau make + tân ngữ là động từ nguyên mẫu không to, nên dùng revise. “To revise” sai vì make không đi với to, “revised” mang nghĩa bị động."
+        },
+        {
+          "prompt": "She had the documents ___ by a professional translator.",
+          "options": ["translate", "translating", "translated", "to translate"],
+          "answer": 2,
+          "explanation": "Have something done cần quá khứ phân từ translated vì tài liệu được dịch bởi người khác. Các phương án còn lại sai dạng phân từ hoặc thêm to không đúng."
+        }
+      ]
+    }
+  ]
+}

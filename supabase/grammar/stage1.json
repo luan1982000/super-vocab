@@ -1,0 +1,303 @@
+{
+  "stage": 1,
+  "stageTitle": "Nền tảng câu và từ loại",
+  "topics": [
+    {
+      "slug": "tu-loai-va-cau-don",
+      "title": "Từ loại và câu đơn",
+      "titleEn": "Parts of speech and simple sentences",
+      "summary": "Nắm tám từ loại chính và cấu trúc câu đơn cơ bản để đặt câu đúng trật tự từ.",
+      "isNew": false,
+      "content": "### Từ loại cơ bản\n\nTiếng Anh có tám từ loại chính: danh từ (nouns), đại từ (pronouns), động từ (verbs), tính từ (adjectives), trạng từ (adverbs), giới từ (prepositions), liên từ (conjunctions) và từ hạn định (determiners). Mỗi từ loại giữ một vai trò riêng trong câu: danh từ gọi tên sự vật, động từ diễn tả hành động hoặc trạng thái, tính từ bổ nghĩa cho danh từ.\n\n### Cấu trúc câu đơn\n\nCâu đơn chỉ có **một mệnh đề độc lập**, thường gồm chủ ngữ (S) và vị ngữ (V): **S + V (+ O / C)**. Ví dụ: *She reads books every night* (Cô ấy đọc sách mỗi tối). Chủ ngữ có thể là danh từ, đại từ hoặc cụm danh từ; vị ngữ bắt buộc phải có động từ chính.\n\n### Trật tự từ\n\nTrật tự quen thuộc là **chủ ngữ – động từ – tân ngữ – trạng từ**: *My brother bought a new bike yesterday* (Anh trai tôi mua một chiếc xe đạp mới hôm qua). Tính từ đứng trước danh từ, trạng từ bổ nghĩa cho động từ hoặc tính từ.\n\n### Lỗi thường gặp\n\n- Thiếu động từ chính: *She very happy* → *She is very happy*.\n- Đặt tính từ sau danh từ: *a car red* → *a red car*.\n- Dùng trạng từ thay tính từ sau động từ liên kết: *He looks carefully* → *He looks careful*.",
+      "examples": [
+        { "en": "My sister teaches English at a small school near our house.", "vi": "Chị gái tôi dạy tiếng Anh tại một ngôi trường nhỏ gần nhà." },
+        { "en": "The children played football in the park all afternoon.", "vi": "Bọn trẻ chơi bóng đá trong công viên suốt cả buổi chiều." },
+        { "en": "He speaks English very well.", "vi": "Anh ấy nói tiếng Anh rất tốt." }
+      ],
+      "exercises": [
+        {
+          "prompt": "___ is my favorite subject at school.",
+          "options": ["Mathematics", "Run", "Quickly", "Beautiful"],
+          "answer": 0,
+          "explanation": "Vị trí chủ ngữ cần một danh từ nên Mathematics là đáp án đúng; run là động từ, quickly là trạng từ, beautiful là tính từ."
+        },
+        {
+          "prompt": "She speaks English very ___.",
+          "options": ["good", "well", "better", "best"],
+          "answer": 1,
+          "explanation": "Cần trạng từ bổ nghĩa cho động từ speaks nên dùng well; good là tính từ, còn better và best là dạng so sánh không phù hợp ở đây."
+        },
+        {
+          "prompt": "She bought a beautiful ___ for her mother.",
+          "options": ["run", "quickly", "dress", "beautifully"],
+          "answer": 2,
+          "explanation": "Sau tính từ beautiful phải là danh từ dress; run là động từ, quickly và beautifully là trạng từ."
+        }
+      ]
+    },
+    {
+      "slug": "danh-tu",
+      "title": "Danh từ",
+      "titleEn": "Nouns: countable, uncountable, plural",
+      "summary": "Phân biệt danh từ đếm được và không đếm được, nắm quy tắc tạo số nhiều và các dạng bất quy tắc.",
+      "isNew": true,
+      "content": "### Danh từ đếm được và không đếm được\n\nDanh từ đếm được (countable) có thể đứng sau số đếm và có dạng số nhiều: *one book, two books*. Danh từ không đếm được (uncountable) không có dạng số nhiều và không dùng với a/an: *water, rice, information, advice, furniture, news*.\n\n### Hình thành số nhiều\n\n- Thêm **-s** vào hầu hết danh từ: *book → books*.\n- Thêm **-es** sau -s, -sh, -ch, -x, -z: *box → boxes*.\n- Đổi **-y** thành **-ies** khi trước y là phụ âm: *city → cities*.\n- Đổi **-f/-fe** thành **-ves**: *knife → knives*.\n\n### Số nhiều bất quy tắc\n\nMột số danh từ có dạng riêng: *man → men, woman → women, child → children, tooth → teeth, foot → feet, mouse → mice*. Một số danh từ giữ nguyên ở cả hai số: *sheep, fish, deer*.\n\n### Lỗi thường gặp\n\n- Thêm -s vào danh từ không đếm được: *informations* → *information*.\n- Dùng động từ số nhiều với danh từ không đếm được: *The news are good* → *The news is good*.\n- Viết *childrens* thay vì *children*.",
+      "examples": [
+        { "en": "There are three knives and two boxes on the table.", "vi": "Có ba con dao và hai cái hộp trên bàn." },
+        { "en": "The children need more information about the trip.", "vi": "Bọn trẻ cần thêm thông tin về chuyến đi." },
+        { "en": "Those women are buying fresh vegetables at the market.", "vi": "Những người phụ nữ đó đang mua rau tươi ở chợ." }
+      ],
+      "exercises": [
+        {
+          "prompt": "There are many ___ playing in the yard.",
+          "options": ["child", "childs", "children", "childrens"],
+          "answer": 2,
+          "explanation": "Số nhiều bất quy tắc của child là children; child là số ít, childs và childrens đều sai chính tả."
+        },
+        {
+          "prompt": "I need some ___ about the course.",
+          "options": ["information", "informations", "an information", "informationes"],
+          "answer": 0,
+          "explanation": "Information là danh từ không đếm được nên không có -s và không dùng với a/an."
+        },
+        {
+          "prompt": "She cut the bread with two ___.",
+          "options": ["knifes", "knives", "knife", "knife's"],
+          "answer": 1,
+          "explanation": "Danh từ tận cùng -fe đổi thành -ves ở số nhiều: knife → knives; knifes là dạng sai."
+        }
+      ]
+    },
+    {
+      "slug": "mao-tu",
+      "title": "Mạo từ",
+      "titleEn": "Articles: a, an, the, no article",
+      "summary": "Dùng đúng a/an/the và biết khi nào không cần mạo từ trong câu tiếng Anh.",
+      "isNew": true,
+      "content": "### Mạo từ bất định a/an\n\nDùng **a** trước phụ âm (xét theo âm, không theo chữ): *a book, a university, a European country*. Dùng **an** trước nguyên âm: *an apple, an hour, an honest man*. A/an chỉ dùng với danh từ đếm được số ít khi người nghe chưa biết chính xác đối tượng.\n\n### Mạo từ xác định the\n\nDùng **the** khi đối tượng đã được xác định, đã nhắc trước đó, là duy nhất hoặc được xác định bởi ngữ cảnh: *the sun, the teacher in my class, the book I bought*. The dùng được với cả danh từ số ít và số nhiều.\n\n### Không dùng mạo từ\n\nKhông dùng mạo từ trước danh từ không đếm được hoặc danh từ số nhiều khi nói chung: *I like music* (Tôi thích âm nhạc), *Cats are cute* (Mèo rất đáng yêu). Cũng không dùng trước tên riêng, bữa ăn, ngôn ngữ, môn học và cụm cố định như *go to school, at home, by bus*.\n\n### Lỗi thường gặp\n\n- Dùng a/an với danh từ không đếm được: *a furniture* → *furniture* hoặc *a piece of furniture*.\n- Bỏ the trước vật duy nhất: *Sun rises* → *The sun rises*.\n- Chọn mạo từ theo chữ cái thay vì theo âm: *an university* → *a university*.",
+      "examples": [
+        { "en": "She is an engineer at a large company.", "vi": "Cô ấy là kỹ sư tại một công ty lớn." },
+        { "en": "The sun rose early this morning.", "vi": "Mặt trời mọc sớm vào sáng nay." },
+        { "en": "We usually have breakfast at home.", "vi": "Chúng tôi thường ăn sáng ở nhà." }
+      ],
+      "exercises": [
+        {
+          "prompt": "My father is ___ honest man.",
+          "options": ["a", "an", "the", "no article"],
+          "answer": 1,
+          "explanation": "Honest bắt đầu bằng nguyên âm câm /ɒ/ nên dùng an; a sai vì xét theo âm, the không dùng khi giới thiệu lần đầu."
+        },
+        {
+          "prompt": "___ sun rises in the east.",
+          "options": ["A", "An", "The", "no article"],
+          "answer": 2,
+          "explanation": "Sun là vật duy nhất nên dùng the; a/an không dùng với danh từ xác định duy nhất."
+        },
+        {
+          "prompt": "We usually have ___ dinner at seven.",
+          "options": ["a", "an", "the", "no article"],
+          "answer": 3,
+          "explanation": "Trước tên bữa ăn thường không dùng mạo từ, nên chọn no article."
+        }
+      ]
+    },
+    {
+      "slug": "dai-tu-va-tinh-tu-so-huu",
+      "title": "Đại từ và tính từ sở hữu",
+      "titleEn": "Pronouns and possessive adjectives",
+      "summary": "Phân biệt đại từ nhân xưng, tính từ sở hữu và đại từ sở hữu để tránh nhầm vị trí.",
+      "isNew": true,
+      "content": "### Đại từ nhân xưng\n\nĐại từ nhân xưng làm chủ ngữ gồm **I, you, he, she, it, we, they**; làm tân ngữ gồm **me, you, him, her, it, us, them**. Chủ ngữ đứng trước động từ, tân ngữ đứng sau động từ hoặc giới từ: *She called me yesterday* (Cô ấy gọi tôi hôm qua).\n\n### Tính từ sở hữu\n\nTính từ sở hữu đứng **trước danh từ**: **my, your, his, her, its, our, their**. Ví dụ: *Their house is near the park* (Nhà của họ gần công viên). Tính từ sở hữu không thay đổi theo số của danh từ: *her books*.\n\n### Đại từ sở hữu\n\nĐại từ sở hữu đứng **một mình**, thay cho danh từ đã được nhắc trước: **mine, yours, his, hers, its, ours, theirs**. Ví dụ: *This bag is mine* (Chiếc túi này là của tôi).\n\n### Lỗi thường gặp\n\n- Nhầm its và it's: *it's* = it is, còn *its* = của nó.\n- Dùng đại từ tân ngữ làm chủ ngữ: *Me and him went out* → *He and I went out*.\n- Dùng tính từ sở hữu thay đại từ sở hữu: *The book is my* → *The book is mine*.",
+      "examples": [
+        { "en": "This umbrella is mine, and that one is yours.", "vi": "Chiếc ô này là của tôi, còn chiếc kia là của bạn." },
+        { "en": "Her parents gave her a new bike.", "vi": "Bố mẹ cô ấy tặng cô ấy một chiếc xe đạp mới." },
+        { "en": "The students finished their homework before dinner.", "vi": "Học sinh làm xong bài tập về nhà trước bữa tối." }
+      ],
+      "exercises": [
+        {
+          "prompt": "This notebook is ___, not yours.",
+          "options": ["my", "me", "mine", "I"],
+          "answer": 2,
+          "explanation": "Sau động từ to be và đứng một mình cần đại từ sở hữu mine; my phải có danh từ theo sau, me và I là đại từ nhân xưng."
+        },
+        {
+          "prompt": "Please give the keys to ___.",
+          "options": ["I", "me", "my", "mine"],
+          "answer": 1,
+          "explanation": "Sau giới từ to cần đại từ tân ngữ me; I không đứng sau giới từ, my và mine là sở hữu."
+        },
+        {
+          "prompt": "___ brother works in Hanoi.",
+          "options": ["She", "Her", "Hers", "She's"],
+          "answer": 1,
+          "explanation": "Trước danh từ brother cần tính từ sở hữu her; she là đại từ chủ ngữ, hers và she's không đứng trước danh từ."
+        }
+      ]
+    },
+    {
+      "slug": "tinh-tu-va-trang-tu",
+      "title": "Tính từ và trạng từ",
+      "titleEn": "Adjectives and adverbs",
+      "summary": "Phân biệt tính từ và trạng từ, nắm vị trí và cách thành lập trạng từ thể cách.",
+      "isNew": true,
+      "content": "### Tính từ\n\nTính từ bổ nghĩa cho danh từ, thường đứng **trước danh từ** hoặc **sau động từ liên kết** (be, seem, look, feel, taste, become, get): *a beautiful garden* (một khu vườn đẹp), *The soup tastes good* (Món súp có vị ngon). Tính từ không đổi theo số: *two tall boys*.\n\n### Trạng từ\n\nTrạng từ bổ nghĩa cho động từ, tính từ hoặc trạng từ khác. Trạng từ thể cách thường được tạo bằng **tính từ + -ly**: *careful → carefully, quick → quickly*. Ví dụ: *She speaks English fluently* (Cô ấy nói tiếng Anh trôi chảy).\n\n### Vị trí trạng từ\n\nTrạng từ thể cách thường đứng sau động từ hoặc sau tân ngữ: *He drives carefully* (Anh ấy lái xe cẩn thận). Trạng từ chỉ tần suất (always, usually, often, never) đứng **trước động từ thường** nhưng **sau động từ to be**: *She always gets up early*, *He is never late*.\n\n### Lỗi thường gặp\n\n- Dùng tính từ thay trạng từ: *She sings beautiful* → *She sings beautifully*.\n- Dùng trạng từ sau động từ liên kết: *The food tastes badly* → *The food tastes bad*.\n- Nhầm good/well: *well* là trạng từ, *good* là tính từ.",
+      "examples": [
+        { "en": "The little girl sang beautifully at the concert.", "vi": "Cô bé hát rất hay tại buổi hòa nhạc." },
+        { "en": "This soup tastes really good.", "vi": "Món súp này có vị thực sự ngon." },
+        { "en": "He always checks his work carefully.", "vi": "Anh ấy luôn kiểm tra bài làm của mình một cách cẩn thận." }
+      ],
+      "exercises": [
+        {
+          "prompt": "She sings very ___.",
+          "options": ["beautiful", "beautifully", "beauty", "beautify"],
+          "answer": 1,
+          "explanation": "Cần trạng từ bổ nghĩa cho động từ sings nên dùng beautifully; beautiful là tính từ, beauty là danh từ, beautify là động từ."
+        },
+        {
+          "prompt": "He is a ___ driver.",
+          "options": ["careful", "carefully", "care", "carefulness"],
+          "answer": 0,
+          "explanation": "Trước danh từ driver cần tính từ careful; carefully là trạng từ, care và carefulness là danh từ."
+        },
+        {
+          "prompt": "The weather feels ___ today.",
+          "options": ["warm", "warmly", "warmth", "warming"],
+          "answer": 0,
+          "explanation": "Sau động từ liên kết feels cần tính từ warm; warmly là trạng từ, warmth là danh từ, warming không phù hợp nghĩa."
+        }
+      ]
+    },
+    {
+      "slug": "luong-tu",
+      "title": "Lượng từ",
+      "titleEn": "Quantifiers: some, any, much, many, few, little",
+      "summary": "Chọn đúng lượng từ theo loại danh từ và loại câu khẳng định, phủ định hay nghi vấn.",
+      "isNew": true,
+      "content": "### some và any\n\n**Some** dùng trong câu khẳng định và trong lời mời, đề nghị: *I have some money* (Tôi có một ít tiền), *Would you like some tea?*. **Any** dùng trong câu phủ định và nghi vấn: *I don't have any money*, *Do you have any questions?*.\n\n### much và many\n\n**Many** đi với danh từ đếm được số nhiều: *many books*. **Much** đi với danh từ không đếm được: *much water*. Trong câu khẳng định, người ta thường dùng *a lot of / lots of* thay cho much và many.\n\n### few, a few, little, a little\n\n- **A few + danh từ đếm được số nhiều**: một vài, đủ dùng.\n- **Few + danh từ đếm được số nhiều**: rất ít, gần như không.\n- **A little + danh từ không đếm được**: một chút, đủ dùng.\n- **Little + danh từ không đếm được**: rất ít, gần như không.\n\nVí dụ: *I have a few friends here* (Tôi có vài người bạn ở đây).\n\n### Lỗi thường gặp\n\n- Dùng much với danh từ đếm được: *much students* → *many students*.\n- Dùng any trong câu khẳng định chắc chắn: *I have any time* → *I have some time*.\n- Nhầm few và a few khiến nghĩa đảo ngược.",
+      "examples": [
+        { "en": "We have a little sugar, but we don't have any milk.", "vi": "Chúng tôi có một chút đường, nhưng không có sữa." },
+        { "en": "How many students are there in your class?", "vi": "Có bao nhiêu học sinh trong lớp của bạn?" },
+        { "en": "Few people came to the meeting yesterday.", "vi": "Rất ít người đến buổi họp hôm qua." }
+      ],
+      "exercises": [
+        {
+          "prompt": "How ___ money do you need?",
+          "options": ["many", "much", "few", "a few"],
+          "answer": 1,
+          "explanation": "Money là danh từ không đếm được nên dùng much; many, few, a few chỉ đi với danh từ đếm được số nhiều."
+        },
+        {
+          "prompt": "There aren't ___ chairs in the room.",
+          "options": ["some", "any", "much", "a little"],
+          "answer": 1,
+          "explanation": "Câu phủ định dùng any; some thường dùng trong câu khẳng định, much và a little đi với danh từ không đếm được."
+        },
+        {
+          "prompt": "Hurry up! We have very ___ time left.",
+          "options": ["few", "a few", "little", "a little"],
+          "answer": 2,
+          "explanation": "Time là danh từ không đếm được và nghĩa cần là rất ít nên dùng little; few và a few đi với danh từ đếm được, a little mang nghĩa còn đủ."
+        }
+      ]
+    },
+    {
+      "slug": "there-is-there-are",
+      "title": "There is / There are",
+      "titleEn": "There is / There are",
+      "summary": "Dùng there is/there are để nói sự tồn tại, chia đúng theo danh từ và thì của câu.",
+      "isNew": true,
+      "content": "### Cấu trúc cơ bản\n\n**There is + danh từ số ít hoặc không đếm được**: *There is a cat on the roof* (Có một con mèo trên mái nhà). **There are + danh từ số nhiều**: *There are two cats on the roof* (Có hai con mèo trên mái nhà). Cấu trúc này dùng để nói một vật hoặc sự việc tồn tại ở đâu đó.\n\n### Câu phủ định và nghi vấn\n\n- Phủ định: **There is not (isn't) / There are not (aren't)** + danh từ.\n- Nghi vấn: **Is there / Are there** + danh từ? Trả lời ngắn: *Yes, there is / No, there aren't*.\n- Thường dùng *some* trong câu khẳng định, *any* trong phủ định và nghi vấn: *There aren't any chairs* (Không có chiếc ghế nào).\n\n### Các thì khác\n\nThere is/are có thể chia theo thì: *There was a party last night* (Có một bữa tiệc tối qua), *There will be a meeting tomorrow* (Sẽ có một cuộc họp ngày mai), *There has been an accident* (Đã có một vụ tai nạn).\n\n### Lỗi thường gặp\n\n- Dùng have/has thay is/are: *There have a book* → *There is a book*.\n- Chia sai khi có nhiều danh từ: *There is many people* → *There are many people*.\n- Dùng there is với danh từ số nhiều: *There is three rooms* → *There are three rooms*.",
+      "examples": [
+        { "en": "There is a small garden behind the house.", "vi": "Có một khu vườn nhỏ phía sau ngôi nhà." },
+        { "en": "There aren't any eggs in the fridge.", "vi": "Không có quả trứng nào trong tủ lạnh." },
+        { "en": "There will be a concert in the park next Sunday.", "vi": "Sẽ có một buổi hòa nhạc trong công viên vào Chủ nhật tới." }
+      ],
+      "exercises": [
+        {
+          "prompt": "There ___ a lamp on the desk.",
+          "options": ["is", "are", "have", "has"],
+          "answer": 0,
+          "explanation": "A lamp là danh từ số ít nên dùng there is; are dùng cho số nhiều, have/has không đi với cấu trúc there."
+        },
+        {
+          "prompt": "There ___ many people at the festival.",
+          "options": ["is", "are", "was", "has"],
+          "answer": 1,
+          "explanation": "Many people là danh từ số nhiều nên dùng there are; is và was là số ít, has không dùng trong cấu trúc này."
+        },
+        {
+          "prompt": "___ there any milk in the fridge?",
+          "options": ["Is", "Are", "Do", "Has"],
+          "answer": 0,
+          "explanation": "Milk là danh từ không đếm được nên câu hỏi dùng Is there; Are dùng cho số nhiều, Do và Has sai cấu trúc."
+        }
+      ]
+    },
+    {
+      "slug": "cac-loai-cau-hoi",
+      "title": "Các loại câu hỏi",
+      "titleEn": "Yes/No, Wh- and tag questions",
+      "summary": "Thành lập câu hỏi Yes/No, câu hỏi Wh- và câu hỏi đuôi đúng trật tự từ và dấu.",
+      "isNew": true,
+      "content": "### Câu hỏi Yes/No\n\nBắt đầu bằng trợ động từ hoặc động từ to be: **Do/Does/Did, Is/Are/Was/Were, Have/Has, Can/Will...**, sau đó là chủ ngữ và động từ chính: *Do you like coffee?* (Bạn có thích cà phê không?), *Is she a doctor?* (Cô ấy là bác sĩ phải không?). Trả lời bằng Yes/No + chủ ngữ + trợ động từ.\n\n### Câu hỏi Wh-\n\nDùng **What, Where, When, Who, Why, How** ở đầu câu, sau đó là trợ động từ và chủ ngữ: *Where do you live?* (Bạn sống ở đâu?), *Why is he late?* (Vì sao anh ấy đến muộn?). Khi Who hoặc What làm chủ ngữ, không dùng trợ động từ: *Who called you?* (Ai đã gọi bạn?).\n\n### Câu hỏi đuôi\n\nCâu hỏi đuôi gồm trợ động từ + đại từ, **ngược dấu** với mệnh đề chính: *She is a teacher, isn't she?* (Cô ấy là giáo viên phải không?), *You don't smoke, do you?* (Bạn không hút thuốc phải không?). Mệnh đề khẳng định thì đuôi phủ định và ngược lại.\n\n### Lỗi thường gặp\n\n- Quên trợ động từ: *Where you live?* → *Where do you live?*.\n- Dùng danh từ trong câu hỏi đuôi: *Tom is here, isn't Tom?* → *isn't he?*.\n- Đổi dấu sai: *She isn't happy, isn't she?* → *is she?*.",
+      "examples": [
+        { "en": "Where did you buy that beautiful dress?", "vi": "Bạn đã mua chiếc váy đẹp đó ở đâu?" },
+        { "en": "You have finished your homework, haven't you?", "vi": "Bạn đã làm xong bài tập về nhà rồi phải không?" },
+        { "en": "Does your brother work in the city center?", "vi": "Anh trai bạn có làm việc ở trung tâm thành phố không?" }
+      ],
+      "exercises": [
+        {
+          "prompt": "___ do you usually get up in the morning?",
+          "options": ["What", "Where", "What time", "Who"],
+          "answer": 2,
+          "explanation": "Cần hỏi về thời gian nên dùng What time; What và Who hỏi sự vật hoặc người, Where hỏi địa điểm."
+        },
+        {
+          "prompt": "She doesn't like fish, ___?",
+          "options": ["does she", "doesn't she", "is she", "isn't she"],
+          "answer": 0,
+          "explanation": "Mệnh đề phủ định dùng trợ động từ does nên câu hỏi đuôi khẳng định là does she."
+        },
+        {
+          "prompt": "___ you finished your report yet?",
+          "options": ["Do", "Have", "Are", "Did"],
+          "answer": 1,
+          "explanation": "Trạng từ yet và quá khứ phân từ finished cho thấy thì hiện tại hoàn thành, nên dùng Have."
+        }
+      ]
+    },
+    {
+      "slug": "hoa-hop-chu-ngu-dong-tu",
+      "title": "Hòa hợp chủ ngữ–động từ",
+      "titleEn": "Subject–verb agreement",
+      "summary": "Chia động từ đúng theo chủ ngữ, kể cả các trường hợp đặc biệt và danh từ tập hợp.",
+      "isNew": false,
+      "content": "### Quy tắc cơ bản\n\nĐộng từ phải hòa hợp với chủ ngữ về số. Chủ ngữ số ít (he, she, it, danh từ số ít) dùng động từ thêm **-s/-es** ở hiện tại đơn: *She works here* (Cô ấy làm việc ở đây). Chủ ngữ số nhiều và I/you dùng động từ nguyên mẫu: *They work here*. Động từ to be chia **is/am/are** tương ứng.\n\n### Chủ ngữ đặc biệt\n\n- Danh từ không đếm được và *news, mathematics, physics* dùng động từ số ít: *The news is good*.\n- *Each, every, either, neither + danh từ số ít* dùng động từ số ít: *Each student has a book*.\n- *Everyone, somebody, nothing* dùng động từ số ít.\n- Hai chủ ngữ nối bằng **and** dùng động từ số nhiều: *Tom and Mary are here*.\n\n### Danh từ tập hợp\n\nFamily, team, class, government dùng động từ số ít khi xem là một đơn vị, hoặc số nhiều khi nói đến các thành viên: *The team is winning* (Đội đang thắng), *The team are arguing* (Các thành viên trong đội đang tranh cãi).\n\n### Lỗi thường gặp\n\n- Bỏ -s với chủ ngữ ngôi thứ ba số ít: *He go* → *He goes*.\n- Chia theo danh từ đứng gần: *The box of books are heavy* → *is heavy*.\n- Dùng số nhiều với every: *Every students are* → *Every student is*.",
+      "examples": [
+        { "en": "Each of the players has a new uniform.", "vi": "Mỗi cầu thủ đều có một bộ đồng phục mới." },
+        { "en": "The news about the storm is very worrying.", "vi": "Tin tức về cơn bão rất đáng lo." },
+        { "en": "My parents go to the gym every morning.", "vi": "Bố mẹ tôi đi tập thể dục mỗi sáng." }
+      ],
+      "exercises": [
+        {
+          "prompt": "Each of the students ___ a dictionary.",
+          "options": ["have", "has", "are having", "were having"],
+          "answer": 1,
+          "explanation": "Each of + danh từ số nhiều vẫn dùng động từ số ít, nên has là đáp án đúng; have và are/were là số nhiều."
+        },
+        {
+          "prompt": "The news on TV ___ very surprising.",
+          "options": ["are", "were", "is", "have"],
+          "answer": 2,
+          "explanation": "News là danh từ không đếm được nên dùng động từ số ít is; are, were, have đều là dạng số nhiều."
+        },
+        {
+          "prompt": "My best friend ___ to school by bike every day.",
+          "options": ["go", "goes", "going", "gone"],
+          "answer": 1,
+          "explanation": "Chủ ngữ my best friend là số ít nên động từ hiện tại đơn thêm -es: goes; go dùng cho số nhiều, going và gone không phải dạng chia."
+        }
+      ]
+    }
+  ]
+}

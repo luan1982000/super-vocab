@@ -6,6 +6,8 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 import { AuthProvider } from './hooks/AuthProvider'
 import { isSupabaseConfigured } from './lib/supabase'
 import { FlashcardPage } from './pages/FlashcardPage'
+import { GrammarDetailPage } from './pages/GrammarDetailPage'
+import { GrammarListPage } from './pages/GrammarListPage'
 import { LoginPage } from './pages/LoginPage'
 import { PracticePage } from './pages/PracticePage'
 import { VocabListPage } from './pages/VocabListPage'
@@ -26,6 +28,8 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/vocab" element={protectedPage(<VocabPage />)} />
             <Route path="/vocab/list" element={protectedPage(<VocabListPage />)} />
+            <Route path="/grammar" element={protectedPage(<GrammarListPage />)} />
+            <Route path="/grammar/:slug" element={protectedPage(<GrammarDetailPage />)} />
             <Route path="/practice" element={protectedPage(<PracticePage />)} />
             <Route path="/practice/flashcard" element={protectedPage(<FlashcardPage />)} />
             <Route path="/practice/writing" element={protectedPage(<WritingPage />)} />
